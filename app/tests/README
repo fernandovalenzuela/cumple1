@@ -1,0 +1,196 @@
+Suite de Tests - Módulo de Pagos
+
+La funcionalidad de pagos queda cubierta mediante 4 archivos de tests, con un total de 71 casos de prueba.
+
+1. createPayment.test.ts
+
+Prueba el método:
+
+PaymentService.createPayment()
+Casos cubiertos
+Crear un nuevo pago
+
+Verifica que:
+
+No exista un pago previo.
+Se invoque al proveedor de pagos.
+Se cree el registro del pago.
+Se retorne la URL del checkout.
+Pago ya en proceso
+
+Se prueban todos los estados:
+
+Created
+Pending
+WaitingPayment
+PendingVerification
+
+Se verifica que:
+
+No se cree un nuevo pago.
+No se invoque al proveedor.
+Se retorne:
+PaymentAlreadyInProgress
+Pago ya finalizado
+
+Se prueban los estados:
+
+Approved
+Refunded
+
+Se verifica que:
+
+No se genere un nuevo pago.
+Se retorne:
+PaymentAlreadyCompleted
+Reintento de pago
+
+Se prueban los estados:
+
+Rejected
+Cancelled
+Expired
+
+Se verifica que:
+
+Se genere un nuevo checkout.
+Se actualice el registro existente mediante:
+restartPayment()
+No se cree un nuevo registro.
+2. createFreePayment.test.ts
+
+Prueba el método:
+
+PaymentService.createFreePayment()
+Casos cubiertos
+Pago gratuito exitoso
+
+Verifica que:
+
+Se cree un pago con:
+providerCheckoutId = ZERO_AMOUNT
+Se actualice automáticamente a:
+Approved
+Se actualice el estado del evento a:
+Paid
+Se registre el log del pago.
+Ya existe un pago
+
+Verifica que:
+
+No se cree un nuevo pago.
+Se retorne:
+PaymentAlreadyCompleted
+Error interno
+
+Simula el caso donde:
+
+Se crea el registro.
+Luego no puede recuperarse desde la base.
+
+Verifica que lance la excepción correspondiente.
+
+3. processWebhook.test.ts
+
+Prueba el método:
+
+PaymentService.processWebhook()
+Casos cubiertos
+Webhook exitoso
+
+Verifica todo el flujo:
+
+parseWebhook()
+getPayment()
+mapPaymentResult()
+actualización del pago
+actualización del evento
+inserción del log
+Pago inexistente
+
+Simula que el webhook pertenece a un evento sin pago registrado.
+
+Verifica que lance excepción.
+
+Transición inválida
+
+Simula una transición no permitida.
+
+Verifica que:
+
+NO se actualice el pago.
+NO se actualice el evento.
+Sí se registre el webhook para auditoría.
+4. canTransition.test.ts
+
+Prueba completamente la máquina de estados del pago.
+
+Método probado:
+
+PaymentService.canTransition()
+Transiciones válidas
+Desde Created
+
+Puede pasar a:
+
+Pending
+WaitingPayment
+PendingVerification
+Approved
+Rejected
+Cancelled
+Expired
+Desde Pending
+
+Puede pasar a:
+
+Approved
+Rejected
+Cancelled
+Expired
+Desde WaitingPayment
+
+Puede pasar a:
+
+Approved
+Rejected
+Cancelled
+Expired
+Desde PendingVerification
+
+Puede pasar a:
+
+Approved
+Rejected
+Cancelled
+Expired
+Desde Approved
+
+Puede pasar únicamente a:
+
+Refunded
+Transiciones inválidas
+
+Se verifica que siempre retornen false para:
+
+Rejected
+
+hacia cualquier estado.
+
+Cancelled
+
+hacia cualquier estado.
+
+Expired
+
+hacia cualquier estado.
+
+Refunded
+
+hacia cualquier estado.
+
+Resultado de ejecución
+Test Files: 4 passed
+Tests: 71 passed
+
+Todos los escenarios implementados actualmente en PaymentService quedan cubiertos por la suite de tests.

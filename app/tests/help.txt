@@ -1,0 +1,46 @@
+Ejecutar todos los tests:
+
+pnpm vitest
+
+Modo watch:
+
+pnpm vitest --watch
+
+Ejecutar una sola vez:
+
+pnpm vitest run
+
+Ejecutar un archivo específico:
+
+pnpm vitest run app/tests/payment/createPayment.test.ts
+pnpm vitest run app/tests/payment/createFreePayment.test.ts
+pnpm vitest run app/tests/payment/processWebhook.test.ts
+pnpm vitest run app/tests/payment/canTransition.test.ts
+
+Ejecutar un único test por nombre:
+
+pnpm vitest run -t "creates a payment when no previous payment exists"
+
+Ver cobertura:
+
+pnpm vitest run --coverage
+
+Si todavía no lo instalaste:
+
+pnpm add -D vitest
+
+Y agregá en package.json:
+
+{
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  }
+}
+
+Luego podés ejecutar:
+
+pnpm test
+pnpm test:run
+pnpm test:coverage

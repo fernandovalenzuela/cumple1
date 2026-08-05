@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { inter, roboto, greatVibes, pinyonScript } from '@/app/fonts';
+import { inter, roboto, greatVibes, pinyonScript, italianno } from '@/fonts';
+import "@/lib/images/sharp-preload"; //NO BORRAR!!!! Esto es debido a que si se carga por primera vez en C:\fuentes\nextjs\cumple1\cumple1\app\lib\images\imagePipeline.ts, function processImage, da un error. Por eso se hace este preload.
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${pinyonScript.className} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

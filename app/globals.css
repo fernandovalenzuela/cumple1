@@ -1,33 +1,1138 @@
 @import "tailwindcss";
 
+/* ---------------- REGLAS ---------------- */
+/* REGLA: Todo formulario usa .admin-page*/
+/* REGLA: Todos los iconos tendrán width:20px;height:20px;color:var(--admin-text-soft);*/
+/* REGLA: Ningún componente del Admin puede usar clases de Invitación */
+
+/* ----------------------------------------- */
+
+/* =========================
+   🧱 BASE (FALLBACK)
+========================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #fce9f5;
+  --color-bg-hero-from: #fce7f3;
+  --color-bg-hero-to: #ffffff;
+
+  --color-primary: #ec4899;
+  --color-primary-soft: #f9a8d4;
+
+  --color-text-main: #1f2937;
+  --color-text-soft: #6b7280;
+
+  --color-button: #374151;
+  --color-button-hover: #111827;
+
+  --color-border: #e5e7eb;
+  --color-muted: #6b7280;
+
+  --hero-animation-opacity: 0.3;
+  --hero-animation-blur: 0px;
+  --hero-animation-scale: 1;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===================================================
+
+   ADMINISTRACIÓN
+
+   Variables utilizadas por el organizador
+
+=================================================== */
+
+/* =========================
+   🧑‍💼 ADMIN UI
+========================= */
+
+:root {
+
+  /* Fondo */
+
+  --admin-bg:#f8fafc;
+
+  --admin-surface: #ffffff;
+
+  --admin-surface-soft: #fafafa;
+
+  /* Colores */
+
+  --admin-primary: #f97316;
+
+  --admin-primary-hover: #ea580c;
+
+  --admin-primary-soft: #fed7aa;
+
+  /* Textos */
+
+  --admin-font-helper:.85rem;
+
+  --admin-text: #111827;
+
+  --admin-text-soft: #6b7280;
+
+  /* Bordes */
+
+  --admin-border: #e5e7eb;
+
+  /* Inputs */
+
+  --admin-input-bg: #ffffff;
+
+  --admin-input-border: #d1d5db;
+
+  --admin-input-focus: #f97316;
+
+  /* Estados */
+
+  --admin-success: #22c55e;
+
+  --admin-warning: #f59e0b;
+
+  --admin-error: #ef4444;
+
+  --admin-success-bg: #f0fdf4;
+
+  --admin-warning-bg: #fffbeb;
+
+  --admin-error-bg: #fef2f2;
+  
+  --admin-success-color: #22c55e;
+
+  --admin-warning-color: #92400e;
+
+  --admin-error-color: #b91c1c;
+
+  --admin-success-border: 1px solid #bbf7d0;
+
+  --admin-warning-border: 1px solid #fde68a;
+
+  --admin-error-border: 1px solid #fecaca;
+
+
+
+  --admin-radius-sm:12px;
+
+  --admin-radius-md:18px;
+
+  --admin-radius-lg:28px;
+
+
+  /* transition animation */
+  --admin-transition-fast:.15s;
+
+  --admin-transition:.25s;
+
+  --admin-transition-slow:.4s;
+
+
+  /*  Shadows */
+  --admin-focus-shadow:
+    0 0 0 4px rgba(249,115,22,.15);
+
+  --admin-card-shadow:
+    0 6px 18px rgba(15,23,42,.06);
+
+
+  --admin-disabled:#d1d5db;
+
+  --admin-space-xs:.5rem;
+
+  --admin-space-sm:1rem;
+
+  --admin-space-md:1.5rem;
+
+  --admin-space-lg:2rem;
+
+  --admin-space-xl:3rem;
+
+  --admin-placeholder: #9ca3af;
+
+  
+
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.admin-step-bar {
+  background: var(--admin-primary);
+}
+
+.admin-step-bar-inactive {
+  background: var(--admin-border);
+}
+
+.admin-form{
+
+  @apply
+
+  space-y-6;
+
+}
+
+.admin-form > .admin-actions{
+
+    padding-top:1rem;
+
+}
+
+.admin-field{
+
+  @apply
+
+  space-y-2;
+
+}
+
+.admin-button {
+
+  @apply
+    px-8
+    py-4
+
+    font-semibold;
+
+  background:
+
+    var(--admin-primary);
+
+  color:white;
+
+  border-radius:var(--admin-radius-lg);
+
+  box-shadow: var(--admin-card-shadow);
+
+  min-height:52px;
+
+  transition:
+
+    background-color var(--admin-transition),
+
+    border-color var(--admin-transition),
+
+    box-shadow var(--admin-transition),
+
+    color var(--admin-transition);
+
+  cursor:pointer;
+
+}
+
+@media (hover:hover){
+
+  .admin-button:hover{
+
+      background:
+
+      var(--admin-primary-hover);
+
+  }
+
+}
+
+.admin-button:focus-visible{
+
+  outline:none;
+
+  box-shadow: var(--admin-focus-shadow);
+
+}
+
+.admin-button:disabled{
+
+  opacity:.65;
+
+  cursor:not-allowed;
+
+  background:
+
+    var(--admin-disabled);
+
+}
+
+.admin-button-secondary{
+
+  @apply
+
+    px-8
+
+    py-4
+
+    transition
+
+    font-medium;
+
+    background:white;
+
+  color:var(--admin-primary);
+
+  border:
+
+    1px solid
+
+    var(--admin-primary);
+
+  box-shadow: var(--admin-card-shadow);
+
+  border-radius: var(--admin-radius-lg);
+
+  cursor:pointer;
+
+}
+
+.admin-button-secondary:focus-visible{
+
+  outline:none;
+
+  box-shadow: var(--admin-focus-shadow);
+
+}
+
+.admin-button-medium{
+  font-weight: normal !important;
+  min-height:40px !important;
+  padding:0 16px  !important;
+  font-size:14px  !important;
+
+}
+
+.admin-button-small{
+    min-height:40px;
+    padding:.45rem .9rem;
+    font-size:.9rem;
+}
+
+.admin-button-medium-bg {
+  background-color: rgb(255 247 237 / var(--tw-bg-opacity, 1)) !important;
+}
+
+
+.admin-grid{
+
+  @apply
+
+  grid
+
+  gap-6;
+
+}
+
+.admin-grid-2{
+
+    @apply
+
+    grid
+
+    gap-6
+
+    md:grid-cols-2;
+
+}
+
+.admin-input{
+
+  @apply
+    w-full
+
+    px-4
+
+    py-3
+
+    transition;
+
+  background:
+
+    var(--admin-input-bg);
+
+  border:
+
+    1px solid
+
+    var(--admin-input-border);
+
+  border-radius:var(--admin-radius-md);
+
+  box-shadow: none;
+
+  min-height:52px;
+
+  font-size:16px;
+
+}
+
+.admin-input:focus{
+
+  outline:none;
+
+  border-color:
+
+    var(--admin-input-focus);
+
+  box-shadow: var(--admin-focus-shadow);
+
+}
+
+.admin-input::placeholder{
+
+  color:var(--admin-placeholder);
+
+}
+
+.admin-form-gap{height:12px;}
+.admin-section-gap{height:24px;}
+
+.admin-title{
+
+  @apply
+
+  sm:text-4xl
+
+  font-semibold
+
+  text-3xl;
+
+  color:
+
+    var(--admin-text);
+
+
+}
+
+.admin-subtitle{
+
+  @apply
+    text-lg;
+
+  color:var(--admin-text-soft);
+
+}
+
+.admin-step{
+
+  @apply
+
+  text-sm
+
+  font-semibold
+
+  uppercase
+
+  tracking-widest;
+
+  color:
+
+  var(--admin-primary);
+
+}
+
+.admin-container{
+
+  background:
+
+    var(--admin-bg);
+
+  min-height:100vh;
+
+}
+
+.admin-helper{
+
+  color:var(--admin-text-soft);
+
+  font-size:var(--admin-font-helper);
+
+}
+
+.admin-success{
+
+  color:var(--admin-success);
+
+}
+
+.admin-warning{
+
+  color:var(--admin-warning);
+
+}
+
+.admin-error{
+
+  color:var(--admin-error);
+
+}
+
+.admin-success-box{
+
+  background: var(--admin-success-bg);
+
+  color:var(--admin-success-color);
+
+  border:var(--admin-success-border);
+
+  @apply rounded-xl p-4;
+
+}
+
+.admin-warning-box{
+
+  background: var(--admin-warning-bg);
+
+  color:var(--admin-warning-color);
+
+  border:var(--admin-warning-border);
+
+  @apply rounded-xl p-4;
+
+}
+
+.admin-error-box{
+
+  background: var(--admin-error-bg);
+
+  color:var(--admin-error-color);;
+
+  border:var(--admin-error-border);
+
+  @apply 
+    rounded-xl p-4;
+
+}
+
+.admin-spinner{
+
+  @apply
+
+  animate-spin
+
+  rounded-full
+
+  border-2;
+
+  border-top-color:transparent;
+
+  width:20px;
+
+  height:20px;
+
+}
+
+.admin-textarea{
+
+  @apply
+
+  w-full
+
+  px-4
+
+  py-3
+
+  transition
+
+  min-h-32;
+
+  background:
+
+    var(--admin-input-bg);
+
+  border:
+
+    1px solid
+
+    var(--admin-input-border);
+
+  border-radius: var(--admin-radius-md);
+
+  box-shadow:none;
+
+  font-size:16px;
+
+}
+
+.admin-textarea:focus{
+
+  outline:none;
+
+  border-color:
+
+    var(--admin-input-focus);
+
+  box-shadow: var(--admin-focus-shadow);
+
+}
+
+.admin-select{
+
+  @apply
+
+  w-full
+
+  px-4
+
+  py-3;
+
+  background:
+
+    var(--admin-input-bg);
+
+  border:
+
+    1px solid
+
+    var(--admin-input-border);
+
+  border-radius: var(--admin-radius-md);
+
+  box-shadow: none;
+
+  font-size:16px;
+
+  cursor:pointer;
+
+}
+
+.admin-select:focus{
+
+  outline:none;
+
+  border-color:
+
+    var(--admin-input-focus);
+
+  box-shadow: var(--admin-focus-shadow);
+
+}
+
+.admin-checkbox{
+
+  width:20px;
+
+  height:20px;
+
+  accent-color:
+
+    var(--admin-primary);
+
+}
+
+.admin-checkbox:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+
+        var(--admin-focus-shadow);
+
+}
+
+.admin-divider{
+
+  border-top:
+
+    1px solid
+
+    var(--admin-border);
+
+  @apply
+
+  my-8;
+
+}
+
+.admin-actions{
+
+  @apply
+
+  flex
+
+  flex-col
+
+  gap-3
+
+  mt-8
+
+  sm:flex-row
+
+  sm:justify-end;
+
+}
+
+
+
+.admin-label{
+
+  @apply
+
+    block
+
+    mb-2
+
+    font-medium
+
+    text-sm;
+
+  color:var(--admin-text);
+
+
+}
+
+.admin-section{
+
+  @apply
+
+  mt-10;
+
+}
+
+.admin-section:first-child{
+
+  @apply
+
+  mt-0;
+
+}
+
+
+
+.admin-card{
+
+  @apply
+
+    rounded-3xl
+    p-5
+    sm:p-8;
+
+  background: var(--admin-surface);
+
+  border:1px solid var(--admin-border);
+
+  border-radius:var(--admin-radius-lg);
+
+  box-shadow:var(--admin-card-shadow);
+
+}
+
+/* REGLA IMPORTANTE: Todo formulario usa .admin-page*/
+.admin-page{
+
+    @apply
+
+      max-w-2xl
+
+      mx-auto
+
+      px-5
+
+      py-10
+
+      sm:px-6
+
+      sm:py-10;
+
+}
+
+.admin-page-onboarding-preview{
+
+    @apply
+
+  
+
+      mx-auto
+
+      px-1
+
+      py-1
+
+      sm:px-1
+
+      sm:py-1;
+
+}
+
+/* ESTO es contemplar menu lateral version desktop admin del organizador y mi admin  */
+.admin-dashboard{
+
+    @apply
+
+    min-h-screen
+
+    flex;
+
+}
+
+/* ESTO es contemplar menu lateral version desktop admin del organizador y mi admin  */
+.admin-content{
+
+    @apply
+
+    flex-1
+
+    p-8;
+}
+
+/*.admin-transition{
+
+    transition:
+      background-color var(--admin-transition),
+      border-color var(--admin-transition),
+      box-shadow var(--admin-transition),
+      color var(--admin-transition);
+
+}*/
+
+
+[data-theme="dark"] {
+
+  --admin-bg: #111827;
+
+  --admin-surface: #1f2937;
+
+  --admin-surface-soft: #374151;
+
+  --admin-primary: #fb923c;
+
+  --admin-primary-hover: #f97316;
+
+  --admin-primary-soft: #7c2d12;
+
+  --admin-disabled: #d1d5db;
+
+  --admin-text: #f9fafb;
+
+  --admin-text-soft: #d1d5db;
+
+  --admin-border: #374151;
+
+  --admin-input-bg: #1f2937;
+
+  --admin-input-border: #4b5563;
+
+  --admin-input-focus: #fb923c;
+
+  --admin-success: #22c55e;
+
+  --admin-warning: #f59e0b;
+
+  --admin-error: #ef4444;
+
+  --admin-success-bg: #f0fdf4;
+
+  --admin-warning-bg: #fffbeb;
+
+  --admin-error-bg: #fef2f2;
+  
+  --admin-success-color: #22c55e;
+
+  --admin-warning-color: #92400e;
+
+  --admin-error-color: #b91c1c;
+
+}
+
+
+/* ===================================================
+
+   INVITACIÓN
+
+   Variables utilizadas únicamente por los invitados
+
+=================================================== */
+
+/* =========================
+   🎨 THEME: PINK (ACTUAL)
+========================= */
+.theme-pink {
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #fce9f5;
+  --color-bg-hero-from: #fce7f3;
+  --color-bg-hero-to: #ffffff;
+
+  --color-primary: #ec4899;
+  --color-primary-soft: #f9a8d4;
+
+  --color-text-main: #1f2937;
+  --color-text-soft: #6b7280;
+
+  --color-button: #374151;
+  --color-button-hover: #111827;
+
+  --color-border: #e5e7eb;
+  --color-muted: #6b7280;
+ 
+  /* 🔥 IMPORTANTE: respetamos tu valor actual */
+  --hero-animation-opacity: 0.6;
+}
+
+/* =========================
+   🎨 THEME: ELEGANT
+========================= */
+.theme-elegant {
+  --color-bg-main: #ffffff !important;
+  --color-bg-soft: #f3f4f6 !important;
+  --color-bg-hero-from: #f3f4f6 !important;
+  --color-bg-hero-to: #ffffff !important;
+
+  --color-primary: #111827 !important;
+  --color-primary-soft: #9ca3af !important;
+
+  --color-text-main: #111827 !important;
+  --color-text-soft: #6b7280 !important;
+
+  --color-button: #111827 !important;
+  --color-button-hover: #000000 !important;
+
+  --color-border: #e5e7eb !important;
+  --color-muted: #6b7280 !important;
+
+  --hero-animation-opacity: 0.99 !important;
+  --hero-animation-blur: 1px !important;
+  --hero-animation-scale: 1.05 !important;
+}
+
+/* =========================
+   🎨 THEME: PARTY
+========================= */
+.theme-party {
+  --color-bg-main: #ffffff !important;
+  --color-bg-soft: #ede9fe !important;
+  --color-bg-hero-from: #ede9fe !important;
+  --color-bg-hero-to: #f5cafc !important;
+
+  --color-primary: #7c3aed !important;
+  --color-primary-soft: #c4b5fd !important;
+
+  --color-text-main: #1f2937 !important;
+  --color-text-soft: #6b7280 !important;
+
+  --color-button: #7c3aed !important;
+  --color-button-hover: #6d28d9 !important;
+
+  --color-border: #e5e7eb !important;
+  --color-muted: #6b7280 !important;
+
+  --hero-animation-opacity: 0.5 !important;
+  --hero-animation-blur: 0px !important;
+  --hero-animation-scale: 1.2 !important;
+}
+
+/* =========================
+   🧱 BASE UI
+========================= */
+body {
+  background: var(--color-bg-main);
+  color: var(--color-text-main);
+}
+
+/* =========================
+   🌈 SECTIONS
+========================= */
+.section {
+  @apply py-16 px-6 text-center;
+}
+
+.section-soft {
+  background: var(--color-bg-soft);
+}
+
+/*.section-soft {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-hero-to),
+    var(--color-bg-soft)
+  );
+}*/
+
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-hero-from),
+    var(--color-bg-hero-to)
+  );
+}
+
+/* =========================
+   🔘 TITLES
+========================= */
+
+.title-section {
+  @apply text-[35px] font-light;
+  color: var(--color-text-main);
+}
+
+.title-mb-interline {
+  @apply mb-2;
+}
+
+.title-mb-md {
+  @apply mb-8;
+}
+/* text-4xl font-bold mb-4 */
+.title-mb-sm {
+  @apply mb-6;
+}
+
+.title-mb-lg {
+  @apply mb-10;
+}
+
+.title2-section {
+  @apply text-[30px] font-light;
+  color: var(--color-text-main);
+}
+
+.title2-mb-md {
+  @apply mb-8;
+}
+/* text-4xl font-bold mb-4 */
+.title2-mb-sm {
+  @apply mb-6;
+}
+
+.title2-mb-lg {
+  @apply mb-10;
+}
+
+.subtitle-section {
+  @apply text-[18px];
+  color: var(--color-text-main);
+}
+
+.subtitle-mb-interline {
+  @apply mb-2;
+}
+
+.subtitle-mb-md {
+  @apply mb-8;
+}
+/* text-4xl font-bold mb-4 */
+.subtitle-mb-sm {
+  @apply mb-6;
+}
+
+.subtitle-mb-lg {
+  @apply mb-10;
+}
+
+/* =========================
+   🔘 BOTONES
+========================= */
+.main-button {
+  @apply px-12 py-4 rounded-4xl shadow-md transition font-medium;
+  background: var(--color-button);
+  color: white;
+}
+
+.main-button:hover {
+  background: var(--color-button-hover);
+}
+
+.main-button-disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* =========================
+   🧾 TEXTOS
+========================= */
+.text-soft {
+  color: var(--color-text-soft);
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* =========================
+   🧱 CARDS
+========================= */
+.card {
+  @apply bg-white p-4 rounded-lg shadow-md transition;
+}
+
+.card:hover {
+  @apply shadow-lg;
+}
+
+/* =========================
+   💖 FONDO DECORATIVO
+========================= */
+.bg-heart {
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='10' y='40' font-size='18' fill='%23f9a8d4' opacity='0.25'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E");
+}
+
+/* =========================
+   🎉 HERO ANIMATION
+========================= */
+.hero-animation {
+  opacity: var(--hero-animation-opacity);
+  filter: blur(var(--hero-animation-blur));
+  transform: scale(var(--hero-animation-scale));
+}
+
+/* =========================
+   ✨ ANIMACIONES GLOBALES
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
 }
 
-/* fondo con corazones */
-.bg-hearts {
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='10' y='40' font-size='18' fill='%23f9a8d4' opacity='0.25'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E");
+.animate-fade-up {
+  animation: fadeIn 1s ease-out;
+}
 
+/* =========================
+   🎯 SCROLL SUAVE
+========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   📱 MEJOR RENDER MOBILE
+========================= */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* animación ultra suave (tipo Apple) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out both;
+}
+
+
+/* EDIT MARKER */
+.group-div {
+  position: relative;
+}
+
+.editmarker-bg {
+  background-color:var(--color-gray-50);
+}
+
+.editmarker-input-bg {
+  background-color: white;
 }

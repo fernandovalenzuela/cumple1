@@ -1,0 +1,99 @@
+import nodemailer from "nodemailer";
+
+// Configurar el transportador de correo con Gmail
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD, // Usar contraseña de aplicación, no la contraseña de Gmail
+  },
+});
+
+export interface EmailOptions {
+  to: string;
+  subject: string;
+  html: string;
+  text?: string;
+}
+
+/**
+ * Envía un email usando la cuenta de Gmail configurada
+ * @param options - Opciones del email { to, subject, html, text }
+ * @returns Promise con el resultado del envío
+ */
+export async function sendEmail(options: EmailOptions) {
+  try {
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: options.to,
+      subject: options.subject,
+      text: options.text || undefined,
+      html: options.html,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email enviado:", info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error("Error al enviar email:", error);
+    throw new Error(`Error enviando email: ${error}`);
+  }
+}
+
+/**
+ * Envía email de bienvenida
+ */
+export async function sendWelcomeEmail(email: string, name: string) {
+  return sendEmail({
+    to: email,
+    subject: "¡Bienvenido!",
+    html: `
+      <h1>Hola ${name}</h1>
+      <p>¡Gracias por registrarte!</p>
+      <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+    `,
+  });
+}
+
+/**
+ * Envía email de confirmación
+ */
+export async function sendConfirmationEmail(
+  email: string,
+  confirmationLink: string
+) {
+  return sendEmail({
+    to: email,
+    subject: "Confirma tu email",
+    html: `
+      <h2>Confirma tu email</h2>
+      <p>Haz click en el siguiente enlace para confirmar tu cuenta:</p>
+      <a href="${confirmationLink}" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+        Confirmar Email
+      </a>
+      <p>O copia este enlace: ${confirmationLink}</p>
+    `,
+  });
+}
+
+/**
+ * Envía email de restablecimiento de contraseña
+ */
+export async function sendPasswordResetEmail(
+  email: string,
+  resetLink: string
+) {
+  return sendEmail({
+    to: email,
+    subject: "Restablece tu contraseña",
+    html: `
+      <h2>Restablece tu contraseña</h2>
+      <p>Haz click en el siguiente enlace para restablecerla:</p>
+      <a href="${resetLink}" style="padding: 10px 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;">
+        Restablecer Contraseña
+      </a>
+      <p>Este enlace expira en 1 hora.</p>
+      <p>Si no solicitaste esto, ignora este email.</p>
+    `,
+  });
+}

@@ -1,0 +1,112 @@
+Listado de rutas de carpetas para el volumen Windows
+El número de serie del volumen es 26EE-046A
+C:.
+¦   favicon.ico
+¦   fonts.ts
+¦   globals.css
+¦   layout.tsx
+¦   tmp
+¦   
++---api
+¦   +---event
+¦   ¦   +---messages
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---my
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---open-rsvp
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---rsvp
+¦   ¦           route.ts
+¦   ¦           
+¦   +---marketing
+¦   +---onboarding
+¦   ¦   +---customer
+¦   ¦   +---event
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---finish
+¦   ¦   +---payment
+¦   +---organizer
+¦   ¦   +---event
+¦   ¦           route.ts
+¦   ¦           
+¦   +---partner
+¦   +---webmaster
++---components
+¦   ¦   AnimationBackground.tsx
+¦   ¦   ConfettiBackground.tsx
+¦   ¦   Countdown.tsx
+¦   ¦   EventPageView.tsx
+¦   ¦   Gallery.tsx
+¦   ¦   LottieAnimation.tsx
+¦   ¦   Messages.tsx
+¦   ¦   MessagesList.tsx
+¦   ¦   MessagesSection.tsx
+¦   ¦   old_LivePreview.tsx
+¦   ¦   OpenRSVP.tsx
+¦   ¦   PrivateRSVP.tsx
+¦   ¦   
+¦   +---event-editor
+¦   ¦       AdminLayout.tsx
+¦   ¦       AppearanceMarker.tsx
+¦   ¦       EditMarker.tsx
+¦   ¦       LivePreview.tsx
+¦   ¦       RSVPMarker.tsx
+¦   ¦       
+¦   +---onboarding
+¦   ¦   +---form
+¦   ¦   ¦       FormCard.tsx
+¦   ¦   ¦       
+¦   ¦   +---hero
+¦   ¦   ¦       Hero.tsx
+¦   ¦   ¦       
+¦   ¦   +---layout
+¦   ¦           FooterActions.tsx
+¦   ¦           OnboardingLayout.tsx
+¦   ¦           StepIndicator.tsx
+¦   ¦           
+¦   +---ui
++---e
+¦   +---[slug]
+¦           page.tsx
+¦           
++---i
+¦   +---[code]
+¦           page.tsx
+¦           
++---lib
+¦   ¦   appearance.ts
+¦   ¦   constants.ts
+¦   ¦   db.ts
+¦   ¦   defaults.ts
+¦   ¦   email.future
+¦   ¦   helper.tsx
+¦   ¦   rsvp.ts
+¦   ¦   utils.ts
+¦   ¦   
+¦   +---mappers
+¦   ¦       mapEventToView.ts
+¦   ¦       
+¦   +---onboarding
+¦   ¦       types.ts
+¦   ¦       
+¦   +---validation
+¦           customer.ts
+¦           
++---marketing
++---onboarding
+¦       page.tsx
+¦       
++---organizer
+¦   +---[token]
+¦           page.tsx
+¦           
++---partner
++---query
++---store
+¦       eventStore.ts
+¦       
++---webmaster

@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# pruebas de eventos
+/public/events/
+
 # production
 /build
 
