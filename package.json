@@ -39,5 +39,11 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"
-  }
+  },
+  "pnpm": {
+	  "supportedArchitectures": {
+		"os": ["win32", "linux"],
+		"cpu": ["x64"]
+	  }
+	}
 }
