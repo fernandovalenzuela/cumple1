@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { DEFAULT_EVENT} from "@/lib/defaults";
 import type { Event } from "@/lib/types";
+import { APPEARANCE_TEMPLATES } from "@/lib/appearance";
 
 
 /* =========================
@@ -12,7 +13,7 @@ import type { Event } from "@/lib/types";
 function normalizeEvent(event: Event | null): Event {
   return {
     ...DEFAULT_EVENT,
-    ...(event || {})
+    ...(event || {}),
   };
 }
 
@@ -31,6 +32,12 @@ type EventState = {
   /* ACTIONS */
   setEvent: (event: Event) => void;
   updateEvent: (patch: Partial<Event>) => void;
+  applyDefaultAppearance: (appearance: {
+    theme: string;
+    fontType: string;
+    animationType: number;
+    backgroundMotive: string;
+  }) => void;
   resetEvent: () => void;
   reset: () => void; // alias
   markSaved: () => void;
@@ -90,6 +97,31 @@ export const useEventStore = create<EventState>((set, get) => ({
     set({
       event: updated,
       isDirty: true,
+    });
+  },
+
+  /* =========================
+     APPLY DEFAULT APPEARANCE
+  ========================= */
+  applyDefaultAppearance: (appearance) => {
+    const current = get().event;
+
+    if (!current || current.theme !== null) {
+      return;
+    }
+
+    const updated = {
+      ...current,
+      theme: appearance.theme,
+      fontType: appearance.fontType,
+      animationType: appearance.animationType,
+      backgroundMotive: appearance.backgroundMotive,
+    };
+
+    set({
+      event: updated,
+      originalEvent: { ...updated },
+      isDirty: false,
     });
   },
 

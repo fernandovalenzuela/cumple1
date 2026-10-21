@@ -9,11 +9,11 @@ export type RSVPOption = {
 export const RSVP_ACCESS_TYPES: RSVPOption[] = [
   {
     value: AccessType.Open,
-    label: "Abierto",
+    label: "Invitados con Confirmación Asistencia",
   },
   {
     value: AccessType.PublicWithoutGuests,
-    label: "Público (sin Confirmación Asistencia)",
+    label: "Invitados sin Confirmación Asistencia",
   },
 ];
 

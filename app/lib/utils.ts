@@ -482,10 +482,15 @@ type OccasionTypeInfo={
   caption:string;
   icon:string;
   description:string;
+  genderArticle:string;
+  onBoardingEventNameCaption:string;
+  onBoardingEventNameCaptionHelp:string;
+  showYearsToCelebrate:boolean;
+  eventInvitationTextDefault:string;
 }
 
-export function getOccasionTypeInfo(occasionType: number): OccasionTypeInfo {
-  const none =  {id:"0",caption:"Seleccionar tipo evento",icon:"", description: "No definido"};
+export function getOccasionTypeInfo(occasionType?: number): OccasionTypeInfo {
+  const none =  {id:"0",caption:"Seleccionar tipo evento",icon:"", description: "No definido", genderArticle:"", onBoardingEventNameCaption: "", onBoardingEventNameCaptionHelp:"", showYearsToCelebrate: false, eventInvitationTextDefault: ""};
   if (!occasionType) {
       return none;
   }
@@ -493,36 +498,42 @@ export function getOccasionTypeInfo(occasionType: number): OccasionTypeInfo {
       case OccasionType.None:
         return none;
       case OccasionType.Birthday:
-        return {id:(String(OccasionType.Birthday)),caption:"Cumpleaños",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños"};
+        return {id:(String(OccasionType.Birthday)),caption:"Cumpleaños",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños", genderArticle: "el", onBoardingEventNameCaption: "¿Quién cumple años?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Santi, María, Rodrigo", showYearsToCelebrate: true, eventInvitationTextDefault: "Invitación al cumple de"};
       case OccasionType.KidsBirthday:
-        return {id:(String(OccasionType.KidsBirthday)),caption:"Cumpleaños infantil",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños infantil"};
+        return {id:(String(OccasionType.KidsBirthday)),caption:"Cumpleaños infantil",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños infantil", genderArticle: "el", onBoardingEventNameCaption: "¿Quién cumple años?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Santi, Anita, Rodrigo", showYearsToCelebrate: true, eventInvitationTextDefault: "Invitación al cumple de"};
       case OccasionType.FifteenthBirthday:
-        return {id:(String(OccasionType.FifteenthBirthday)),caption:"Cumpleaños de 15",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños de 15"};
+        return {id:(String(OccasionType.FifteenthBirthday)),caption:"Cumpleaños de 15",icon:"/occasion/unknown.jpg",description:"Fiesta de cumpleaños de 15", genderArticle: "el", onBoardingEventNameCaption: "¿Quién cumple años?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: true, eventInvitationTextDefault: "Invitación al cumple de"};
+      case OccasionType.Party:
+        return {id:(String(OccasionType.Party)),caption:"Party/Festejo",icon:"/occasion/unknown.jpg",description:"Party", genderArticle: "la", onBoardingEventNameCaption: "¿Nombre de la fiesta?", onBoardingEventNameCaptionHelp: "Por ejemplo: Juntada de amigos, BBQ, Brindis Año Nuevo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación a la reunión de"};
       case OccasionType.WeddingAnniversary:
-        return {id:(String(OccasionType.WeddingAnniversary)),caption:"Aniversario de casados",icon:"/occasion/unknown.jpg",description:"Aniversario de casados"};
+        return {id:(String(OccasionType.WeddingAnniversary)),caption:"Aniversario de casados",icon:"/occasion/unknown.jpg",description:"Aniversario de casados", genderArticle: "el", onBoardingEventNameCaption: "¿Quiénes cumplen aniversario?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande y Rodri, María/Carlos, Manu y Santi", showYearsToCelebrate: true, eventInvitationTextDefault: "Invitación al aniversario de"};
       case OccasionType.Baptism:
-        return {id:(String(OccasionType.Baptism)),caption:"Bautismo",icon:"/occasion/unknown.jpg",description:"Bautismo"};
+        return {id:(String(OccasionType.Baptism)),caption:"Bautismo",icon:"/occasion/unknown.jpg",description:"Bautismo", genderArticle: "el", onBoardingEventNameCaption: "¿Quién se bautiza?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al bautismo de"};
       case OccasionType.Communion:
-        return {id:(String(OccasionType.Communion)),caption:"Comunión",icon:"/occasion/unknown.jpg",description:"Comunión"};
+        return {id:(String(OccasionType.Communion)),caption:"Comunión",icon:"/occasion/unknown.jpg",description:"Comunión", genderArticle: "la", onBoardingEventNameCaption: "¿Quién recibe la comunión?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación a la comunión de"};
       case OccasionType.BarMitzvah:
-        return {id:(String(OccasionType.BarMitzvah)),caption:"Bar Mitzvá",icon:"/occasion/unknown.jpg",description:"Bar Mitzvá"};
+        return {id:(String(OccasionType.BarMitzvah)),caption:"Bar Mitzvá",icon:"/occasion/unknown.jpg",description:"Bar Mitzvá", genderArticle: "el", onBoardingEventNameCaption: "¿De quién es el Bar Mitzvá?", onBoardingEventNameCaptionHelp: "Por ejemplo: David, Ari, Noam", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al Bar Mitzvá de"};
+      case OccasionType.BatMitzvah:
+        return {id:(String(OccasionType.BatMitzvah)),caption:"Bat Mitzvá",icon:"/occasion/unknown.jpg",description:"Bat Mitzvá", genderArticle: "el", onBoardingEventNameCaption: "¿De quién es el Bat Mitzvá?", onBoardingEventNameCaptionHelp: "Por ejemplo: Sara, Noa, Abi", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al Bat Mitzvá de"};
       case OccasionType.Graduation:
-        return {id:(String(OccasionType.Graduation)),caption:"Graduación",icon:"/occasion/unknown.jpg",description:"Graduación"};
+        return {id:(String(OccasionType.Graduation)),caption:"Graduación",icon:"/occasion/unknown.jpg",description:"Graduación", genderArticle: "la", onBoardingEventNameCaption: "¿Quién se gradúa?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación a la graduación de"};
       case OccasionType.Anniversary:
-        return {id:(String(OccasionType.Anniversary)),caption:"Aniversario",icon:"/occasion/unknown.jpg",description:"Aniversario de cualquier tipo"};
+        return {id:(String(OccasionType.Anniversary)),caption:"Aniversario",icon:"/occasion/unknown.jpg",description:"Aniversario de cualquier tipo", genderArticle: "el", onBoardingEventNameCaption: "Nombre quién/qué cumple aniversario", onBoardingEventNameCaptionHelp: "Por ejemplo: Asociación de Deportes, Club Social Palermo, Confitería Dulce Sabor", showYearsToCelebrate: true, eventInvitationTextDefault: "Invitación al aniversario de"};
       case OccasionType.BabyShower:
-        return {id:(String(OccasionType.BabyShower)),caption:"BabyShower",icon:"/occasion/unknown.jpg",description:"BabyShower"};
+        return {id:(String(OccasionType.BabyShower)),caption:"BabyShower",icon:"/occasion/unknown.jpg",description:"BabyShower", genderArticle: "el", onBoardingEventNameCaption: "¿Quién es el/la bebé?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al BabyShower de"};
       case OccasionType.BridalShower:
-        return {id:(String(OccasionType.BridalShower)),caption:"Despedida de solteros",icon:"/occasion/unknown.jpg",description:"Despedida de solteros"};
+        return {id:(String(OccasionType.BridalShower)),caption:"Despedida de solteros",icon:"/occasion/unknown.jpg",description:"Despedida de solteros", genderArticle: "la", onBoardingEventNameCaption: "¿De quién es la despedida?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande, Eva, Sol, Rodrigo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación a la despedida de"};
       case OccasionType.Wedding:
-        return {id:(String(OccasionType.Wedding)),caption:"Casamiento/Boda",icon:"/occasion/unknown.jpg",description:"Casamiento/Boda"};
+        return {id:(String(OccasionType.Wedding)),caption:"Casamiento/Boda",icon:"/occasion/unknown.jpg",description:"Casamiento/Boda", genderArticle: "el", onBoardingEventNameCaption: "¿Quiénes se casan?", onBoardingEventNameCaptionHelp: "Por ejemplo: Cande y Rodri, Eva/Ana, Manu y Santi", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación a la boda de"};
       case OccasionType.GenderReveal:
-        return {id:(String(OccasionType.GenderReveal)),caption:"GenderReveal",icon:"/occasion/unknown.jpg",description:"GenderReveal"};
+        return {id:(String(OccasionType.GenderReveal)),caption:"Gender Reveal",icon:"/occasion/unknown.jpg",description:"GenderReveal", genderArticle: "el", onBoardingEventNameCaption: "¿Cómo quieres titular el evento?", onBoardingEventNameCaptionHelp: "Por ejemplo: La gran revelación, Rosa o azul, Si vienes te lo digo", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al GenderReveal de"};
       case OccasionType.Corporate:
-        return {id:(String(OccasionType.Corporate)),caption:"Corporativo",icon:"/occasion/unknown.jpg",description:"Corporativo"};
+        return {id:(String(OccasionType.Corporate)),caption:"Corporativo",icon:"/occasion/unknown.jpg",description:"Corporativo", genderArticle: "el", onBoardingEventNameCaption: "Nombre evento corporativo", onBoardingEventNameCaptionHelp: "Por ejemplo: Liderazgo y motivación, Nuevas técnicas de XYZ", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al evento de"};
       case OccasionType.Other:
-        return {id:(String(OccasionType.Other)),caption:"Otro",icon:"/occasion/unknown.jpg",description:"Otro"};
+        return {id:(String(OccasionType.Other)),caption:"Otro",icon:"/occasion/unknown.jpg",description:"Otro", genderArticle: "el", onBoardingEventNameCaption: "Nombre del evento", onBoardingEventNameCaptionHelp: "Por ejemplo: Reunión de floristas, Club de lectura, Reunión de amigos", showYearsToCelebrate: false, eventInvitationTextDefault: "Invitación al evento de"};
 
   }
   return none;
 }
+
+

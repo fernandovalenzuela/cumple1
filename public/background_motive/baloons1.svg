@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Filtro de sombra suave para dar volumen a los globos -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Estilos de las cuerdas -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- GLOBO 1: Rojo clásico grande (Izquierda superior) -->
+    <g filter="url(#shadow)">
+      <!-- Cuerda -->
+      <path d="M120 230 C110 270, 130 300, 115 350" stroke="#888" stroke-width="2" />
+      <!-- Nudo -->
+      <polygon points="116,228 124,228 120,235" fill="#D90429" />
+      <!-- Cuerpo del globo -->
+      <path d="M120 60 C175 60, 190 120, 175 180 C160 230, 128 228, 120 228 C112 228, 80 230, 65 180 C50 120, 65 60, 120 60 Z" fill="#EF233C" />
+      <!-- Brillo/Reflejo -->
+      <path d="M85 95 Q95 75 115 70" stroke="#FFFFFF" stroke-width="4" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 2: Azul mediano (Centro superior) -->
+    <g filter="url(#shadow)">
+      <path d="M400 190 C410 230, 390 260, 405 310" stroke="#888" stroke-width="1.8" />
+      <polygon points="396,188 404,188 400,194" fill="#0077B6" />
+      <path d="M400 50 C445 50, 455 100, 445 150 C432 190, 406 188, 400 188 C394 188, 368 190, 355 150 C345 100, 355 50, 400 50 Z" fill="#0096C7" />
+      <path d="M372 80 Q380 65 396 60" stroke="#FFFFFF" stroke-width="3" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 3: Amarillo/Dorado redondo mediano (Derecha superior) -->
+    <g filter="url(#shadow)">
+      <path d="M680 210 C670 250, 690 280, 675 330" stroke="#888" stroke-width="1.8" />
+      <polygon points="676,208 684,208 680,214" fill="#F4A261" />
+      <path d="M680 70 C725 70, 735 120, 725 170 C712 210, 686 208, 680 208 C674 208, 648 210, 635 170 C625 120, 635 70, 680 70 Z" fill="#FFB703" />
+      <path d="M652 98 Q660 83 676 78" stroke="#FFFFFF" stroke-width="3" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 4: Rosado pequeño tipo gota (Izquierda centro) -->
+    <g filter="url(#shadow)">
+      <path d="M260 360 C270 390, 255 420, 265 450" stroke="#888" stroke-width="1.5" />
+      <polygon points="257,358 263,358 260,363" fill="#D80032" />
+      <path d="M260 250 C295 250, 305 290, 295 330 C285 360, 265 358, 260 358 C255 358, 235 360, 225 330 C215 290, 225 250, 260 250 Z" fill="#FF4D6D" />
+      <path d="M238 275 Q245 262 258 258" stroke="#FFFFFF" stroke-width="2.5" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 5: Verde Menta grande (Centro inferior) -->
+    <g filter="url(#shadow)">
+      <path d="M520 410 C510 460, 530 500, 515 560" stroke="#888" stroke-width="2" />
+      <polygon points="516,408 524,408 520,415" fill="#0F9F90" />
+      <path d="M520 220 C580 220, 595 290, 580 350 C563 410, 529 408, 520 408 C511 408, 477 410, 460 350 C445 290, 460 220, 520 220 Z" fill="#2EC4B6" />
+      <path d="M482 260 Q495 238 515 232" stroke="#FFFFFF" stroke-width="4" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 6: Violeta/Morado pequeño (Derecha abajo) -->
+    <g filter="url(#shadow)">
+      <path d="M100 490 C110 520, 95 540, 105 570" stroke="#888" stroke-width="1.5" />
+      <polygon points="97,488 103,488 100,493" fill="#5A189A" />
+      <path d="M100 390 C130 390, 140 430, 130 465 C122 490, 104 488, 100 488 C96 488, 78 490, 70 465 C60 430, 70 390, 100 390 Z" fill="#7B2CBF" />
+      <path d="M82 410 Q88 400 98 396" stroke="#FFFFFF" stroke-width="2.5" opacity="0.6" />
+    </g>
+
+    <!-- GLOBO 7: Naranja mediano (Derecha centro) -->
+    <g filter="url(#shadow)">
+      <path d="M720 460 C710 495, 725 520, 715 550" stroke="#888" stroke-width="1.8" />
+      <polygon points="716,458 724,458 720,464" fill="#D00000" />
+      <path d="M720 310 C760 310, 770 360, 760 410 C748 460, 725 458, 720 458 C715 458, 692 460, 680 410 C670 360, 680 310, 720 310 Z" fill="#FF5400" />
+      <path d="M695 335 Q702 323 716 318" stroke="#FFFFFF" stroke-width="3" opacity="0.6" />
+    </g>
+
+    <!-- Elementos decorativos extra: Confeti flotante -->
+    <circle cx="200" cy="120" r="4" fill="#FFB703" />
+    <circle cx="310" cy="80" r="6" fill="#FF4D6D" />
+    <circle cx="600" cy="140" r="5" fill="#2EC4B6" />
+    <rect x="480" y="100" width="8" height="8" rx="2" fill="#7B2CBF" transform="rotate(25 480 100)" />
+    <rect x="230" y="200" width="7" height="7" rx="1.5" fill="#0096C7" transform="rotate(40 230 200)" />
+    <rect x="630" y="290" width="9" height="9" rx="2" fill="#EF233C" transform="rotate(15 630 290)" />
+
+  </g>
+</svg>

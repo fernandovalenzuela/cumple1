@@ -59,7 +59,7 @@ export function Countdown({ targetDate }: { targetDate: string }) {
               flex flex-col items-center justify-center
               px-2 py-2 sm:px-4 sm:py-3
               min-w-[55px] sm:min-w-[70px]
-              rounded-xl shadow-md
+              rounded-xl shadow-md scalable-title
             "
             style={{
               background: "var(--color-bg-main)",
@@ -69,7 +69,7 @@ export function Countdown({ targetDate }: { targetDate: string }) {
             <div
               className="
                 text-xl sm:text-3xl
-                font-bold
+                font-bold 
               "
               style={{ color: "var(--color-primary)" }}
             >

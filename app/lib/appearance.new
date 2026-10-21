@@ -1,0 +1,1457 @@
+import { OccasionType } from "@/lib/constants";
+
+export type AppearanceOption = {
+  value: string | number;
+  label: string;
+};
+
+export type AppearanceTemplate = {
+  caption: string;
+  themeValue: string;
+  fontValue: string;
+  animationValue: string;
+  backgroundValue: string;
+};
+
+
+export const APPEARANCE_TEMPLATES: AppearanceTemplate[] = [
+  {
+    caption: "Formal",
+    themeValue: "elegant",
+    fontValue: "roboto",
+    animationValue: "0",
+    backgroundValue: "none",
+  },
+  {
+    caption: "Elegante",
+    themeValue: "elegant",
+    fontValue: "wixMadeforText",
+    animationValue: "1",
+    backgroundValue: "heart",
+  },
+  {
+    caption: "Amor",
+    themeValue: "pink",
+    fontValue: "greatVibes",
+    animationValue: "1",
+    backgroundValue: "heart",
+  },
+
+];
+
+/* =========================
+   🎨 COLOR PALETTES
+========================= */
+
+export type AppearanceColorGroup = "birthday" | "celebration" | "natural" | "formal" | "special";
+export type AppearanceColorIntensity = "soft" | "medium" | "vibrant" | "elegant";
+export type AppearanceColorAudience = "kids" | "teens" | "adults" | "universal";
+
+export type AppearanceColor = {
+  value:string;
+  label:string;
+  englishLabel:string;
+  description:string;
+  group:AppearanceColorGroup;
+  intensity:AppearanceColorIntensity;
+  audience:AppearanceColorAudience[];
+  primaryOccasions:OccasionType[];
+  compatibleOccasions:OccasionType[];
+};
+
+export const APPEARANCE_COLORS:AppearanceColor[] = [
+  {
+    value:"romanticblush",
+    label:"Rosa Romántico",
+    englishLabel:"Romantic Blush",
+    description:"Romántico, delicado, cálido y sofisticado.",
+    group:"birthday",
+    intensity:"soft",
+    audience:["teens","adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.FifteenthBirthday],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.BabyShower,OccasionType.BridalShower,OccasionType.Wedding,OccasionType.Baptism,OccasionType.Party,OccasionType.GenderReveal]
+  },
+  {
+    value:"pastelcandy",
+    label:"Caramelo Pastel",
+    englishLabel:"Pastel Candy",
+    description:"Dulce, alegre, tierno y divertido.",
+    group:"birthday",
+    intensity:"soft",
+    audience:["kids","universal"],
+    primaryOccasions:[OccasionType.KidsBirthday,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.BabyShower,OccasionType.GenderReveal,OccasionType.Party,OccasionType.Communion]
+  },
+  {
+    value:"lavenderdream",
+    label:"Sueño Lavanda",
+    englishLabel:"Lavender Dream",
+    description:"Soñador, mágico, delicado y ligeramente fantástico.",
+    group:"birthday",
+    intensity:"soft",
+    audience:["kids","teens","adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.FifteenthBirthday],
+    compatibleOccasions:[OccasionType.KidsBirthday,OccasionType.BridalShower,OccasionType.BabyShower,OccasionType.Communion,OccasionType.Baptism,OccasionType.Wedding,OccasionType.Party]
+  },
+  {
+    value:"peach-sorbet",
+    label:"Sorbete de Durazno",
+    englishLabel:"Peach Sorbet",
+    description:"Alegre, luminoso, cálido y juvenil.",
+    group:"birthday",
+    intensity:"medium",
+    audience:["kids","teens","adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.KidsBirthday],
+    compatibleOccasions:[OccasionType.Party,OccasionType.BabyShower,OccasionType.BridalShower,OccasionType.GenderReveal,OccasionType.Wedding,OccasionType.WeddingAnniversary]
+  },
+  {
+    value:"sky-cloud",
+    label:"Cielo y Nubes",
+    englishLabel:"Sky & Cloud",
+    description:"Limpio, tranquilo, luminoso e inocente.",
+    group:"birthday",
+    intensity:"soft",
+    audience:["kids","universal"],
+    primaryOccasions:[OccasionType.KidsBirthday,OccasionType.BabyShower],
+    compatibleOccasions:[OccasionType.Birthday,OccasionType.Baptism,OccasionType.Communion,OccasionType.GenderReveal,OccasionType.Wedding,OccasionType.Party]
+  },
+  {
+    value:"mint-confetti",
+    label:"Confeti Menta",
+    englishLabel:"Mint Confetti",
+    description:"Fresco, divertido, moderno y ligero.",
+    group:"birthday",
+    intensity:"medium",
+    audience:["kids","teens","universal"],
+    primaryOccasions:[OccasionType.KidsBirthday,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.Party,OccasionType.BabyShower,OccasionType.GenderReveal,OccasionType.Communion]
+  },
+  {
+    value:"soft-rainbow",
+    label:"Arcoíris Suave",
+    englishLabel:"Soft Rainbow",
+    description:"Optimista, alegre, inclusivo y juguetón sin ser estridente.",
+    group:"birthday",
+    intensity:"medium",
+    audience:["kids","universal"],
+    primaryOccasions:[OccasionType.KidsBirthday,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.Party,OccasionType.BabyShower,OccasionType.GenderReveal,OccasionType.Communion]
+  },
+  {
+    value:"sunny-celebration",
+    label:"Celebración Soleada",
+    englishLabel:"Sunny Celebration",
+    description:"Feliz, energético, luminoso y optimista.",
+    group:"birthday",
+    intensity:"vibrant",
+    audience:["kids","teens","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.KidsBirthday,OccasionType.Party],
+    compatibleOccasions:[OccasionType.Graduation,OccasionType.BabyShower,OccasionType.GenderReveal]
+  },
+  {
+    value:"cherry-party",
+    label:"Fiesta Cereza",
+    englishLabel:"Cherry Party",
+    description:"Divertido, moderno, energético y ligeramente retro.",
+    group:"birthday",
+    intensity:"vibrant",
+    audience:["teens","adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Party],
+    compatibleOccasions:[OccasionType.FifteenthBirthday,OccasionType.WeddingAnniversary,OccasionType.Graduation]
+  },
+  {
+    value:"tropical-fiesta",
+    label:"Fiesta Tropical",
+    englishLabel:"Tropical Fiesta",
+    description:"Veraniego, energético, exuberante y festivo.",
+    group:"birthday",
+    intensity:"vibrant",
+    audience:["kids","teens","adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Party],
+    compatibleOccasions:[OccasionType.KidsBirthday,OccasionType.FifteenthBirthday,OccasionType.Wedding,OccasionType.WeddingAnniversary,OccasionType.GenderReveal]
+  },
+  {
+    value:"bubblegum-pop",
+    label:"Pop Chicle",
+    englishLabel:"Bubblegum Pop",
+    description:"Pop, juvenil, divertido, expresivo y energético.",
+    group:"birthday",
+    intensity:"vibrant",
+    audience:["kids","teens"],
+    primaryOccasions:[OccasionType.KidsBirthday,OccasionType.FifteenthBirthday],
+    compatibleOccasions:[OccasionType.Birthday,OccasionType.Party,OccasionType.GenderReveal]
+  },
+  {
+    value:"aqua-pool-party",
+    label:"Fiesta de Piscina Aqua",
+    englishLabel:"Aqua Pool Party",
+    description:"Refrescante, juvenil, veraniego y festivo.",
+    group:"birthday",
+    intensity:"vibrant",
+    audience:["kids","teens","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.KidsBirthday,OccasionType.Party],
+    compatibleOccasions:[OccasionType.Graduation,OccasionType.Wedding,OccasionType.GenderReveal]
+  },
+  {
+    value:"berry-plum",
+    label:"Frutos Rojos y Ciruela",
+    englishLabel:"Berry & Plum",
+    description:"Sofisticado, profundo, moderno y elegante.",
+    group:"celebration",
+    intensity:"elegant",
+    audience:["teens","adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.FifteenthBirthday],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.Party,OccasionType.Wedding,OccasionType.BridalShower,OccasionType.Graduation]
+  },
+  {
+    value:"midnight-celebration",
+    label:"Celebración de Medianoche",
+    englishLabel:"Midnight Celebration",
+    description:"Nocturno, sofisticado y pensado para celebraciones especiales.",
+    group:"celebration",
+    intensity:"elegant",
+    audience:["teens","adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.FifteenthBirthday,OccasionType.Party],
+    compatibleOccasions:[OccasionType.Wedding,OccasionType.WeddingAnniversary,OccasionType.Graduation,OccasionType.BarMitzvah,OccasionType.BatMitzvah,OccasionType.Corporate]
+  },
+  {
+    value:"emerald-luxe",
+    label:"Esmeralda de Lujo",
+    englishLabel:"Emerald Luxe",
+    description:"Lujoso, natural, profundo y sofisticado.",
+    group:"celebration",
+    intensity:"elegant",
+    audience:["teens","adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.WeddingAnniversary],
+    compatibleOccasions:[OccasionType.FifteenthBirthday,OccasionType.Party,OccasionType.Graduation,OccasionType.BarMitzvah,OccasionType.BatMitzvah,OccasionType.Corporate]
+  },
+  {
+    value:"cobalt-silver",
+    label:"Cobalto y Plata",
+    englishLabel:"Cobalt & Silver",
+    description:"Moderno, intenso, sofisticado y festivo.",
+    group:"celebration",
+    intensity:"vibrant",
+    audience:["teens","adults"],
+    primaryOccasions:[OccasionType.FifteenthBirthday,OccasionType.Graduation],
+    compatibleOccasions:[OccasionType.Birthday,OccasionType.Party,OccasionType.BarMitzvah,OccasionType.BatMitzvah,OccasionType.Corporate]
+  },
+  {
+    value:"terracotta-sunset",
+    label:"Atardecer Terracota",
+    englishLabel:"Terracotta Sunset",
+    description:"Cálido, adulto, relajado y sofisticado.",
+    group:"natural",
+    intensity:"medium",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.WeddingAnniversary],
+    compatibleOccasions:[OccasionType.Party,OccasionType.BridalShower,OccasionType.Corporate,OccasionType.Graduation]
+  },
+  {
+    value:"mocha-cream",
+    label:"Moka y Crema",
+    englishLabel:"Mocha & Cream",
+    description:"Cálido, minimalista, adulto, confortable y contemporáneo.",
+    group:"natural",
+    intensity:"soft",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.WeddingAnniversary],
+    compatibleOccasions:[OccasionType.Wedding,OccasionType.Party,OccasionType.Corporate,OccasionType.Graduation,OccasionType.BridalShower]
+  },
+  {
+    value:"sage-garden",
+    label:"Jardín de Salvia",
+    englishLabel:"Sage Garden",
+    description:"Natural, tranquilo, fresco y elegante.",
+    group:"natural",
+    intensity:"soft",
+    audience:["universal"],
+    primaryOccasions:[OccasionType.Wedding,OccasionType.Birthday,OccasionType.BabyShower],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.Baptism,OccasionType.Communion,OccasionType.BridalShower,OccasionType.Graduation,OccasionType.Corporate]
+  },
+  {
+    value:"boho-sand",
+    label:"Arena Boho",
+    englishLabel:"Boho Sand",
+    description:"Relajado, natural, artesanal y contemporáneo.",
+    group:"natural",
+    intensity:"soft",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Wedding,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.BridalShower,OccasionType.BabyShower,OccasionType.Party,OccasionType.Corporate]
+  },
+  {
+    value:"dusty-blue-romance",
+    label:"Romance Azul Empolvado",
+    englishLabel:"Dusty Blue Romance",
+    description:"Romántico, sereno, refinado y atemporal.",
+    group:"natural",
+    intensity:"soft",
+    audience:["universal"],
+    primaryOccasions:[OccasionType.Wedding,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.Baptism,OccasionType.Communion,OccasionType.BabyShower,OccasionType.BridalShower,OccasionType.Graduation,OccasionType.Corporate]
+  },
+  {
+    value:"vintage-rose",
+    label:"Rosa Vintage",
+    englishLabel:"Vintage Rose",
+    description:"Nostálgico, romántico, cálido y personal.",
+    group:"natural",
+    intensity:"soft",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.BridalShower,OccasionType.BabyShower,OccasionType.FifteenthBirthday,OccasionType.Baptism]
+  },
+  {
+    value:"champagne-glow",
+    label:"Brillo Champagne",
+    englishLabel:"Champagne Glow",
+    description:"Celebración refinada, luminosa y cálida.",
+    group:"formal",
+    intensity:"elegant",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.WeddingAnniversary],
+    compatibleOccasions:[OccasionType.BridalShower,OccasionType.BabyShower,OccasionType.Graduation,OccasionType.Baptism,OccasionType.Communion,OccasionType.Party]
+  },
+  {
+    value:"burgundy-wine",
+    label:"Vino Borgoña",
+    englishLabel:"Burgundy Wine",
+    description:"Profundo, romántico, adulto y sofisticado.",
+    group:"formal",
+    intensity:"elegant",
+    audience:["adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.WeddingAnniversary],
+    compatibleOccasions:[OccasionType.Party,OccasionType.Graduation,OccasionType.FifteenthBirthday,OccasionType.BarMitzvah,OccasionType.BatMitzvah]
+  },
+  {
+    value:"black-gold",
+    label:"Negro y Dorado",
+    englishLabel:"Black & Gold",
+    description:"Lujo, gala y celebración nocturna.",
+    group:"formal",
+    intensity:"elegant",
+    audience:["adults"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.WeddingAnniversary,OccasionType.Party],
+    compatibleOccasions:[OccasionType.Graduation,OccasionType.Corporate,OccasionType.Wedding,OccasionType.BarMitzvah,OccasionType.BatMitzvah]
+  },
+  {
+    value:"ivory-gold",
+    label:"Marfil y Dorado",
+    englishLabel:"Ivory & Gold",
+    description:"Clásico, limpio, ceremonial y atemporal.",
+    group:"formal",
+    intensity:"elegant",
+    audience:["universal"],
+    primaryOccasions:[OccasionType.Wedding,OccasionType.Baptism,OccasionType.Communion],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.Birthday,OccasionType.Graduation,OccasionType.BarMitzvah,OccasionType.BatMitzvah,OccasionType.Corporate]
+  },
+  {
+    value:"pearl-lavender",
+    label:"Lavanda Perla",
+    englishLabel:"Pearl Lavender",
+    description:"Delicado, ceremonial, femenino y luminoso.",
+    group:"formal",
+    intensity:"soft",
+    audience:["kids","teens","adults"],
+    primaryOccasions:[OccasionType.FifteenthBirthday,OccasionType.Baptism,OccasionType.Communion],
+    compatibleOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.BridalShower,OccasionType.BabyShower,OccasionType.GenderReveal]
+  },
+  {
+    value:"mediterranean-blue",
+    label:"Azul Mediterráneo",
+    englishLabel:"Mediterranean Blue",
+    description:"Fresco, luminoso, elegante y vacacional.",
+    group:"special",
+    intensity:"medium",
+    audience:["universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Party,OccasionType.Wedding],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.BabyShower,OccasionType.Graduation,OccasionType.Corporate]
+  },
+  {
+    value:"celestial-night",
+    label:"Noche Celestial",
+    englishLabel:"Celestial Night",
+    description:"Mágico, misterioso y sofisticado.",
+    group:"special",
+    intensity:"elegant",
+    audience:["teens","adults"],
+    primaryOccasions:[OccasionType.FifteenthBirthday,OccasionType.Birthday],
+    compatibleOccasions:[OccasionType.Party,OccasionType.Wedding,OccasionType.WeddingAnniversary,OccasionType.Graduation,OccasionType.BarMitzvah,OccasionType.BatMitzvah]
+  },
+  {
+    value:"modern-editorial",
+    label:"Editorial Moderna",
+    englishLabel:"Modern Editorial",
+    description:"Contemporáneo, minimalista, premium y sobrio.",
+    group:"special",
+    intensity:"elegant",
+    audience:["adults","universal"],
+    primaryOccasions:[OccasionType.Birthday,OccasionType.Wedding,OccasionType.Corporate],
+    compatibleOccasions:[OccasionType.WeddingAnniversary,OccasionType.Graduation,OccasionType.Party,OccasionType.Baptism,OccasionType.Communion]
+  }
+];
+
+/* =========================
+   ✍️ FONTS
+========================= */
+
+export const APPEARANCE_FONTS: AppearanceOption[] = [
+  {
+    value: "wixMadeforText",
+    label: "Wix Madefor Text",
+  },
+  {
+    value: "poppins",
+    label: "Poppins",
+  },
+  {
+    value: "inter",
+    label: "Inter",
+  },
+  {
+    value: "roboto",
+    label: "Roboto",
+  },
+  {
+    value: "greatVibes",
+    label: "Great Vibes",
+  },
+  {
+    value: "pinyonScript",
+    label: "Pinyon Script",
+  },
+  {
+    value: "italianno",
+    label: "Italianno",
+  },
+
+  {
+    value: "cormorantGaramond",
+    label: "CormorantGaramond",
+  },
+  {
+    value: "playfairDisplay",
+    label: "PlayfairDisplay",
+  },
+  {
+    value: "dmSerifDisplay",
+    label: "DmSerifDisplay",
+  },
+  {
+    value: "libreBaskerville",
+    label: "LibreBaskerville",
+  },
+  {
+    value: "lora",
+    label: "Lora",
+  },
+  {
+    value: "montserrat",
+    label: "Montserrat",
+  },
+  {
+    value: "parisienne",
+    label: "Parisienne",
+  },
+  {
+    value: "raleway",
+    label: "Raleway",
+  },
+  {
+    value: "caveat",
+    label: "Caveat",
+  },
+  {
+    value: "dancingScript",
+    label: "DancingScript",
+  },
+  {
+    value: "cinzelDecorative",
+    label: "CinzelDecorative",
+  },
+  {
+    value: "orbitron",
+    label: "Orbitron",
+  },
+  {
+    value: "monoton",
+    label: "Monoton",
+  },
+  {
+    value: "bungee",
+    label: "Bungee",
+  },
+  {
+    value: "specialElite",
+    label: "SpecialElite",
+  },
+
+
+
+];
+
+// fonts que debe increementarse su size
+export const DECORATIVE_FONTS = ["greatVibes", "italianno", "pinyonScript","cormorantGaramond", "parisienne", "caveat", "dancingScript"];
+
+/* =========================
+   ✨ ANIMATIONS
+========================= */
+
+export type AnimationInfo = {
+  value: string | number;
+  label: string;
+  file: string | undefined;
+  mobileTopValue: string;
+  desktopTopValue: string;
+  mobileLeftValue: string;
+  desktopLeftValue: string;
+  opacity:string;
+  width:string;
+  height:string;
+  filter:string;
+  transform:string;
+};
+
+export const APPEARANCE_ANIMATIONS: AnimationInfo[] = [
+  // filter:"blur(var(--hero-animation-blur, 0px))",
+  // transform:"scale(var(--hero-animation-scale, 1))",
+  {
+    value: 0,
+    label: "Sin animación",
+    file: undefined,
+    mobileTopValue: "0",
+    desktopTopValue: "0",
+    mobileLeftValue:"0",
+    desktopLeftValue:"0",
+    opacity:"",
+    width:"0",
+    height:"0",
+    filter:"",
+    transform:"",
+  },
+  {
+    value: 1,
+    label: "Confetti 1",
+    file: "/animations/confetti.lottie",
+    mobileTopValue: "-10%",
+    desktopTopValue: "-10%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.75",
+    width: "100%",
+    height: "90%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 9,
+    label: "Confetti 2",
+    file: "/animations/confetti2.lottie",
+    mobileTopValue: "-10%",
+    desktopTopValue: "-10%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.75",
+    width: "100%",
+    height: "90%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 12,
+    label: "Globos",
+    file: "/animations/ballons.lottie",
+    mobileTopValue: "-10%",
+    desktopTopValue: "-10%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.75",
+    width: "100%",
+    height: "90%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 3,
+    label: "Gato con globos",
+    file: "/animations/cat_with_baloons.lottie",
+    mobileTopValue: "32%",
+    desktopTopValue: "22%",
+    mobileLeftValue: "-8%",
+    desktopLeftValue: "-8%",
+    opacity: "0.5",
+    width: "71%",
+    height: "73%",
+    filter: "",
+    transform: "",
+  },
+  {
+    value: 13,
+    label: "Party 1",
+    file: "/animations/party.lottie",
+    mobileTopValue: "45%",
+    desktopTopValue: "40%",
+    mobileLeftValue: "-1%",
+    desktopLeftValue: "-5%",
+    opacity: "1",
+    width: "44%",
+    height: "40%",
+    filter: "",
+    transform: "",
+  },
+  {
+    value: 14,
+    label: "Party 2",
+    file: "/animations/party2.lottie",
+    mobileTopValue: "50%",
+    desktopTopValue: "44%",
+    mobileLeftValue: "0%",
+    desktopLeftValue: "0%",
+    opacity: "0.6",
+    width: "82%",
+    height: "44%",
+    filter: "",
+    transform: "translateX(-50%)",
+  }, // translateX(-50%) scale(1.1)
+  {
+    value: 15,
+    label: "Party 3",
+    file: "/animations/party3.lottie",
+    mobileTopValue: "5%",
+    desktopTopValue: "8%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "1",
+    width: "120%",
+    height: "120%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 5,
+    label: "Pajaritos",
+    file: "/animations/birds.lottie",
+    mobileTopValue: "15%",
+    desktopTopValue: "15%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "1",
+    width: "100%",
+    height: "100%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 6,
+    label: "Solcito",
+    file: "/animations/sun.lottie",
+    mobileTopValue: "5%",
+    desktopTopValue: "5%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.75",
+    width: "100%",
+    height: "100%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+ {
+    value: 2,
+    label: "Corazones flotando",
+    file: "/animations/floating_hearts.lottie",
+    mobileTopValue: "29%",
+    desktopTopValue: "29%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.75",
+    width: "84%",
+    height: "82%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  
+  {
+    value: 4,
+    label: "Mensaje de amor 1",
+    file: "/animations/love_message_burst.lottie",
+    mobileTopValue: "-7%",
+    desktopTopValue: "-7%",
+    mobileLeftValue: "55%",
+    desktopLeftValue: "55%",
+    opacity: "1",
+    width: "52%",
+    height: "47%",
+    filter: "",
+    transform: "",
+  },
+  {
+    value: 18,
+    label: "Mensaje de amor 2",
+    file: "/animations/love_message.lottie",
+    mobileTopValue: "30%",
+    desktopTopValue: "19%",
+    mobileLeftValue: "-1%",
+    desktopLeftValue: "-1%",
+    opacity: "1",
+    width: "83%",
+    height: "81%",
+    filter: "",
+    transform: "",
+  },
+  
+  {
+    value: 8,
+    label: "Boda",
+    file: "/animations/wedding.lottie",
+     mobileTopValue: "24%",
+    desktopTopValue: "24%",
+    mobileLeftValue: "7%",
+    desktopLeftValue: "7%",
+    opacity: "0.9",
+    width: "100%",
+    height: "100%",
+    filter: "",
+    transform: "",
+  },
+  {
+    value: 10,
+    label: "BBQ",
+    file: "/animations/bbq.lottie",
+    mobileTopValue: "40%",
+    desktopTopValue: "34%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.8",
+    width: "59%",
+    height: "50%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 11,
+    label: "Brindis",
+    file: "/animations/cheers.lottie",
+    mobileTopValue: "30%",
+    desktopTopValue: "25%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.8",
+    width: "85%",
+    height: "85%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 16,
+    label: "Girl",
+    file: "/animations/girl1.lottie",
+    mobileTopValue: "35%",
+    desktopTopValue: "25%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "1",
+    width: "73%",
+    height: "71%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+  {
+    value: 17,
+    label: "Guirnalda",
+    file: "/animations/girland.lottie",
+    mobileTopValue: "5%",
+    desktopTopValue: "-10%",
+    mobileLeftValue: "50%",
+    desktopLeftValue: "50%",
+    opacity: "0.9",
+    width: "100%",
+    height: "100%",
+    filter: "",
+    transform: "translateX(-50%)",
+  },
+];
+
+export function getAnimationInfo(animationType: number): AnimationInfo {
+  const animation = APPEARANCE_ANIMATIONS.find(
+    (item) => item.value === animationType
+  );
+
+  // Si no encuentra la animación recibida por parámetro, retorna la opción por defecto (Sin animación)
+  return animation || APPEARANCE_ANIMATIONS[0];
+}
+
+
+/*export function getAnimationFile( animationType: number ) {
+  if (animationType===0)
+    return undefined;
+  switch (animationType) {
+    case 1:
+      return "/animations/confetti.lottie";
+    case 2:
+      return "/animations/floating_hearts.lottie";
+    case 3:
+      return "/animations/cat_with_baloons.lottie";
+    default:
+      return undefined;
+  }
+}*/
+
+/* =========================
+   🎯 BACKGROUND MOTIVES
+========================= */
+
+export type BackgroundMotiveInfo = {
+  value: string | number;
+  label: string;
+  url: string | undefined;
+  backgroundSize: string;
+  opacity:string;
+  repeat:string;
+  positionX:string;
+  positionY:string;
+};
+
+export const APPEARANCE_BACKGROUNDS: BackgroundMotiveInfo[] = [
+  {
+    value:"none",
+    label:"Sin fondo",
+    url:"",
+    backgroundSize:"0",
+    opacity:"0",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "guirnald1",
+    label: "Guirnalda 1",
+    url:"/background_motive/guirnald1.png",
+    backgroundSize:"100%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-2%",
+  },
+  {
+    value: "guirnald2",
+    label: "Guirnalda 2",
+    url:"/background_motive/guirnald2.png",
+    backgroundSize:"100%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+  {
+    value: "guirnald3",
+    label: "Guirnalda 3",
+    url:"/background_motive/guirnald3.png",
+    backgroundSize:"80%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-2%",
+  },
+  {
+    value: "guirnald4",
+    label: "Guirnalda 4",
+    url:"/background_motive/guirnald4.png",
+    backgroundSize:"100%",
+    opacity:"0.7",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+  {
+    value: "guirnald5",
+    label: "Guirnalda 5",
+    url:"/background_motive/guirnald5.png",
+    backgroundSize:"100%",
+    opacity:".0.4",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-5%",
+  },
+  {
+    value: "guirnald6",
+    label: "Guirnalda 6",
+    url:"/background_motive/guirnald6.png",
+    backgroundSize:"90%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-20%",
+  },
+   {
+    value: "baloonsarch1",
+    label: "Arco de globos",
+    url:"/background_motive/baloons_arch1.svg",
+    backgroundSize:"100%",
+    opacity:"0.5",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"10%",
+  },
+   
+   {
+    value: "baloonsarch3",
+    label: "Arco de corazones",
+    url:"/background_motive/baloons_arch3.svg",
+    backgroundSize:"100%",
+    opacity:"0.9",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+   {
+    value: "baloonsarch4",
+    label: "Arco de princesa 1",
+    url:"/background_motive/baloons_arch4.png",
+    backgroundSize:"150%",
+    opacity:"0.9",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+ {
+    value: "baloonsarch8",
+    label: "Arco de princesa 2",
+    url:"/background_motive/baloons_arch8.svg",
+    backgroundSize:"100%",
+    opacity:"0.7",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+   {
+    value: "baloonsarch7",
+    label: "Pelotas de Fútbol 1",
+    url:"/background_motive/baloons_arch7.svg",
+    backgroundSize:"100%",
+    opacity:"0.7",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+   {
+    value: "baloonsarch9",
+    label: "Pelotas de fútbol 2",
+    url:"/background_motive/baloons_arch9.svg",
+    backgroundSize:"100%",
+    opacity:"0.9",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+    {
+    value: "baloonsarch10",
+    label: "Arco festivo 1",
+    url:"/background_motive/baloons_arch10.svg",
+    backgroundSize:"100%",
+    opacity:"0.9",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+  {
+    value: "baloonsarch11",
+    label: "Arco festivo 2",
+    url:"/background_motive/baloons_arch11.png",
+    backgroundSize:"100%",
+    opacity:"0.9",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+ {
+    value: "baloonsarch12",
+    label: "Arco de Boda 1",
+    url:"/background_motive/wedding_arch1.png",
+    backgroundSize:"100%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+  {
+    value: "baloonsarch13",
+    label: "Arco de Boda 2",
+    url:"/background_motive/wedding_arch2.png",
+    backgroundSize:"130%",
+    opacity:"1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-20%",
+  },
+   {
+    value: "weddingarch1",
+    label: "Arco de Boda 3",
+    url:"/background_motive/wedding-arch1.png",
+    backgroundSize:"140%",
+    opacity:"0.4",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"-10%",
+  },
+  {
+    value: "wedding1",
+    label: "Anillos",
+    url:"/background_motive/wedding1.jpg",
+    backgroundSize:"40%",
+    opacity:"0.2",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+   {
+    value: "baloons1",
+    label: "Globos 1",
+    url:"/background_motive/baloons1.svg",
+    backgroundSize:"80%",
+    opacity:"0.1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+  {
+    value: "baloons2",
+    label: "Globos 2",
+    url:"/background_motive/baloons2.jpg",
+    backgroundSize:"70%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  
+  {
+    value: "cat_birthday1",
+    label: "Gato-cumpleaños",
+    url:"/background_motive/cat_birthday.jpg",
+    backgroundSize:"20%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "dog_birthday1",
+    label: "Perro-cumpleaños",
+    url:"/background_motive/dog_birthday.jpg",
+    backgroundSize:"20%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "confetti1",
+    label: "Confetti 1",
+    url:"/background_motive/confetti1.jpg",
+    backgroundSize:"70%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "confetti2",
+    label: "Confetti 2",
+    url:"/background_motive/confetti2.jpg",
+    backgroundSize:"100%",
+    opacity:"0.2",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "bbq1",
+    label: "BBQ",
+    url:"/background_motive/bbq1.svg",
+    backgroundSize:"100%",
+    opacity:"0.1",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"10%",
+  },
+  {
+    value: "beers1",
+    label: "Jarra de Cervezas",
+    url:"/background_motive/beers1.jpg",
+    backgroundSize:"100%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "dino1",
+    label: "Dinosaurio",
+    url:"/background_motive/dino1.jpg",
+    backgroundSize:"20%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "flowers1",
+    label: "Flores 1",
+    url:"/background_motive/flowers1.jpg",
+    backgroundSize:"40%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "flowers2",
+    label: "Flores 2",
+    url:"/background_motive/flowers2.jpg",
+    backgroundSize:"40%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "flowers3",
+    label: "Flores 3",
+    url:"/background_motive/flowers3.jpg",
+    backgroundSize:"20%",
+    opacity:"0.4",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "flowers4",
+    label: "Flores 4",
+    url:"/background_motive/flowers4.png",
+    backgroundSize:"50%",
+    opacity:"0.4",
+    repeat:"no-repeat",
+    positionX:"center",
+    positionY:"0%",
+  },
+ 
+  {
+    value: "gift1",
+    label: "Regalo",
+    url:"/background_motive/gift1.svg",
+    backgroundSize:"100%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  
+  {
+    value: "hearts1",
+    label: "Corazones 1",
+    url:"/background_motive/hearts1.jpg",
+    backgroundSize:"120%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "hearts2",
+    label: "Corazones 2",
+    url:"/background_motive/hearts2.jpg",
+    backgroundSize:"30%",
+    opacity:"0.4",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "hearts3",
+    label: "Corazones 3",
+    url:"/background_motive/hearts3.jpg",
+    backgroundSize:"20%",
+    opacity:"0.2",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "kids1",
+    label: "Kids 1",
+    url:"/background_motive/kids1.jpg",
+    backgroundSize:"55%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+ 
+  {
+    value: "kids2",
+    label: "Kids 2",
+    url:"/background_motive/kids2.jpg",
+    backgroundSize:"50%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+
+
+  {
+    value: "koala_birthday",
+    label: "Koala Cumpleaños",
+    url:"/background_motive/koala_birthday.jpg",
+    backgroundSize:"40%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "love1",
+    label: "Amor",
+    url:"/background_motive/love1.jpg",
+    backgroundSize:"30%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "making_toast1",
+    label: "Brindis",
+    url:"/background_motive/making_toast1.jpg",
+    backgroundSize:"35%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "mascarade1",
+    label: "Máscara",
+    url:"/background_motive/mascarade1.jpg",
+    backgroundSize:"35%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "party1",
+    label: "Party 1",
+    url:"/background_motive/party1.jpg",
+    backgroundSize:"70%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "party2",
+    label: "Party 2",
+    url:"/background_motive/party2.jpg",
+    backgroundSize:"60%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "party3",
+    label: "Party 3",
+    url:"/background_motive/party3.jpg",
+    backgroundSize:"40%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "party4",
+    label: "Party 4",
+    url:"/background_motive/party4.jpg",
+    backgroundSize:"25%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "princess1",
+    label: "Princesa 1",
+    url:"/background_motive/princess1.svg",
+    backgroundSize:"80%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "princess2",
+    label: "Princesa 2",
+    url:"/background_motive/princess2.jpg",
+    backgroundSize:"35%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "princess3",
+    label: "Princesa 3",
+    url:"/background_motive/princess3.jpg",
+    backgroundSize:"70%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "prince1",
+    label: "Principe",
+    url:"/background_motive/prince1.jpg",
+    backgroundSize:"40%",
+    opacity:"0.3",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "rainbow1",
+    label: "Arco Iris",
+    url:"/background_motive/rainbow1.jpg",
+    backgroundSize:"35%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "soccer_ball",
+    label: "Pelotas de fútbol",
+    url:"/background_motive/soccer_ball1.jpg",
+    backgroundSize:"80%",
+    opacity:"0.1",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "stars1",
+    label: "Estrellas",
+    url:"/background_motive/stars1.svg",
+    backgroundSize:"100%",
+    opacity:"0.2",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+  {
+    value: "toys1",
+    label: "Juguetes",
+    url:"/background_motive/toys1.svg",
+    backgroundSize:"100%",
+    opacity:"0.2",
+    repeat:"repeat",
+    positionX:"0",
+    positionY:"0",
+  },
+
+];
+
+export function getBackgroundMotiveInfo(name: string): BackgroundMotiveInfo {
+  const background = APPEARANCE_BACKGROUNDS.find(
+    (item) => item.value === name
+  );
+
+  // Si no encuentra la animación recibida por parámetro, retorna la opción por defecto (Sin animación)
+  return background || APPEARANCE_BACKGROUNDS[0];
+}
+
+/* =========================
+   🎨 BACKGROUND MAPPER
+========================= */
+'nj '
+/*export function getBackgroundMotiveProps(
+  motive: string
+) {
+  switch (motive) {
+    case "none":
+      return {
+        url: "/",
+        backgroundSize: "0",
+      };
+    case "heart":
+      return {
+        url: "/background_motive/heart.jpg",
+        backgroundSize: "120%",
+      };
+
+    case "soccer_ball":
+      return {
+        url: "/background_motive/soccer_ball.jpg",
+        backgroundSize: "60%",
+      };
+
+    case "stars1":
+      return {
+        url: "/background_motive/stars1.svg",
+        backgroundSize: "100%",
+      };
+
+    default:
+      return {
+        url: "/background_motive/heart.jpg",
+        backgroundSize: "120%",
+      };
+  }
+}*/
+
+export function getBackgroundMotiveNameByUrl(url: string): string {
+  if (!url) return "heart"; // Valor por defecto si no hay URL
+
+  // 1. Obtenemos el nombre del archivo con su extensión (ej: "soccer_ball.jpg")
+  const fileNameWithExtension = url.substring(url.lastIndexOf("/") + 1);
+
+  // 2. Le quitamos la extensión (ej: ".jpg" o ".png") para quedarnos solo con "soccer_ball"
+  const motiveName = fileNameWithExtension.split(".")[0];
+
+  // 3. Opcional: Si por alguna razón el nombre extraído no es válido,
+  // podés definir una lista de nombres permitidos o simplemente retornar el valor
+  return motiveName || "heart";
+}
+
+/* =========================
+   ✨ ANIMATION MAPPER
+========================= */
+
+/*export function getAnimation(
+  animationType: number
+) {
+  switch (animationType) {
+    case 1:
+      return {
+        id: 1,
+        src: "/animations/confetti.lottie",
+      };
+
+    case 2:
+      return {
+        id: 2,
+        src: "/animations/balloons.lottie",
+      };
+
+    case 3:
+      return {
+        id: 3,
+        src: "/animations/sparkles.lottie",
+      };
+
+    default:
+      return null;
+  }
+}*/

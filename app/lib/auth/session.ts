@@ -91,6 +91,10 @@ export async function createSession(session:SessionData):Promise<void>{
   const appUrl=process.env.APP_URL ?? "";
   const isLocalNetwork=appUrl.startsWith("http://192.168.");
 
+  /*console.log("# APP_URL", process.env.APP_URL);
+  console.log("# isLocalNetwork", isLocalNetwork);
+  console.log("# cookie ", cookieStore.get(COOKIE_NAME));*/
+
   cookieStore.set(COOKIE_NAME,serialize(session),{
     httpOnly:true,
     /*secure:process.env.NODE_ENV==="production",*/

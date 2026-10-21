@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 2560" width="100%" height="100%" preserveAspectRatio="xMidYMin slice">
+  <defs>
+    <!-- VARIABLES DE COLOR CSS -->
+    <style>
+      :root {
+        /* Color de los pentágonos en los globos clásicos y estampados */
+        --balloon-hexagon-fill: #1E293B;
+        --balloon-hexagon-stroke: #0F172A;
+      }
+    </style>
+
+    <!-- Patrón de Pentágonos / Costuras para Globos de Fútbol -->
+    <g id="soccer-pattern">
+      <polygon points="0,-22 21,-7 13,18 -13,18 -21,-7" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <polygon points="0,-70 12,-48 -12,-48" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <polygon points="65,-20 45,-25 50,-2" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <polygon points="40,55 35,32 55,25" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <polygon points="-40,55 -35,32 -55,25" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <polygon points="-65,-20 -45,-25 -50,-2" fill="var(--balloon-hexagon-fill)" stroke="var(--balloon-hexagon-stroke)" stroke-width="1" />
+      <!-- Costuras finas claras -->
+      <path d="M 0,-22 L 0,-48 M 21,-7 L 45,-25 M 13,18 L 35,32 M -13,18 L -35,32 M -21,-7 L -45,-25" stroke="#FFFFFF" stroke-width="1.2" opacity="0.6" />
+    </g>
+
+    <!-- GRADIENTES FESTIVOS Y VIBRANTES -->
+    <!-- 1. Globo Blanco Tradicional Fútbol -->
+    <radialGradient id="balloon-white" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="70%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </radialGradient>
+
+    <!-- 2. Globo Azul Campeón / Deportivo -->
+    <radialGradient id="balloon-blue" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="65%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </radialGradient>
+
+    <!-- 3. Globo Verde Césped -->
+    <radialGradient id="balloon-green" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#4ADE80" />
+      <stop offset="65%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#15803D" />
+    </radialGradient>
+
+    <!-- 4. Globo Amarillo Fiesta / Oro -->
+    <radialGradient id="balloon-yellow" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="65%" stop-color="#EAB308" />
+      <stop offset="100%" stop-color="#CA8A04" />
+    </radialGradient>
+
+    <!-- 5. Globo Rojo Gol / Pasión -->
+    <radialGradient id="balloon-red" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FCA5A5" />
+      <stop offset="65%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </radialGradient>
+
+    <!-- Sombras Suaves -->
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.25" />
+    </filter>
+
+    <!-- MODELOS DE GLOBOS -->
+    <!-- Modelo 1: Globo de Fútbol Clásico Blanco -->
+    <g id="balloon-soccer-classic">
+      <circle cx="0" cy="0" r="68" fill="url(#balloon-white)" />
+      <use href="#soccer-pattern" />
+      <!-- Nudo del globo -->
+      <path d="M -6,68 L 6,68 L 9,77 L -9,77 Z" fill="#94A3B8" />
+      <!-- Brillo esférico de látex -->
+      <ellipse cx="-24" cy="-32" rx="14" ry="28" transform="rotate(-25 -24 -32)" fill="#FFFFFF" opacity="0.5" />
+    </g>
+
+    <!-- Modelo 2: Globo de Color con Motivo de Fútbol -->
+    <g id="balloon-soccer-color">
+      <circle cx="0" cy="0" r="68" />
+      <use href="#soccer-pattern" opacity="0.65" />
+      <path d="M -6,68 L 6,68 L 9,77 L -9,77 Z" fill="#475569" opacity="0.7" />
+      <ellipse cx="-24" cy="-32" rx="14" ry="28" transform="rotate(-25 -24 -32)" fill="#FFFFFF" opacity="0.45" />
+    </g>
+
+    <!-- Modelo 3: Globo Especial con Número "10" -->
+    <g id="balloon-10">
+      <circle cx="0" cy="0" r="68" fill="url(#balloon-yellow)" />
+      <!-- Texto 10 en estilo deportivo -->
+      <text x="0" y="22" font-family="Impact, Arial Black, sans-serif" font-size="64" font-weight="900" fill="#1E293B" text-anchor="middle">10</text>
+      <path d="M -6,68 L 6,68 L 9,77 L -9,77 Z" fill="#CA8A04" />
+      <ellipse cx="-24" cy="-32" rx="14" ry="28" transform="rotate(-25 -24 -32)" fill="#FFFFFF" opacity="0.55" />
+    </g>
+
+    <!-- Serpentinas Decorativas -->
+    <g id="ribbons">
+      <path d="M -10,1500 Q -30,1650 10,1800 T -20,2100 T 10,2400" fill="none" stroke="#2563EB" stroke-width="4" opacity="0.8" />
+      <path d="M 15,1500 Q 35,1650 -5,1800 T 25,2100 T -5,2400" fill="none" stroke="#EAB308" stroke-width="4" opacity="0.8" />
+      <path d="M 0,1500 Q -25,1650 15,1800 T -15,2100 T 5,2400" fill="none" stroke="#16A34A" stroke-width="3" opacity="0.7" />
+    </g>
+  </defs>
+
+  <!-- FONDO Y MARCO DEL CUMPLEAÑOS -->
+  <g filter="url(#soft-shadow)">
+    
+    <!-- Serpentinas en las columnas -->
+    <use href="#ribbons" transform="translate(85, 0)" />
+    <use href="#ribbons" transform="translate(995, 0) scale(-1, 1)" />
+
+    <!-- 1. COLUMNA IZQUIERDA (Globos festivos apilados) -->
+    <g transform="translate(85, 1500)">
+      <!-- Capa Trasera (Globos de volumen) -->
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(10, 240) scale(1.15) rotate(10)" />
+      <use href="#balloon-soccer-classic" transform="translate(-20, 120) scale(1.2) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="scale(1.2) rotate(15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(-10, -120) scale(1.1) rotate(-20)" />
+      <use href="#balloon-soccer-classic" transform="translate(40, -220) scale(1.25) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(-20, -340) scale(1.15) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(30, -460) scale(1.3) rotate(25)" />
+      <use href="#balloon-soccer-classic" transform="translate(-15, -580) scale(1.2) rotate(-10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(20, -700) scale(1.25) rotate(15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(-10, -820) scale(1.2) rotate(-10)" />
+      <use href="#balloon-soccer-classic" transform="translate(25, -940) scale(1.25) rotate(20)" />
+
+      <!-- Capa Frontal (Globos principales con detalle) -->
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(15, 180) scale(1.0) rotate(-5)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(-10, 60) scale(1.05) rotate(20)" />
+      <use href="#balloon-soccer-classic" transform="translate(25, -60) scale(1.05) rotate(-10)" />
+      <use href="#balloon-10" transform="translate(15, -170) scale(1.1) rotate(12)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-15, -280) scale(1.05) rotate(-5)" />
+      <use href="#balloon-soccer-classic" transform="translate(35, -400) scale(1.0) rotate(20)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(-10, -520) scale(1.1) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(25, -640) scale(1.0) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(-15, -760) scale(1.05) rotate(-15)" />
+      <use href="#balloon-soccer-classic" transform="translate(20, -880) scale(1.0) rotate(10)" />
+    </g>
+
+    <!-- 2. COLUMNA DERECHA -->
+    <g transform="translate(995, 1500)">
+      <!-- Capa Trasera -->
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(-10, 240) scale(1.15) rotate(-10)" />
+      <use href="#balloon-soccer-classic" transform="translate(20, 120) scale(1.2) rotate(15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="scale(1.2) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(10, -120) scale(1.1) rotate(20)" />
+      <use href="#balloon-soccer-classic" transform="translate(-40, -220) scale(1.25) rotate(-10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(20, -340) scale(1.15) rotate(15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-30, -460) scale(1.3) rotate(-25)" />
+      <use href="#balloon-soccer-classic" transform="translate(15, -580) scale(1.2) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(-20, -700) scale(1.25) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(10, -820) scale(1.2) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-25, -940) scale(1.25) rotate(-20)" />
+
+      <!-- Capa Frontal -->
+      <use href="#balloon-soccer-classic" transform="translate(-15, 180) scale(1.0) rotate(5)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(10, 60) scale(1.05) rotate(-20)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-25, -60) scale(1.05) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(-20, -170) scale(0.95) rotate(-30)" />
+      <use href="#balloon-soccer-classic" transform="translate(15, -280) scale(1.05) rotate(5)" />
+      <use href="#balloon-10" transform="translate(-25, -400) scale(1.1) rotate(-12)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(10, -520) scale(1.1) rotate(15)" />
+      <use href="#balloon-soccer-classic" transform="translate(-25, -640) scale(1.0) rotate(-10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(15, -760) scale(1.05) rotate(15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(-20, -880) scale(1.0) rotate(-10)" />
+    </g>
+
+    <!-- 3. GUIRNALDA SUPERIOR EN ARCO -->
+    <g transform="translate(540, 110)">
+      <!-- Capa Trasera Curva -->
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-420, 150) scale(1.3) rotate(45)" />
+      <use href="#balloon-soccer-classic" transform="translate(-300, 80) scale(1.25) rotate(25)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(-160, 30) scale(1.2) rotate(10)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-red)" transform="translate(0, 10) scale(1.3) rotate(0)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-green)" transform="translate(160, 30) scale(1.2) rotate(-10)" />
+      <use href="#balloon-soccer-classic" transform="translate(300, 80) scale(1.25) rotate(-25)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(420, 150) scale(1.3) rotate(-45)" />
+
+      <!-- Capa Frontal Centro (Punto focal con número 10) -->
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(-360, 110) scale(1.05) rotate(35)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(-230, 40) scale(1.1) rotate(15)" />
+      <use href="#balloon-soccer-classic" transform="translate(-110, 0) scale(1.15) rotate(-5)" />
+      
+      <!-- GLOBO DESTACADO CUMPLEAÑOS "10" EN EL CENTRO DEL ARCO -->
+      <use href="#balloon-10" transform="translate(0, -15) scale(1.3) rotate(0)" />
+      
+      <use href="#balloon-soccer-classic" transform="translate(110, 0) scale(1.15) rotate(5)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-blue)" transform="translate(230, 40) scale(1.1) rotate(-15)" />
+      <use href="#balloon-soccer-color" fill="url(#balloon-yellow)" transform="translate(360, 110) scale(1.05) rotate(-35)" />
+    </g>
+
+  </g>
+</svg>

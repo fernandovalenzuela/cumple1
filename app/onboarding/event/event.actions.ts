@@ -35,12 +35,12 @@ export async function updateEvent(data:UpdateEventData):Promise<UpdateEventResul
     };
   }
 
-  if(data.locationName.trim().length<2){
+  /*if(data.locationName.trim().length<2){
     return{
       state:State.nok,
       message:"Ingresá el nombre del lugar.",
     };
-  }
+  }*/
 
   if(data.locationAddress.trim().length<2){
     return{

@@ -1,0 +1,161 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+	modified:   README.md
+	modified:   app/components/AnimationBackground.tsx
+	modified:   app/components/Countdown.tsx
+	modified:   app/components/EventPageView.tsx
+	modified:   app/components/Gallery.tsx
+	modified:   app/components/Messages.tsx
+	modified:   app/components/MessagesList.tsx
+	modified:   app/components/MessagesSection.tsx
+	modified:   app/components/OpenRSVP.tsx
+	modified:   app/components/PrivateRSVP.tsx
+	modified:   app/components/event-editor/AppearanceMarker.tsx
+	modified:   app/components/event-editor/EditMarker.tsx
+	modified:   app/components/event-editor/RSVPMarker.tsx
+	modified:   app/components/onboarding/OnboardingEditor.tsx
+	modified:   app/components/onboarding/OnboardingFooter.tsx
+	modified:   app/components/onboarding/PaymentSummary.tsx
+	modified:   app/e/[slug]/page.tsx
+	modified:   app/fonts.ts
+	modified:   app/globals.css
+	modified:   app/i/[code]/page.tsx
+	modified:   app/layout.tsx
+	modified:   app/lib/appearance.ts
+	modified:   app/lib/auth/session.ts
+	modified:   app/lib/constants.ts
+	modified:   app/lib/defaults.ts
+	modified:   app/lib/rsvp.ts
+	modified:   app/lib/types.ts
+	modified:   app/lib/utils.ts
+	modified:   app/onboarding/customer/CustomerForm.tsx
+	modified:   app/onboarding/customer/CustomerPage.tsx
+	modified:   app/onboarding/customer/customer.actions.ts
+	modified:   app/onboarding/editor/editor.actions.ts
+	modified:   app/onboarding/editor/page.tsx
+	modified:   app/onboarding/end/OnboardingEnd.tsx
+	modified:   app/onboarding/event/EventPage.tsx
+	modified:   app/onboarding/event/event.actions.ts
+	modified:   app/onboarding/event/page.tsx
+	modified:   app/store/eventStore.ts
+	modified:   next.config.ts
+	deleted:    public/background_motive/heart.jpg
+	deleted:    public/background_motive/soccer_ball.jpg
+	modified:   public/client/location/unknown_location.jpg
+	modified:   tsconfig.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	app/components/TypographyContext.tsx
+	app/components/event-editor/MessagesMarker.tsx
+	app/components/onboarding/tutorial/
+	app/components/ui/
+	app/globals.ok
+	app/lib/appearance.new
+	app/lib/device.ts
+	gitstatus
+	public/animations/ballons.lottie
+	public/animations/bbq.lottie
+	public/animations/birds.lottie
+	public/animations/butterfly_hearts.lottie
+	public/animations/cat_with_baloons.lottie
+	public/animations/cheers.lottie
+	public/animations/confetti2.lottie
+	public/animations/confetti3.lottie
+	public/animations/fireworks1.lottie
+	public/animations/floating_hearts.lottie
+	public/animations/girl1.lottie
+	public/animations/girland.lottie
+	public/animations/heart.lottie
+	public/animations/love_message.lottie
+	public/animations/love_message_burst.lottie
+	public/animations/party.lottie
+	public/animations/party2.lottie
+	public/animations/party3.lottie
+	public/animations/red_balloon.lottie
+	public/animations/robot.lottie
+	public/animations/stars_rain1.lottie
+	public/animations/stars_rain2.lottie
+	public/animations/sun.lottie
+	public/animations/toast.lottie
+	public/animations/wedding.lottie
+	public/animations/wedding2.lottie
+	public/background_motive/baloons1.svg
+	public/background_motive/baloons2.jpg
+	public/background_motive/baloons_arch1.svg
+	public/background_motive/baloons_arch10.svg
+	public/background_motive/baloons_arch11.png
+	public/background_motive/baloons_arch2.svg
+	public/background_motive/baloons_arch3.svg
+	public/background_motive/baloons_arch4.png
+	public/background_motive/baloons_arch5.svg
+	public/background_motive/baloons_arch6.svg
+	public/background_motive/baloons_arch7.svg
+	public/background_motive/baloons_arch8.svg
+	public/background_motive/baloons_arch9.old
+	public/background_motive/baloons_arch9.svg
+	public/background_motive/bbq1.svg
+	public/background_motive/beers1.jpg
+	public/background_motive/birthday_cake1.jpg
+	public/background_motive/birthday_cake1.png
+	public/background_motive/birthday_cake2.jpg
+	public/background_motive/borrar1.jpg
+	public/background_motive/borrar2.jpg
+	public/background_motive/borrar3.jpg
+	public/background_motive/borrar3.png
+	public/background_motive/borrar4.jpg
+	public/background_motive/cat_birthday.jpg
+	public/background_motive/confetti1.jpg
+	public/background_motive/confetti2.jpg
+	public/background_motive/dino1.jpg
+	public/background_motive/dog_birthday.jpg
+	public/background_motive/flowers1.jpg
+	public/background_motive/flowers2.jpg
+	public/background_motive/flowers3.jpg
+	public/background_motive/flowers4.png
+	public/background_motive/gift1.svg
+	public/background_motive/guirnald1.jpg
+	public/background_motive/guirnald1.png
+	public/background_motive/guirnald1_1.png
+	public/background_motive/guirnald2.png
+	public/background_motive/guirnald3.png
+	public/background_motive/guirnald4.png
+	public/background_motive/guirnald5.png
+	public/background_motive/guirnald6.png
+	public/background_motive/guirnald7.png
+	public/background_motive/guirnald8.png
+	public/background_motive/hearts1.jpg
+	public/background_motive/hearts2.jpg
+	public/background_motive/hearts3.jpg
+	public/background_motive/kids1.jpg
+	public/background_motive/kids2.jpg
+	public/background_motive/koala_birthday.jpg
+	public/background_motive/love1.jpg
+	public/background_motive/making_toast1.jpg
+	public/background_motive/mascarade1.jpg
+	public/background_motive/party1.jpg
+	public/background_motive/party2.jpg
+	public/background_motive/party3.jpg
+	public/background_motive/party4.jpg
+	public/background_motive/prince1.jpg
+	public/background_motive/princess1.svg
+	public/background_motive/princess2.jpg
+	public/background_motive/princess3.jpg
+	public/background_motive/rainbow1.jpg
+	public/background_motive/soccer_ball1.jpg
+	public/background_motive/stars1.svg
+	public/background_motive/toys1.svg
+	public/background_motive/wedding-arch1.png
+	public/background_motive/wedding1.jpg
+	public/background_motive/wedding_arch1.png
+	public/background_motive/wedding_arch2.png
+	public/background_motive/wedding_archold.png
+	scripts/
+	webs
+
+no changes added to commit (use "git add" and/or "git commit -a")

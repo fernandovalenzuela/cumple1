@@ -331,7 +331,7 @@ export default function Gallery({
           )}
 
           {/* ❌ BOTÓN CIERRE MEJORADO */}
-          {showUI && (
+          {true && (
             <button
               onClick={() => setSelectedIndex(null)}
               className="

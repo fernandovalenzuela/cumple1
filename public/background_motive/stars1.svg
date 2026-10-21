@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 300 200)">
+    <!-- Primera tanda de estrellas adicionales (muy arriba) -->
+    <path d="M120 15 l4 8 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1 z" fill="#FFD166" stroke="#F4A261" stroke-width="1.5"/>
+    <path d="M220 20 Q220 35 235 35 Q220 35 220 50 Q220 35 205 35 Q220 35 220 20 Z" fill="#70D6FF" stroke="#0077B6" stroke-width="1.5"/>
+    <path d="M360 25 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z" fill="#FF70A6" stroke="#E63946" stroke-width="1.5"/>
+    <path d="M480 15 L490 45 L515 45 L494 60 L502 85 L480 70 L458 85 L466 60 L445 45 L470 45 Z" fill="#FFB703" stroke="#FB8500" stroke-width="2" transform="scale(0.6) translate(320, -10)"/>
+    
+    <!-- Segunda tanda de estrellas adicionales (tercio superior medio) -->
+    <path d="M70 75 Q70 85 80 85 Q70 85 70 95 Q70 85 60 85 Q70 85 70 75 Z" fill="#FFE66D" stroke="#E9C46A" stroke-width="1.5"/>
+    <path d="M160 90 l3 6 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#C77DFF" stroke="#7B2CBF" stroke-width="1.5"/>
+    <path d="M250 80 L256 100 L235 85 L265 85 L244 100 Z" stroke="#3A86FF" stroke-width="1.5"/>
+    <path d="M350 85 Q350 98 364 98 Q350 98 350 112 Q350 98 336 98 Q350 98 350 85 Z" fill="#06D6A0" stroke="#118AB2" stroke-width="1.5"/>
+    <path d="M420 75 l4 8 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1 z" fill="#FF6B6B" stroke="#EE6C4D" stroke-width="1.5"/>
+    <path d="M510 95 l5 10 11 2 -8 8 2 11 -10 -5 -10 5 2 -11 -8 -8 11 -2 z" fill="#FFD166" stroke="#F4A261" stroke-width="1.5"/>
+
+    <!-- Nuevas estrellas adicionales añadidas para poblar aún más el tercio superior -->
+    <path d="M30 45 l3 6 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#A0C4FF" stroke="#4361EE" stroke-width="1.5"/>
+    <path d="M135 40 Q135 52 147 52 Q135 52 135 64 Q135 52 123 52 Q135 52 135 40 Z" fill="#FF9EBB" stroke="#FF4D6D" stroke-width="1.5"/>
+    <path d="M205 110 L212 130 L191 115 L221 115 L200 130 Z" fill="#FFB703" stroke="#FB8500" stroke-width="1.5"/>
+    <path d="M280 25 l5 10 11 2 -8 8 2 11 -10 -5 -10 5 2 -11 -8 -8 11 -2 z" fill="#9B5DE5" stroke="#7209B7" stroke-width="1.5"/>
+    <path d="M395 55 l4 8 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1 z" fill="#FFD166" stroke="#F4A261" stroke-width="1.5"/>
+    <path d="M570 45 Q570 58 583 58 Q570 58 570 71 Q570 58 557 58 Q570 58 570 45 Z" fill="#06D6A0" stroke="#118AB2" stroke-width="1.5"/>
+    <path d="M465 115 l3 6 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z" fill="#70D6FF" stroke="#0077B6" stroke-width="1.5"/>
+
+    <!-- Estrellas originales -->
+    <!-- Estrella 1: Amarilla clásica rellena -->
+    <path d="M60 30 l8 16 18 3 -13 12 3 18 -16 -8 -16 8 3 -18 -13 -12 18 -3 z" fill="#FFD166" stroke="#F4A261" stroke-width="2"/>
+
+    <!-- Estrella 2: Rosada pequeña -->
+    <path d="M180 50 l5 10 11 2 -8 8 2 11 -10 -5 -10 5 2 -11 -8 -8 11 -2 z" fill="#FF70A6" stroke="#E63946" stroke-width="1.5"/>
+
+    <!-- Estrella 3: Estilo Doodle / Dibujada a mano (Azul) -->
+    <path d="M300 40 L308 65 L335 65 L313 80 L322 105 L300 88 L278 105 L287 80 L265 65 L292 65 Z" fill="#70D6FF" stroke="#0077B6" stroke-width="2" transform="rotate(12 300 65)"/>
+
+    <!-- Estrella 4: Destello de 4 puntas (Dorado) -->
+    <path d="M450 30 Q450 60 480 60 Q450 60 450 90 Q450 60 420 60 Q450 60 450 30 Z" fill="#FFB703" stroke="#FB8500" stroke-width="1.5"/>
+
+    <!-- Estrella 5: Violeta pequeña estilo boceto -->
+    <path d="M540 80 l4 8 9 1 -7 6 2 9 -8 -4 -8 4 2 -9 -7 -6 9 -1 z" fill="#9B5DE5" stroke="#7209B7" stroke-width="1.5"/>
+
+    <!-- Estrella 6: Grande Amarilla con trazo grueso -->
+    <path d="M100 180 l12 24 26 4 -19 18 5 26 -24 -12 -24 12 5 -26 -19 -18 26 -4 z" fill="#FFE66D" stroke="#E9C46A" stroke-width="2.5"/>
+
+    <!-- Estrella 7: Destello minimalista (Coral) -->
+    <path d="M250 170 Q250 195 275 195 Q250 195 250 220 Q250 195 225 195 Q250 195 250 170 Z" fill="#FF6B6B" stroke="#EE6C4D" stroke-width="1.5"/>
+
+    <!-- Estrella 8: Doodle lineal de 5 puntas (Sin relleno) -->
+    <path d="M380 160 L395 210 L355 180 L405 180 L365 210 Z" stroke="#3A86FF" stroke-width="2.5"/>
+
+    <!-- Estrella 9: Verde menta pequeña -->
+    <path d="M490 180 l6 12 13 2 -9 9 2 13 -12 -6 -12 6 2 -13 -9 -9 13 -2 z" fill="#06D6A0" stroke="#118AB2" stroke-width="1.5"/>
+
+    <!-- Estrella 10: Rosada grande dibujada -->
+    <path d="M70 300 l10 20 22 3 -16 15 4 22 -20 -10 -20 10 4 -22 -16 -15 22 -3 z" fill="#FF9EBB" stroke="#FF4D6D" stroke-width="2" transform="rotate(-8 70 320)"/>
+
+    <!-- Estrella 11: Destello brillante (Celeste) -->
+    <path d="M200 290 Q200 320 230 320 Q200 320 200 350 Q200 320 170 320 Q200 320 200 290 Z" fill="#A0C4FF" stroke="#4361EE" stroke-width="2"/>
+
+    <!-- Estrella 12: Amarilla pequeña brillante -->
+    <path d="M330 310 l5 10 11 2 -8 8 2 11 -10 -5 -10 5 2 -11 -8 -8 11 -2 z" fill="#FFD166" stroke="#F4A261" stroke-width="1.5"/>
+
+    <!-- Estrella 13: Doodle sin relleno (Naranja) -->
+    <path d="M440 280 L452 320 L420 295 L460 295 L428 320 Z" stroke="#FB8500" stroke-width="2"/>
+
+    <!-- Estrella 14: Violeta brillante -->
+    <path d="M530 300 l8 16 18 3 -13 12 3 18 -16 -8 -16 8 3 -18 -13 -12 18 -3 z" fill="#C77DFF" stroke="#7B2CBF" stroke-width="2"/>
+  </g>
+</svg>

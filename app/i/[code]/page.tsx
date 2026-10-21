@@ -2,7 +2,7 @@ import { sql } from "@/lib/db";
 import { EventPageView } from "@/components/EventPageView";
 import { Status, AccessType, ImageProcessingStatus, State, RsvpStatus, FoodType } from "../../lib/constants";
 import { getEventAccessState, isEventDeadline, entireScreenMessage } from "./../../lib/helper";
-import { getBackgroundMotiveProps } from "@/lib/appearance";
+import { getBackgroundMotiveInfo } from "@/lib/appearance";
 import { Event } from "@/lib/types";
 
 
@@ -33,6 +33,7 @@ export default async function Page({ params }: { params: { code?: string } }) {
       b.id,
       b.name,
       b.title_1,
+      b.title_2,
       b.subtitle_1,
       b.subtitle_2,
       b."eventBirthday",
@@ -120,7 +121,7 @@ export default async function Page({ params }: { params: { code?: string } }) {
      EVENT
   ========================= */
 
-  const mappedBackgroundMotive = getBackgroundMotiveProps(row.backgroundMotive);
+  const mappedBackgroundMotive = getBackgroundMotiveInfo(row.backgroundMotive);
 
   const event: Event = {
     eventId: row.id,
@@ -128,6 +129,7 @@ export default async function Page({ params }: { params: { code?: string } }) {
     status: row.status,
     name: row.name,
     title_1: row.title_1,
+    title_2: row.title_2,
     subtitle_1: row.subtitle_1,
     subtitle_2: row.subtitle_2,
     eventBirthday: row.eventBirthday,
@@ -145,7 +147,7 @@ export default async function Page({ params }: { params: { code?: string } }) {
     fontType: row.fontType || "default",
     customerComment: row.customerComment,
     accessType: row.accessType,
-    backgroundMotive: mappedBackgroundMotive,
+    backgroundMotive: row.backgroundMotive,
     askFoodType: row.askFoodType,
     personMaxGuestOpenEvent: 0,
     gallery,

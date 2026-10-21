@@ -4,14 +4,11 @@ import { useEffect, useState } from "react";
 
 type Props = {
   mode: "private" | "open" | "public";
-
   birthdayEventId: number;
-
   guest?: {
     id: number;
     name: string;
   };
-
   onMessageSent?: () => void;
 };
 
@@ -37,97 +34,52 @@ export function Messages({
   guest,
   onMessageSent,
 }: Props) {
-  const [name, setName] =
-    useState("");
-
-  const [message, setMessage] =
-    useState("");
-
-  const [response, setResponse] =
-    useState("");
-
-  const [loading, setLoading] =
-    useState(false);
-
-  const [loadingInitial, setLoadingInitial] =
-    useState(true);
-
-  const [saved, setSaved] =
-    useState(false);
+  const [name, setName] = useState("");
+  const [message, setMessage] =  useState("");
+  const [response, setResponse] =  useState("");
+  const [loading, setLoading] =  useState(false);
+  const [loadingInitial, setLoadingInitial] =  useState(true);
+  const [saved, setSaved] = useState(false);
 
   /* =========================
      CARGA INICIAL
   ========================= */
 
-  useEffect(() => {
-    loadMyMessage();
-  }, []);
+  useEffect(() => { loadMyMessage();}, []);
 
   const loadMyMessage =
     async () => {
       try {
         let url = "";
 
-        if (
-          mode === "private"
-        ) {
-          url =
-            `/api/event/messages/my?mode=private&guestId=${guest?.id}`;
+        if (mode === "private" ) {
+          url = `/api/event/messages/my?mode=private&guestId=${guest?.id}`;
         } else {
-          const authorKey =
-            getOrCreateAuthorKey(
-              birthdayEventId
-            );
+          const authorKey = getOrCreateAuthorKey( birthdayEventId);
 
-          url =
-            `/api/event/messages/my?mode=${mode}&authorKey=${authorKey}`;
+          url =  `/api/event/messages/my?mode=${mode}&authorKey=${authorKey}`;
         }
-
-        const res =
-          await fetch(url);
-
+        const res =  await fetch(url);
         if (!res.ok) {
-          setLoadingInitial(
-            false
-          );
+          setLoadingInitial( false );
           return;
         }
 
-        const data =
-          await res.json();
+        const data =await res.json();
 
         if (data) {
-          setName(
-            data.name ?? ""
-          );
-
-          setMessage(
-            data.message ??
-              ""
-          );
-
-          setResponse(
-            data.response ??
-              ""
-          );
+          setName( data.name ?? "");
+          setMessage( data.message ??  "");
+          setResponse( data.response ??  "");
         }
 
-        if (
-          mode ===
-          "private"
-        ) {
-          setName(
-            guest?.name ?? ""
-          );
+        if ( mode ===  "private") {
+          setName( guest?.name ?? "");
         }
       } catch (error) {
-        console.error(
-          error
-        );
+        console.error(error);
       } finally {
-        setLoadingInitial(
-          false
-        );
+        setLoadingInitial( false);
       }
     };
 
@@ -137,16 +89,9 @@ export function Messages({
 
   const handleSubmit =
     async () => {
-      if (
-        !message.trim()
-      )
+      if ( !message.trim() )
         return;
-
-      if (
-        mode !==
-          "private" &&
-        !name.trim()
-      )
+      if ( mode !== "private" && !name.trim())
         return;
 
       try {
@@ -162,78 +107,47 @@ export function Messages({
           | null =
           null;
 
-        if (
-          mode ===
-          "private"
-        ) {
-          guestId =
-            guest?.id ??
-            null;
+        if (  mode ===  "private") {
+          guestId =  guest?.id ?? null;
         } else {
-          authorKey =
-            getOrCreateAuthorKey(
-              birthdayEventId
-            );
+          authorKey = getOrCreateAuthorKey( birthdayEventId );
         }
 
         const res =
           await fetch(
             "/api/event/messages",
             {
-              method:
-                "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json",
+              method: "POST",
+              headers: {  "Content-Type":"application/json",
               },
 
               body:
                 JSON.stringify(
                   {
                     mode,
-
                     birthdayEventId,
-
                     guestId,
-
                     authorKey,
-
-                    name:
-                      mode ===
-                      "private"
-                        ? guest?.name
-                        : name,
-
+                    name: mode ==="private"  ? guest?.name : name,
                     message,
                   }
                 ),
             }
           );
 
-        if (
-          !res.ok
-        ) {
-          throw new Error(
-            "Error saving message"
-          );
+        if ( !res.ok ) {
+          throw new Error( "Error saving message" );
         }
-
         setSaved(true);
-
         onMessageSent?.();
       } catch (error) {
-        console.error(
-          error
-        );
+        console.error( error );
       } finally {
         setLoading(false);
 
         setTimeout(() => {
-          setSaved(
-            false
-          );
-        }, 2500);
+          setSaved(false );
+         }, 2500);
       }
     };
 
@@ -241,9 +155,7 @@ export function Messages({
      LOADING
   ========================= */
 
-  if (
-    loadingInitial
-  ) {
+  if ( loadingInitial ) {
     return (
       <div className="py-4 text-center text-sm text-gray-500">
         Cargando...
@@ -268,13 +180,8 @@ export function Messages({
           }
           placeholder="Tu nombre"
           value={name}
-          onChange={(
-            e
-          ) =>
-            setName(
-              e.target
-                .value
-            )
+          onChange={( e ) =>
+            setName(  e.target .value )
           }
           className="w-full p-3 rounded-xl outline-none"
           style={{
@@ -303,13 +210,8 @@ export function Messages({
         value={
           message
         }
-        onChange={(
-          e
-        ) =>
-          setMessage(
-            e.target
-              .value
-          )
+        onChange={( e) =>
+          setMessage( e.target .value  )
         }
       />
 
@@ -330,9 +232,9 @@ export function Messages({
             w-full
             max-w-md
             rounded-lg
-            bg-gray-50
+            bg-[var(--color-bg-soft)]
             border
-            border-gray-200
+            border-[var(--color-border)]
             p-4
             mb-3
           "
@@ -354,7 +256,7 @@ export function Messages({
       ========================= */}
 
       {saved && (
-        <div className="text-green-600 text-sm">
+        <div className="text-[var(--color-success)] text-sm">
           Mensaje guardado ✓
         </div>
       )}

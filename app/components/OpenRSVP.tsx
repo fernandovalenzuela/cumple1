@@ -85,8 +85,8 @@ export  default function OpenRSVP({ eventId, maxPeople, askFoodType, previewMode
 
   const handleChange = (field: keyof RSVPData, value: any) => {
     
-    /*console.log("maxPeople", maxPeople);
-    console.log("askFoodType",askFoodType);*/
+    console.log("maxPeople", maxPeople);
+    console.log("askFoodType",askFoodType);
     setForm((prev) => ({
       ...prev,
       [field]: value,
@@ -176,7 +176,7 @@ export  default function OpenRSVP({ eventId, maxPeople, askFoodType, previewMode
   if (error) {
     return (
       <div className="text-center mt-6">
-        <p className="text-red-500">{error}</p>
+        <p className="text-[var(--color-error)]">{error}</p>
       </div>
     );
   }
@@ -252,7 +252,7 @@ export  default function OpenRSVP({ eventId, maxPeople, askFoodType, previewMode
                     ? "var(--color-primary)"
                     : "var(--color-bg-soft)",
                   color: isActive
-                    ? "white"
+                    ? "var(--color-text-on-primary)"
                     : "var(--color-text-main)",
                   border: "1px solid var(--color-border)",
                 }}
@@ -359,7 +359,7 @@ export  default function OpenRSVP({ eventId, maxPeople, askFoodType, previewMode
         <label className="text-sm mb-1 block text-soft">Comentario</label>
         <textarea
           placeholder="¿Algo para comentarme?"
-          className="w-full p-3 rounded-xl min-h-[100px]"
+          className="w-full p-3 rounded-xl min-h-[50px]"
           style={{
             border: "1px solid var(--color-border)",
             background: "var(--color-bg-main)",

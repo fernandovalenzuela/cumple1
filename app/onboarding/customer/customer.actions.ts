@@ -3,13 +3,11 @@
 import { sql } from "@/lib/db";
 import { State } from "@/lib/constants";
 import bcrypt from 'bcryptjs';
-import { createSession,SessionType } from "@/lib/auth/session";
-import {
-  validateCustomerForm,
-} from "@/lib/validation/customer";
-import {
-  CustomerFormData,
-} from "@/lib/onboarding/types";
+import { createSession,SessionType,getCurrentSession } from "@/lib/auth/session";
+import { validateCustomerForm,} from "@/lib/validation/customer";
+import {CustomerFormData,} from "@/lib/onboarding/types";
+import {getOccasionTypeInfo} from "@/lib/utils";
+
 export interface CreateCustomerResult {
   state: State;
   message: string;
@@ -77,8 +75,9 @@ console.log("##1 customer");
     )
     returning id
   `;
-console.log("##2 customer");
+  //console.log("##2 customer");
   const accountId=accounts[0].id;
+  const occasionTypeInfo = getOccasionTypeInfo(form.occasionType);
 
   const events=await sql<{id:number}[]>`
         insert into "birthdayEvents"
@@ -86,14 +85,16 @@ console.log("##2 customer");
           "accountId",
           status,
           "planId",
-          "occasionType"
+          "occasionType",
+          "title_2"
         )
         values
         (
           ${accountId},
           0,
           ${form.planId},
-          ${form.occasionType}
+          ${form.occasionType},
+          ${occasionTypeInfo.eventInvitationTextDefault}
         )
         returning id
       `;
@@ -114,6 +115,9 @@ console.log("##2 customer");
       eventId:result.eventId,
     });
 console.log("##4 customer sesion ");
+
+const session=await getCurrentSession();
+console.log("##5 customer sesion ",session);
     return{
       state:State.ok,
       message:"Cuenta creada.",

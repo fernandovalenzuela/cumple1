@@ -10,6 +10,8 @@ import StepIndicator from "@/components/onboarding/layout/StepIndicator";
 import { State } from "@/lib/constants";
 import { UpdateEventData,updateEvent } from "./event.actions";
 import { getCountries,getDefaultCountry } from "@/lib/countries";
+import { useEventStore } from "@/store/eventStore";
+import { getOccasionTypeInfo } from "@/lib/utils";
 
 type EventErrors={
   name?:string;
@@ -18,7 +20,11 @@ type EventErrors={
   locationAddress?:string;
 };
 
-export default function EventPage(){
+type Props = {
+  occasionType: number;
+};
+
+export default function EventPage({occasionType}: Props){
 
   const router=useRouter();
 
@@ -32,6 +38,7 @@ export default function EventPage(){
   const [state,setState]=useState("");
   const [country,setCountry]=useState(getDefaultCountry());
   const countries=getCountries();
+  const { event} = useEventStore();
 
   useEffect(()=>{
 
@@ -66,8 +73,8 @@ export default function EventPage(){
     if(data.eventBirthday==="")
       errors.eventBirthday="Ingresá la fecha y hora del evento.";
 
-    if(data.locationName.trim().length<2)
-      errors.locationName="Ingresá el nombre del lugar.";
+    /*if(data.locationName.trim().length<2)
+      errors.locationName="Ingresá el nombre del lugar.";*/
 
     if(street.trim().length<2 || city.trim().length<2 || state.trim().length<2)
         errors.locationAddress="Completá la dirección del evento.";
@@ -142,7 +149,8 @@ export default function EventPage(){
     }
 
   }
-
+console.log("event ocassion ", occasionType);
+const occasionInfo = getOccasionTypeInfo(occasionType);
     return(
     <OnboardingLayout>
       <StepIndicator currentStep={2}/>
@@ -151,7 +159,7 @@ export default function EventPage(){
       <FormCard>
 
         <div className="admin-field">
-          <label className="admin-label">Nombre del evento</label>
+          <label className="admin-label">{occasionInfo.onBoardingEventNameCaption}</label>
           <input
             className="admin-input"
             type="text"
@@ -162,12 +170,12 @@ export default function EventPage(){
             onChange={e=>updateField("name",e.target.value)}
           />
           <p className="admin-helper">
-            Ejemplos: "Cumple Juan Pérez", "50° Aniversario", "Club Atlético San Martín", "25 años de la empresa".
+            { occasionInfo.onBoardingEventNameCaptionHelp }
           </p>
           {submitted && errors.name && <p className="admin-error">{errors.name}</p>}
         </div>
 
-        <div className="admin-field">
+        <div className="admin-field mt-2">
           <label className="admin-label">Fecha y hora del evento</label>
           <input
             className="admin-input"
@@ -179,7 +187,7 @@ export default function EventPage(){
           {submitted && errors.eventBirthday && <p className="admin-error">{errors.eventBirthday}</p>}
         </div>
 
-        <div className="admin-field">
+        {/*<div className="admin-field mt-2">
           <label className="admin-label">Nombre del lugar</label>
           <input
             className="admin-input"
@@ -191,9 +199,9 @@ export default function EventPage(){
             onChange={e=>updateField("locationName",e.target.value)}
           />
           {submitted && errors.locationName && <p className="admin-error">{errors.locationName}</p>}
-        </div>
+        </div> */}
 
-        <div className="admin-field">
+        <div className="admin-field mt-3">
             <label className="admin-label">Dirección del evento</label>
 
             <input
@@ -255,8 +263,9 @@ export default function EventPage(){
             {submitted && errors.locationAddress && <p className="admin-error">{errors.locationAddress}</p>}
             </div>
 
-        <div className="admin-field">
-          <label className="admin-label">Años a celebrar (opcional)</label>
+        { occasionInfo.showYearsToCelebrate && (
+        <div className="admin-field mt-4">
+          <label className="admin-label">Años a celebrar</label>
           <input
             className="admin-input"
             type="number"
@@ -266,20 +275,20 @@ export default function EventPage(){
             disabled={loading}
             onChange={e=>updateField("celebratedAge",e.target.value==="" ? null : Number(e.target.value))}
           />
-          <p className="admin-helper">
-            Si corresponde, indicá la cantidad de años que se celebran.
-          </p>
         </div>
+        )}
 
-        <label className="admin-checkbox">
-          <input
-            type="checkbox"
-            checked={form.isMinorEvent}
-            disabled={loading}
-            onChange={e=>updateField("isMinorEvent",e.target.checked)}
-          />
-          <span>Es un evento referente a un menor de edad.</span>
-        </label>
+        <div className="mt-4">
+          <label className="admin-checkbox">
+            <input
+              type="checkbox"
+              checked={form.isMinorEvent}
+              disabled={loading}
+              onChange={e=>updateField("isMinorEvent",e.target.checked)}
+            />
+            <span className="ml-2">Es un evento referente a un menor de edad.</span>
+          </label>
+        </div>
 
         {generalError!=="" && <p className="admin-error">{generalError}</p>}
 

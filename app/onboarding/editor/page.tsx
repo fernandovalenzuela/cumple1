@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
 import { sql } from "@/lib/db";
 import { getCurrentSession, SessionType } from "@/lib/auth/session";
-import { getBackgroundMotiveProps } from "@/lib/appearance";
+//import { getBackgroundMotiveProps } from "@/lib/appearance";
+import { getBackgroundMotiveInfo } from "@/lib/appearance";
 import { AccessType } from "@/lib/constants";
 import OnboardingEditor from "@/components/onboarding/OnboardingEditor";
 import { Event } from "@/lib/types";
@@ -10,7 +11,7 @@ import { getDefaultCountry } from "@/lib/countries";
 export default async function Page(){
 
   const session=await getCurrentSession();
-  //console.log("SESSION",session);
+  //console.log("# SESSION",session);
 
   if(
     !session||
@@ -26,6 +27,7 @@ export default async function Page(){
       b.status,
       b.name,
       b.title_1,
+      b.title_2,
       b.subtitle_1,
       b.subtitle_2,
       b."eventBirthday",
@@ -85,7 +87,7 @@ export default async function Page(){
   }));
 
   const country = getDefaultCountry();
-  console.log("country", country);
+  //console.log("country", country);
   const planData=await sql`
     SELECT
       "planMaxGuests"
@@ -111,6 +113,7 @@ export default async function Page(){
     status:row.status,
     name:row.name,
     title_1:row.title_1,
+    title_2:row.title_2,
     accessType:row.accessType,
     subtitle_1:row.subtitle_1,
     subtitle_2:row.subtitle_2,
@@ -125,11 +128,11 @@ export default async function Page(){
       :`/${row.locationPicture}`,
     allowMessages:row.allowMessages,
     showMessagesList:row.showMessagesList,
-    theme:row.theme||"elegant",
+    theme:row.theme,
     animationType:row.animationType,
     fontType:row.fontType||"Poppins",
     customerComment:row.customerComment,
-    backgroundMotive:getBackgroundMotiveProps(row.backgroundMotive),
+    backgroundMotive:(row.backgroundMotive),
     personMaxGuestOpenEvent:row.personMaxGuestOpenEvent,
     askFoodType:row.askFoodType,
     gallery,

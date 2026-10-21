@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* scroll vertical solo en desktop */
+@media (max-width:768px){
+  html{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  html::-webkit-scrollbar{
+    display:none;
+  }
+  body{
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+  }
+  body::-webkit-scrollbar{
+    display:none;
+  }
+}
+
 /* ---------------- REGLAS ---------------- */
 /* REGLA: Todo formulario usa .admin-page*/
 /* REGLA: Todos los iconos tendrán width:20px;height:20px;color:var(--admin-text-soft);*/
@@ -13,24 +31,31 @@
 :root {
   --color-bg-main: #ffffff;
   --color-bg-soft: #fce9f5;
+  --color-bg-card:#ffffff;
   --color-bg-hero-from: #fce7f3;
   --color-bg-hero-to: #ffffff;
 
   --color-primary: #ec4899;
-  --color-primary-soft: #f9a8d4;
-
   --color-text-main: #1f2937;
-  --color-text-soft: #6b7280;
+  --color-text-soft: #4b5563; /*#6b7280;*/
+  --color-text-gallery:#ffffff;
 
   --color-button: #374151;
   --color-button-hover: #111827;
 
   --color-border: #e5e7eb;
-  --color-muted: #6b7280;
 
   --hero-animation-opacity: 0.3;
   --hero-animation-blur: 0px;
   --hero-animation-scale: 1;
+
+  --color-bg-hero-InvitedTo: #ffffff;
+  --color-text-on-primary:#ffffff;
+
+  --color-error:#ef4444;
+  --color-success:#16a34a;
+  --color-text-muted:#9CA3AF;
+
 }
 
 /* ===================================================
@@ -48,243 +73,126 @@
 :root {
 
   /* Fondo */
-
   --admin-bg:#f8fafc;
-
   --admin-surface: #ffffff;
 
-  --admin-surface-soft: #fafafa;
-
   /* Colores */
-
   --admin-primary: #f97316;
-
   --admin-primary-hover: #ea580c;
 
-  --admin-primary-soft: #fed7aa;
-
   /* Textos */
-
   --admin-font-helper:.85rem;
-
   --admin-text: #111827;
-
   --admin-text-soft: #6b7280;
 
   /* Bordes */
-
   --admin-border: #e5e7eb;
 
   /* Inputs */
-
   --admin-input-bg: #ffffff;
-
   --admin-input-border: #d1d5db;
-
   --admin-input-focus: #f97316;
 
   /* Estados */
-
   --admin-success: #22c55e;
-
   --admin-warning: #f59e0b;
-
   --admin-error: #ef4444;
-
   --admin-success-bg: #f0fdf4;
-
   --admin-warning-bg: #fffbeb;
-
   --admin-error-bg: #fef2f2;
-  
-  --admin-success-color: #22c55e;
-
+   --admin-success-color: #22c55e;
   --admin-warning-color: #92400e;
-
   --admin-error-color: #b91c1c;
-
   --admin-success-border: 1px solid #bbf7d0;
-
   --admin-warning-border: 1px solid #fde68a;
-
   --admin-error-border: 1px solid #fecaca;
-
-
-
-  --admin-radius-sm:12px;
-
   --admin-radius-md:18px;
-
   --admin-radius-lg:28px;
 
-
   /* transition animation */
-  --admin-transition-fast:.15s;
-
   --admin-transition:.25s;
 
-  --admin-transition-slow:.4s;
-
-
   /*  Shadows */
-  --admin-focus-shadow:
-    0 0 0 4px rgba(249,115,22,.15);
-
-  --admin-card-shadow:
-    0 6px 18px rgba(15,23,42,.06);
-
-
+  --admin-focus-shadow: 0 0 0 4px rgba(249,115,22,.15);
+  --admin-card-shadow:  0 6px 18px rgba(15,23,42,.06);
   --admin-disabled:#d1d5db;
-
-  --admin-space-xs:.5rem;
-
-  --admin-space-sm:1rem;
-
-  --admin-space-md:1.5rem;
-
-  --admin-space-lg:2rem;
-
-  --admin-space-xl:3rem;
-
   --admin-placeholder: #9ca3af;
-
-  
-
-
-}
-
-.admin-step-bar {
-  background: var(--admin-primary);
-}
-
-.admin-step-bar-inactive {
-  background: var(--admin-border);
-}
-
-.admin-form{
-
-  @apply
-
-  space-y-6;
-
 }
 
 .admin-form > .admin-actions{
-
     padding-top:1rem;
-
 }
 
 .admin-field{
-
   @apply
-
   space-y-2;
-
 }
 
 .admin-button {
-
   @apply
     px-8
     py-4
-
     font-semibold;
 
   background:
-
     var(--admin-primary);
 
   color:white;
-
   border-radius:var(--admin-radius-lg);
-
   box-shadow: var(--admin-card-shadow);
-
   min-height:52px;
 
   transition:
-
     background-color var(--admin-transition),
-
     border-color var(--admin-transition),
-
     box-shadow var(--admin-transition),
-
     color var(--admin-transition);
-
   cursor:pointer;
 
 }
 
 @media (hover:hover){
-
   .admin-button:hover{
-
       background:
-
       var(--admin-primary-hover);
-
   }
-
 }
 
 .admin-button:focus-visible{
-
   outline:none;
-
   box-shadow: var(--admin-focus-shadow);
-
 }
 
 .admin-button:disabled{
-
   opacity:.65;
-
   cursor:not-allowed;
-
   background:
-
     var(--admin-disabled);
-
 }
 
 .admin-button-secondary{
 
   @apply
-
     px-8
-
     py-4
-
     transition
-
     font-medium;
-
     background:white;
 
   color:var(--admin-primary);
 
   border:
-
     1px solid
-
     var(--admin-primary);
 
   box-shadow: var(--admin-card-shadow);
-
   border-radius: var(--admin-radius-lg);
-
   cursor:pointer;
-
 }
 
 .admin-button-secondary:focus-visible{
-
   outline:none;
-
   box-shadow: var(--admin-focus-shadow);
-
 }
 
 .admin-button-medium{
@@ -301,472 +209,181 @@
     font-size:.9rem;
 }
 
+.admin-button-xsmall{
+    min-height:30px;
+    padding:.45rem .9rem;
+    font-size:.9rem;
+}
+
 .admin-button-medium-bg {
   background-color: rgb(255 247 237 / var(--tw-bg-opacity, 1)) !important;
 }
 
-
-.admin-grid{
-
-  @apply
-
-  grid
-
-  gap-6;
-
-}
-
-.admin-grid-2{
-
-    @apply
-
-    grid
-
-    gap-6
-
-    md:grid-cols-2;
-
-}
-
 .admin-input{
-
   @apply
     w-full
-
     px-4
-
     py-3
-
     transition;
-
   background:
-
     var(--admin-input-bg);
-
   border:
-
     1px solid
-
     var(--admin-input-border);
-
   border-radius:var(--admin-radius-md);
-
   box-shadow: none;
-
   min-height:52px;
-
   font-size:16px;
-
 }
 
 .admin-input:focus{
-
   outline:none;
-
   border-color:
-
     var(--admin-input-focus);
-
   box-shadow: var(--admin-focus-shadow);
-
 }
 
 .admin-input::placeholder{
-
   color:var(--admin-placeholder);
-
 }
 
 .admin-form-gap{height:12px;}
 .admin-section-gap{height:24px;}
-
 .admin-title{
-
   @apply
-
   sm:text-4xl
-
   font-semibold
-
   text-3xl;
-
   color:
-
     var(--admin-text);
-
-
-}
-
-.admin-subtitle{
-
-  @apply
-    text-lg;
-
-  color:var(--admin-text-soft);
-
 }
 
 .admin-step{
-
   @apply
-
   text-sm
-
   font-semibold
-
   uppercase
-
   tracking-widest;
-
   color:
-
   var(--admin-primary);
-
 }
 
 .admin-container{
-
   background:
-
     var(--admin-bg);
-
   min-height:100vh;
-
 }
 
 .admin-helper{
-
   color:var(--admin-text-soft);
-
   font-size:var(--admin-font-helper);
-
-}
-
-.admin-success{
-
-  color:var(--admin-success);
-
-}
-
-.admin-warning{
-
-  color:var(--admin-warning);
-
 }
 
 .admin-error{
-
   color:var(--admin-error);
-
-}
-
-.admin-success-box{
-
-  background: var(--admin-success-bg);
-
-  color:var(--admin-success-color);
-
-  border:var(--admin-success-border);
-
-  @apply rounded-xl p-4;
-
-}
-
-.admin-warning-box{
-
-  background: var(--admin-warning-bg);
-
-  color:var(--admin-warning-color);
-
-  border:var(--admin-warning-border);
-
-  @apply rounded-xl p-4;
-
-}
-
-.admin-error-box{
-
-  background: var(--admin-error-bg);
-
-  color:var(--admin-error-color);;
-
-  border:var(--admin-error-border);
-
-  @apply 
-    rounded-xl p-4;
-
-}
-
-.admin-spinner{
-
-  @apply
-
-  animate-spin
-
-  rounded-full
-
-  border-2;
-
-  border-top-color:transparent;
-
-  width:20px;
-
-  height:20px;
-
-}
-
-.admin-textarea{
-
-  @apply
-
-  w-full
-
-  px-4
-
-  py-3
-
-  transition
-
-  min-h-32;
-
-  background:
-
-    var(--admin-input-bg);
-
-  border:
-
-    1px solid
-
-    var(--admin-input-border);
-
-  border-radius: var(--admin-radius-md);
-
-  box-shadow:none;
-
-  font-size:16px;
-
 }
 
 .admin-textarea:focus{
-
   outline:none;
-
   border-color:
-
     var(--admin-input-focus);
-
   box-shadow: var(--admin-focus-shadow);
-
 }
 
 .admin-select{
-
   @apply
-
   w-full
-
   px-4
-
   py-3;
-
   background:
-
     var(--admin-input-bg);
-
   border:
-
     1px solid
-
     var(--admin-input-border);
-
   border-radius: var(--admin-radius-md);
-
   box-shadow: none;
-
   font-size:16px;
-
   cursor:pointer;
-
 }
 
 .admin-select:focus{
-
   outline:none;
-
   border-color:
-
     var(--admin-input-focus);
-
   box-shadow: var(--admin-focus-shadow);
-
 }
 
 .admin-checkbox{
-
   width:20px;
-
   height:20px;
-
   accent-color:
-
     var(--admin-primary);
-
 }
 
 .admin-checkbox:focus-visible{
-
     outline:none;
-
     box-shadow:
-
         var(--admin-focus-shadow);
-
-}
-
-.admin-divider{
-
-  border-top:
-
-    1px solid
-
-    var(--admin-border);
-
-  @apply
-
-  my-8;
-
 }
 
 .admin-actions{
-
   @apply
-
   flex
-
   flex-col
-
   gap-3
-
   mt-8
-
   sm:flex-row
-
   sm:justify-end;
-
 }
-
-
 
 .admin-label{
-
   @apply
-
     block
-
     mb-2
-
     font-medium
-
     text-sm;
-
   color:var(--admin-text);
-
-
-}
-
-.admin-section{
-
-  @apply
-
-  mt-10;
-
 }
 
 .admin-section:first-child{
-
   @apply
-
   mt-0;
-
 }
 
-
-
 .admin-card{
-
   @apply
-
     rounded-3xl
     p-5
     sm:p-8;
-
   background: var(--admin-surface);
-
   border:1px solid var(--admin-border);
-
   border-radius:var(--admin-radius-lg);
-
   box-shadow:var(--admin-card-shadow);
-
 }
 
 /* REGLA IMPORTANTE: Todo formulario usa .admin-page*/
 .admin-page{
-
     @apply
-
       max-w-2xl
-
       mx-auto
-
       px-5
-
       py-10
-
       sm:px-6
-
       sm:py-10;
-
 }
 
 .admin-page-onboarding-preview{
-
     @apply
-
-  
-
       mx-auto
-
       px-1
-
       py-1
-
       sm:px-1
-
       sm:py-1;
-
 }
 
 /* ESTO es contemplar menu lateral version desktop admin del organizador y mi admin  */
-.admin-dashboard{
-
-    @apply
-
-    min-h-screen
-
-    flex;
-
-}
 
 /* ESTO es contemplar menu lateral version desktop admin del organizador y mi admin  */
-.admin-content{
-
-    @apply
-
-    flex-1
-
-    p-8;
-}
 
 /*.admin-transition{
 
@@ -778,55 +395,85 @@
 
 }*/
 
-
 [data-theme="dark"] {
-
   --admin-bg: #111827;
-
   --admin-surface: #1f2937;
-
-  --admin-surface-soft: #374151;
-
   --admin-primary: #fb923c;
-
   --admin-primary-hover: #f97316;
-
-  --admin-primary-soft: #7c2d12;
-
   --admin-disabled: #d1d5db;
-
   --admin-text: #f9fafb;
-
   --admin-text-soft: #d1d5db;
-
   --admin-border: #374151;
-
   --admin-input-bg: #1f2937;
-
   --admin-input-border: #4b5563;
-
   --admin-input-focus: #fb923c;
-
   --admin-success: #22c55e;
-
   --admin-warning: #f59e0b;
-
   --admin-error: #ef4444;
-
   --admin-success-bg: #f0fdf4;
-
   --admin-warning-bg: #fffbeb;
-
   --admin-error-bg: #fef2f2;
-  
-  --admin-success-color: #22c55e;
-
+   --admin-success-color: #22c55e;
   --admin-warning-color: #92400e;
-
   --admin-error-color: #b91c1c;
-
 }
 
+
+.theme-romantic-blush{--color-desktopbg-page:#f5eef0;}
+.theme-pastel-candy{--color-desktopbg-page:#f3f0eb;}
+.theme-lavender-dream{--color-desktopbg-page:#f0eef5;}
+.theme-peach-sorbet{--color-desktopbg-page:#f2ede9;}
+.theme-pink-pink{--color-desktopbg-page:#f6f0f3;}
+.theme-sky-cloud{--color-desktopbg-page:#ebeff1;}
+.theme-mint-confetti{--color-desktopbg-page:#eaefed;}
+.theme-soft-rainbow{--color-desktopbg-page:#f3f0ec;}
+.theme-sunny-celebration{--color-desktopbg-page:#eceae0;}
+.theme-cherry-party{--color-desktopbg-page:#f3eceb;}
+.theme-tropical-fiesta{--color-desktopbg-page:#e9efed;}
+.theme-bubblegum-pop{--color-desktopbg-page:#f5edf2;}
+.theme-aqua-pool-party{--color-desktopbg-page:#e8eff0;}
+.theme-berry-plum{--color-desktopbg-page:#f1ebef;}
+.theme-midnight-celebration{--color-desktopbg-page:#e7ebf0;}
+.theme-emerald-luxe{--color-desktopbg-page:#e7ede9;}
+.theme-cobalt-silver{--color-desktopbg-page:#e7edf5;}
+.theme-terracotta-sunset{--color-desktopbg-page:#eee8e2;}
+.theme-mocha-cream{--color-desktopbg-page:#eae7e2;}
+.theme-sage-garden{--color-desktopbg-page:#e8ece8;}
+.theme-boho-sand{--color-desktopbg-page:#e9e7e3;}
+.theme-dusty-blue-romance{--color-desktopbg-page:#e8edf1;}
+.theme-vintage-rose{--color-desktopbg-page:#eee7e4;}
+.theme-champagne-glow{--color-desktopbg-page:#eeeae0;}
+.theme-burgundy-wine{--color-desktopbg-page:#eee7e7;}
+.theme-black-soft-gold{--color-desktopbg-page:#e8e7e3;}
+.theme-ivory-gold{--color-desktopbg-page:#efebe2;}
+.theme-pearl-lavender{--color-desktopbg-page:#efedf2;}
+.theme-mediterranean-blue{--color-desktopbg-page:#e7eeef;}
+.theme-celestial-night{--color-desktopbg-page:#e9e9f0;}
+.theme-modern-editorial{--color-desktopbg-page:#e9eceb;}
+.theme-summer-splash{--color-desktopbg-page:#eee8dc;}
+.theme-retro-picnic{--color-desktopbg-page:#eee5d2;}
+.theme-neon-soft{--color-desktopbg-page:#eee9f1;}
+.theme-tropical-garden{--color-desktopbg-page:#e8ede2;}
+.theme-sunset-party{--color-desktopbg-page:#f2e9e5;}
+.theme-candy-festival{--color-desktopbg-page:#f3eaef;}
+.theme-ocean-pop{--color-desktopbg-page:#e5eef0;}
+.theme-lime-berry{--color-desktopbg-page:#e8ebdf;}
+.theme-color-fiesta{--color-desktopbg-page:#eee8d7;}
+.theme-rainbow-celebration{--color-desktopbg-page:#eee9df;}
+.theme-soft-blossom{--color-desktopbg-page:#f5eef1;}
+.theme-coral-aqua-party{--color-desktopbg-page:#f2ece9;}
+.theme-sage{--color-desktopbg-page:#ecefec;}
+.theme-pastel-sunrise{--color-desktopbg-page:#f2ece8;}
+.theme-pastel-ocean{--color-desktopbg-page:#e9eff0;}
+.theme-pastel-meadow{--color-desktopbg-page:#edf0e8;}
+.theme-pastel-lavender{--color-desktopbg-page:#efedf3;}
+.theme-pastel-candy2{--color-desktopbg-page:#f5eff2;}
+.theme-coral-festive{--color-desktopbg-page:#f2ece9;}
+.theme-berry-celebration{--color-desktopbg-page:#f3ebee;}
+.theme-summer-blue{--color-desktopbg-page:#e9eef2;}
+.theme-elegant-plum{--color-desktopbg-page:#eee8ed;}
+.theme-tropical-green{--color-desktopbg-page:#edf0ed;}
+.theme-black-gold{--color-desktopbg-page:#15140f;}
 
 /* ===================================================
 
@@ -836,82 +483,2190 @@
 
 =================================================== */
 
-/* =========================
-   🎨 THEME: PINK (ACTUAL)
-========================= */
-.theme-pink {
-  --color-bg-main: #ffffff;
-  --color-bg-soft: #fce9f5;
-  --color-bg-hero-from: #fce7f3;
-  --color-bg-hero-to: #ffffff;
 
-  --color-primary: #ec4899;
-  --color-primary-soft: #f9a8d4;
+/* ============================================================
+   🎨 PALETA 01 — ROMANTIC BLUSH
+   Concepto/mood:
+   Romántico, delicado, cálido y sofisticado.
+   1. Motivo visual conceptual: Pétalos, flores suaves, cintas y formas orgánicas delicadas.
+   2. Familia de colores: Blush, dusty rose, rosa empolvado y mauve.
+   3. Intensidad: Suave.
+   4. Público: Adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, WeddingAnniversary, BabyShower, BridalShower, Wedding, Baptism, Party, GenderReveal.
+   6. Color protagonista: Rosa blush.
+   7. Colores secundarios: Dusty rose, mauve y champagne.
+   8. Neutros: Blanco cálido, ivory y cream.
+============================================================ */
+.theme-romantic-blush {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff5f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f8dfe8;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#c94f78;
+  --color-text-main:#30272b;
+  --color-text-soft:#665960;
+  --color-text-muted:#9c8e95;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#a83d64;
+  --color-button-hover:#8f3155;
+  --color-border:#ead9df;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
 
-  --color-text-main: #1f2937;
-  --color-text-soft: #6b7280;
-
-  --color-button: #374151;
-  --color-button-hover: #111827;
-
-  --color-border: #e5e7eb;
-  --color-muted: #6b7280;
- 
-  /* 🔥 IMPORTANTE: respetamos tu valor actual */
-  --hero-animation-opacity: 0.6;
+background:var(--color-desktopbg-page);
+  
 }
 
-/* =========================
-   🎨 THEME: ELEGANT
-========================= */
-.theme-elegant {
-  --color-bg-main: #ffffff !important;
-  --color-bg-soft: #f3f4f6 !important;
-  --color-bg-hero-from: #f3f4f6 !important;
-  --color-bg-hero-to: #ffffff !important;
+/* ============================================================
+   🎨 PALETA 02 — PASTEL CANDY
+   Concepto/mood:
+   Dulce, alegre, tierno y divertido.
+   1. Motivo visual conceptual: Caramelos, confites, globos pequeños y formas redondeadas.
+   2. Familia de colores: Rosa pastel, lila, celeste, menta y amarillo suave.
+   3. Intensidad: Suave.
+   4. Público: Niños y universal.
+   5. Tipos de eventos compatibles: KidsBirthday, Birthday, BabyShower, GenderReveal, Party, Communion.
+   6. Color protagonista: Rosa pastel.
+   7. Colores secundarios: Celeste, lavanda, menta y amarillo manteca.
+   8. Neutros: Blanco y cream.
+============================================================ */
+.theme-pastel-candy {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fffaf1;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#fde7ef;
+  --color-bg-hero-to:#eef8ff;
+  --color-primary:#e88aaa;
+  --color-text-main:#303036;
+  --color-text-soft:#686873;
+  --color-text-muted:#a09fa8;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#d96f96;
+  --color-button-hover:#c55680;
+  --color-border:#eee1e5;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.28;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
 
-  --color-primary: #111827 !important;
-  --color-primary-soft: #9ca3af !important;
-
-  --color-text-main: #111827 !important;
-  --color-text-soft: #6b7280 !important;
-
-  --color-button: #111827 !important;
-  --color-button-hover: #000000 !important;
-
-  --color-border: #e5e7eb !important;
-  --color-muted: #6b7280 !important;
-
-  --hero-animation-opacity: 0.99 !important;
-  --hero-animation-blur: 1px !important;
-  --hero-animation-scale: 1.05 !important;
+background:var(--color-desktopbg-page);
+  
 }
 
-/* =========================
-   🎨 THEME: PARTY
-========================= */
-.theme-party {
-  --color-bg-main: #ffffff !important;
-  --color-bg-soft: #ede9fe !important;
-  --color-bg-hero-from: #ede9fe !important;
-  --color-bg-hero-to: #f5cafc !important;
+/* ============================================================
+   🎨 PALETA 03 — LAVENDER DREAM
+   Concepto/mood:
+   Soñador, mágico, delicado y ligeramente fantástico.
+   1. Motivo visual conceptual: Lavanda, flores, estrellas pequeñas y formas etéreas.
+   2. Familia de colores: Lavender, lilac y dusty purple.
+   3. Intensidad: Suave.
+   4. Público: Niños, adolescentes y adultos.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, FifteenthBirthday, BridalShower, BabyShower, Communion, Baptism, Wedding, Party.
+   6. Color protagonista: Lavender.
+   7. Colores secundarios: Lilac, dusty mauve y sage suave.
+   8. Neutros: Ivory y blanco cálido.
+============================================================ */
+.theme-lavender-dream {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f8f5ff;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e9e1f8;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#8b72b8;
+  --color-text-main:#302b35;
+  --color-text-soft:#625b68;
+  --color-text-muted:#98909f;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#7560a2;
+  --color-button-hover:#624e8e;
+  --color-border:#e3dced;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.32;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
 
-  --color-primary: #7c3aed !important;
-  --color-primary-soft: #c4b5fd !important;
-
-  --color-text-main: #1f2937 !important;
-  --color-text-soft: #6b7280 !important;
-
-  --color-button: #7c3aed !important;
-  --color-button-hover: #6d28d9 !important;
-
-  --color-border: #e5e7eb !important;
-  --color-muted: #6b7280 !important;
-
-  --hero-animation-opacity: 0.5 !important;
-  --hero-animation-blur: 0px !important;
-  --hero-animation-scale: 1.2 !important;
+background:var(--color-desktopbg-page);
+  
 }
+
+/* ============================================================
+   🎨 PALETA 04 — PEACH SORBET
+   Concepto/mood:
+   Alegre, luminoso, cálido y juvenil.
+   1. Motivo visual conceptual: Duraznos, flores, atardecer y formas suaves.
+   2. Familia de colores: Peach, apricot y coral suave.
+   3. Intensidad: Media.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, BabyShower, BridalShower, GenderReveal, Wedding, WeddingAnniversary.
+   6. Color protagonista: Peach.
+   7. Colores secundarios: Apricot, coral suave y dusty rose.
+   8. Neutros: Ivory, arena y cream.
+============================================================ */
+.theme-peach-sorbet {
+  --color-bg-main:#fffefd;
+  --color-bg-soft:#fff5ed;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#fbdcc8;
+  --color-bg-hero-to:#fffaf5;
+  --color-primary:#e98262;
+  --color-text-main:#382b27;
+  --color-text-soft:#6b5953;
+  --color-text-muted:#a2918a;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#d96d50;
+  --color-button-hover:#c4583e;
+  --color-border:#edddd4;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+/* =========================================================
+   ROSA ROSA
+
+   Concepto: dulce, alegre, femenino y juvenil.
+   Motivo visual conceptual: una celebración especial,
+   romántica y luminosa, con personalidad.
+   Familia de colores: rosa, magenta suave y neutros cálidos.
+   Intensidad: vibrante
+   Público: niñas / adolescentes / universal
+   Hero: color sólido, sin gradiente.
+   ========================================================= */
+
+.theme-pink-pink {
+ --color-bg-main:#ffffff;
+  --color-bg-soft:#fff9fc;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#f6b0d9;
+  --color-bg-hero-to:#f6b0d9;
+
+  --color-primary:#df83b7;
+
+  --color-text-main:#30282e;
+  --color-text-soft:#625762;
+  --color-text-muted:#958b94;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#df83b7;
+  --color-button-hover:#cc72a6;
+
+  --color-border:#f0dfe9;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+/* ============================================================
+   🎨 PALETA 05 — SKY & CLOUD
+   Concepto/mood:
+   Limpio, tranquilo, luminoso e inocente.
+   1. Motivo visual conceptual: Cielo, nubes, aire y pequeñas estrellas.
+   2. Familia de colores: Powder blue, sky blue y azul grisáceo.
+   3. Intensidad: Suave.
+   4. Público: Niños y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, BabyShower, Baptism, Communion, GenderReveal, Wedding, Party.
+   6. Color protagonista: Sky blue.
+   7. Colores secundarios: Powder blue y dusty blue.
+   8. Neutros: Blanco e ivory.
+============================================================ */
+.theme-sky-cloud {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f2f8fc;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#dceef8;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#5d9fc4;
+  --color-text-main:#29343a;
+  --color-text-soft:#58666e;
+  --color-text-muted:#929fa6;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#4d8caf;
+  --color-button-hover:#3d7899;
+  --color-border:#dbe8ee;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.28;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 06 — MINT CONFETTI
+   Concepto/mood:
+   Fresco, divertido, moderno y ligero.
+   1. Motivo visual conceptual: Confetti, hojas pequeñas, globos y geometría suave.
+   2. Familia de colores: Mint, aqua suave y verde agua.
+   3. Intensidad: Media.
+   4. Público: Niños, adolescentes y universal.
+   5. Tipos de eventos compatibles: KidsBirthday, Birthday, Party, BabyShower, GenderReveal, Communion.
+   6. Color protagonista: Mint.
+   7. Colores secundarios: Aqua, soft turquoise y pastel yellow.
+   8. Neutros: Blanco y cream.
+============================================================ */
+.theme-mint-confetti {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f0fbf7;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d9f3e9;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#49a88d;
+  --color-text-main:#263532;
+  --color-text-soft:#52635e;
+  --color-text-muted:#8d9d98;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#3f957d;
+  --color-button-hover:#337d69;
+  --color-border:#d9ebe5;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 07 — SOFT RAINBOW
+   Concepto/mood:
+   Optimista, alegre, inclusivo y juguetón sin ser estridente.
+   1. Motivo visual conceptual: Arcoíris estilizado, pequeños arcos y confetti suave.
+   2. Familia de colores: Pasteles multicolor.
+   3. Intensidad: Media.
+   4. Público: Niños y universal.
+   5. Tipos de eventos compatibles: KidsBirthday, Birthday, Party, BabyShower, GenderReveal, Communion.
+   6. Color protagonista: Combinación multicolor.
+   7. Colores secundarios: Rosa, amarillo, azul, mint y lavanda.
+   8. Neutros: Blanco cálido.
+============================================================ */
+.theme-soft-rainbow {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff9f2;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#fbe8ed;
+  --color-bg-hero-to:#eaf5fb;
+  --color-primary:#7c8fc4;
+  --color-text-main:#303238;
+  --color-text-soft:#62656d;
+  --color-text-muted:#999ca4;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#687bb0;
+  --color-button-hover:#56699d;
+  --color-border:#e9e3df;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.03;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 08 — SUNNY CELEBRATION
+   Concepto/mood:
+   Feliz, energético, luminoso y optimista.
+   1. Motivo visual conceptual: Sol, rayos suaves, flores amarillas y círculos.
+   2. Familia de colores: Butter yellow, amarillo cálido, peach y coral.
+   3. Intensidad: Vibrante.
+   4. Público: Niños, adolescentes y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, Graduation, BabyShower, GenderReveal.
+   6. Color protagonista: Amarillo solar.
+   7. Colores secundarios: Peach, coral y orange suave.
+   8. Neutros: Cream e ivory.
+============================================================ */
+.theme-sunny-celebration {
+  --color-bg-main:#fffefa;
+  --color-bg-soft:#fff9df;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#ffedaa;
+  --color-bg-hero-to:#fffdf3;
+  --color-primary:#e3a62f;
+  --color-text-main:#373128;
+  --color-text-soft:#665d4d;
+  --color-text-muted:#99917f;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#c98d20;
+  --color-button-hover:#ae7616;
+  --color-border:#eee4c6;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.03;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 09 — CHERRY PARTY
+   Concepto/mood:
+   Divertido, moderno, energético y ligeramente retro.
+   1. Motivo visual conceptual: Cerezas, lunares, formas gráficas retro y confetti.
+   2. Familia de colores: Cherry red, rojo cereza y pink-red.
+   3. Intensidad: Vibrante.
+   4. Público: Adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Party, FifteenthBirthday, WeddingAnniversary, Graduation.
+   6. Color protagonista: Cherry red.
+   7. Colores secundarios: Blush, coral y burgundy ligero.
+   8. Neutros: Cream e ivory.
+============================================================ */
+.theme-cherry-party {
+  --color-bg-main:#fffdfb;
+  --color-bg-soft:#fff3f1;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f8d2d0;
+  --color-bg-hero-to:#fffaf8;
+  --color-primary:#c83f4c;
+  --color-text-main:#332629;
+  --color-text-soft:#66565a;
+  --color-text-muted:#9b8a8e;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#b73542;
+  --color-button-hover:#982a36;
+  --color-border:#ecd9d9;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 10 — TROPICAL FIESTA
+   Concepto/mood:
+   Veraniego, energético, exuberante y festivo.
+   1. Motivo visual conceptual: Hojas tropicales, frutas, flores exóticas y sol.
+   2. Familia de colores: Coral, turquoise, mango y tropical green.
+   3. Intensidad: Vibrante.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, FifteenthBirthday, Wedding, WeddingAnniversary, GenderReveal.
+   6. Color protagonista: Coral / turquoise.
+   7. Colores secundarios: Mango, teal y verde tropical.
+   8. Neutros: Cream y arena.
+============================================================ */
+.theme-tropical-fiesta {
+  --color-bg-main:#fffefa;
+  --color-bg-soft:#effaf7;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#bfe9e2;
+  --color-bg-hero-to:#fff8ec;
+  --color-primary:#e36b55;
+  --color-text-main:#293331;
+  --color-text-soft:#53625f;
+  --color-text-muted:#8e9a97;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#d45a45;
+  --color-button-hover:#b94836;
+  --color-border:#dce9e5;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.32;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.04;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 11 — BUBBLEGUM POP
+   Concepto/mood:
+   Pop, juvenil, divertido, expresivo y energético.
+   1. Motivo visual conceptual: Burbujas, stickers, formas pop, corazones y estrellas.
+   2. Familia de colores: Bubblegum pink, hot pink moderado, lilac y coral.
+   3. Intensidad: Vibrante.
+   4. Público: Niños y adolescentes.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, FifteenthBirthday, Party, GenderReveal.
+   6. Color protagonista: Bubblegum pink.
+   7. Colores secundarios: Lilac, coral y peach.
+   8. Neutros: Blanco.
+============================================================ */
+.theme-bubblegum-pop {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff1f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f9cde3;
+  --color-bg-hero-to:#f4e5fb;
+  --color-primary:#e15b9c;
+  --color-text-main:#352b32;
+  --color-text-soft:#675965;
+  --color-text-muted:#9b8d97;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#d13f87;
+  --color-button-hover:#b92f73;
+  --color-border:#efd9e5;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.38;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.04;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 12 — AQUA POOL PARTY
+   Concepto/mood:
+   Refrescante, juvenil, veraniego y festivo.
+   1. Motivo visual conceptual: Agua, ondas, reflejos, piscina y sol.
+   2. Familia de colores: Aqua, turquoise, cyan suave y azul piscina.
+   3. Intensidad: Vibrante.
+   4. Público: Niños, adolescentes y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, Graduation, Wedding, GenderReveal.
+   6. Color protagonista: Aqua / turquoise.
+   7. Colores secundarios: Sky blue, teal y coral.
+   8. Neutros: Blanco y arena.
+============================================================ */
+.theme-aqua-pool-party {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#ecfafb;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#bdebed;
+  --color-bg-hero-to:#f8ffff;
+  --color-primary:#239eae;
+  --color-text-main:#263437;
+  --color-text-soft:#53666a;
+  --color-text-muted:#8e9ea2;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#198b9b;
+  --color-button-hover:#147480;
+  --color-border:#d5e9ec;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.36;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.04;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 13 — BERRY & PLUM
+   Concepto/mood:
+   Sofisticado, profundo, moderno y elegante.
+   1. Motivo visual conceptual: Frutos oscuros, flores, terciopelo y celebración nocturna.
+   2. Familia de colores: Berry, plum, mauve oscuro y raspberry.
+   3. Intensidad: Elegante.
+   4. Público: Adolescentes y adultos.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, WeddingAnniversary, Party, Wedding, BridalShower, Graduation.
+   6. Color protagonista: Berry / plum.
+   7. Colores secundarios: Dusty rose, mauve y burgundy.
+   8. Neutros: Ivory y champagne.
+============================================================ */
+.theme-berry-plum {
+  --color-bg-main:#fffdfd;
+  --color-bg-soft:#f9f0f5;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#ead3df;
+  --color-bg-hero-to:#fffafa;
+  --color-primary:#873b60;
+  --color-text-main:#33282e;
+  --color-text-soft:#62545c;
+  --color-text-muted:#988992;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#74314f;
+  --color-button-hover:#5e2740;
+  --color-border:#e6d8df;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 14 — MIDNIGHT CELEBRATION
+   Concepto/mood:
+   Noche, sofisticación y celebración nocturna.
+   1. Motivo visual conceptual: Cielo nocturno, estrellas, pequeñas luces y constelaciones.
+   2. Familia de colores: Navy, midnight blue y azul petróleo.
+   3. Intensidad: Elegante.
+   4. Público: Adolescentes y adultos.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Party, Wedding, WeddingAnniversary, Graduation, BarMitzvah, BatMitzvah, Corporate.
+   6. Color protagonista: Midnight blue.
+   7. Colores secundarios: Dusty blue, azul petróleo y champagne.
+   8. Neutros: Ivory y blanco.
+============================================================ */
+.theme-midnight-celebration {
+  --color-bg-main:#fbfcfe;
+  --color-bg-soft:#eef2f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d9e1ee;
+  --color-bg-hero-to:#fbfcfe;
+  --color-primary:#243b61;
+  --color-text-main:#202b3a;
+  --color-text-soft:#536073;
+  --color-text-muted:#8995a5;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#1d3457;
+  --color-button-hover:#152946;
+  --color-border:#d9e0ea;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 15 — EMERALD LUXE
+   Concepto/mood:
+   Lujo, naturaleza exuberante y celebración importante.
+   1. Motivo visual conceptual: Hojas elegantes, joyas y botánica oscura.
+   2. Familia de colores: Emerald, forest green y teal profundo.
+   3. Intensidad: Elegante.
+   4. Público: Adolescentes y adultos.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Wedding, WeddingAnniversary, Party, Graduation, BarMitzvah, BatMitzvah, Corporate.
+   6. Color protagonista: Emerald.
+   7. Colores secundarios: Forest green, teal y gold.
+   8. Neutros: Ivory y warm cream.
+============================================================ */
+.theme-emerald-luxe {
+  --color-bg-main:#fcfdfb;
+  --color-bg-soft:#edf5f0;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d1e5d9;
+  --color-bg-hero-to:#fcfdfb;
+  --color-primary:#16705a;
+  --color-text-main:#25332f;
+  --color-text-soft:#52625d;
+  --color-text-muted:#899993;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#12624e;
+  --color-button-hover:#0d503f;
+  --color-border:#d7e5de;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 16 — COBALT & SILVER
+   Concepto/mood:
+   Moderno, intenso, sofisticado y festivo.
+   1. Motivo visual conceptual: Destellos, cristales, geometría y reflejos de luz.
+   2. Familia de colores: Cobalt, royal blue e icy blue.
+   3. Intensidad: Vibrante.
+   4. Público: Adolescentes y adultos.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Party, Graduation, BarMitzvah, BatMitzvah, Corporate.
+   6. Color protagonista: Cobalt blue.
+   7. Colores secundarios: Royal blue, icy blue y silver.
+   8. Neutros: Blanco y cool white.
+============================================================ */
+.theme-cobalt-silver {
+  --color-bg-main:#fbfdff;
+  --color-bg-soft:#eef4fc;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d3e1f5;
+  --color-bg-hero-to:#fbfdff;
+  --color-primary:#315da8;
+  --color-text-main:#253142;
+  --color-text-soft:#536174;
+  --color-text-muted:#8995a6;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#285096;
+  --color-button-hover:#20417c;
+  --color-border:#d9e2ef;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.34;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.04;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 17 — TERRACOTTA SUNSET
+   Concepto/mood:
+   Cálido, adulto, relajado y sofisticado.
+   1. Motivo visual conceptual: Atardecer, cerámica, arcilla y paisaje mediterráneo.
+   2. Familia de colores: Terracotta, rust y burnt orange.
+   3. Intensidad: Media.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, Party, BridalShower, Corporate, Graduation.
+   6. Color protagonista: Terracotta.
+   7. Colores secundarios: Rust, burnt orange y muted sage.
+   8. Neutros: Cream, sand y warm ivory.
+============================================================ */
+.theme-terracotta-sunset {
+  --color-bg-main:#fffdfa;
+  --color-bg-soft:#f8f0e8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#efd3bd;
+  --color-bg-hero-to:#fffaf4;
+  --color-primary:#b85f43;
+  --color-text-main:#352c28;
+  --color-text-soft:#665951;
+  --color-text-muted:#968981;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#a95139;
+  --color-button-hover:#8f4230;
+  --color-border:#e8dbd0;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 18 — MOCHA & CREAM
+   Concepto/mood:
+   Cálido, minimalista, adulto, confortable y contemporáneo.
+   1. Motivo visual conceptual: Café, papel artesanal, madera y cerámica.
+   2. Familia de colores: Mocha, taupe, caramel y beige.
+   3. Intensidad: Suave.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, Party, Corporate, Graduation, BridalShower.
+   6. Color protagonista: Mocha.
+   7. Colores secundarios: Caramel, taupe y soft brown.
+   8. Neutros: Cream e ivory.
+============================================================ */
+.theme-mocha-cream {
+  --color-bg-main:#fffdf9;
+  --color-bg-soft:#f6f0e8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e8dbca;
+  --color-bg-hero-to:#fffdf9;
+  --color-primary:#80614e;
+  --color-text-main:#342d29;
+  --color-text-soft:#625850;
+  --color-text-muted:#958a82;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#6f5241;
+  --color-button-hover:#5b4234;
+  --color-border:#e5dbd0;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 19 — SAGE GARDEN
+   Concepto/mood:
+   Natural, tranquilo, fresco y elegante.
+   1. Motivo visual conceptual: Jardín, hojas, ramas y flores silvestres.
+   2. Familia de colores: Sage, olive y eucalyptus.
+   3. Intensidad: Suave.
+   4. Público: Universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, Baptism, Communion, BabyShower, BridalShower, Graduation, Corporate.
+   6. Color protagonista: Sage green.
+   7. Colores secundarios: Olive, eucalyptus y muted green.
+   8. Neutros: Cream, ivory y warm white.
+============================================================ */
+.theme-sage-garden {
+  --color-bg-main:#fcfdfb;
+  --color-bg-soft:#f0f5ef;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#dce9db;
+  --color-bg-hero-to:#fcfdfb;
+  --color-primary:#6f8f79;
+  --color-text-main:#2d3530;
+  --color-text-soft:#59645e;
+  --color-text-muted:#8f9993;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#607e69;
+  --color-button-hover:#506b58;
+  --color-border:#dbe5dc;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.28;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 20 — BOHO SAND
+   Concepto/mood:
+   Relajado, natural, artesanal y contemporáneo.
+   1. Motivo visual conceptual: Fibras naturales, pampas, arena y cerámica artesanal.
+   2. Familia de colores: Sand, beige, terracotta suave y taupe.
+   3. Intensidad: Suave.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, BridalShower, BabyShower, Party, Corporate.
+   6. Color protagonista: Sand / beige.
+   7. Colores secundarios: Terracotta, taupe y muted olive.
+   8. Neutros: Ivory y cream.
+============================================================ */
+.theme-boho-sand {
+  --color-bg-main:#fffdf9;
+  --color-bg-soft:#f7f1e7;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e9ddcb;
+  --color-bg-hero-to:#fffdf9;
+  --color-primary:#a78668;
+  --color-text-main:#37312b;
+  --color-text-soft:#655b50;
+  --color-text-muted:#958a7e;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#917152;
+  --color-button-hover:#795b40;
+  --color-border:#e6dcd0;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 21 — DUSTY BLUE ROMANCE
+   Concepto/mood:
+   Romántico, sereno, refinado y atemporal.
+   1. Motivo visual conceptual: Flores azuladas, acuarela, cielo y papel clásico.
+   2. Familia de colores: Dusty blue, slate blue y powder blue.
+   3. Intensidad: Suave.
+   4. Público: Universal.
+   5. Tipos de eventos compatibles: Wedding, Birthday, WeddingAnniversary, Baptism, Communion, BabyShower, BridalShower, Graduation, Corporate.
+   6. Color protagonista: Dusty blue.
+   7. Colores secundarios: Powder blue, slate blue y soft lavender.
+   8. Neutros: Ivory y cream.
+============================================================ */
+.theme-dusty-blue-romance {
+  --color-bg-main:#fcfdff;
+  --color-bg-soft:#f0f4f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#dce5ee;
+  --color-bg-hero-to:#fcfdff;
+  --color-primary:#6887a5;
+  --color-text-main:#29333d;
+  --color-text-soft:#56636e;
+  --color-text-muted:#8f9ba4;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#587792;
+  --color-button-hover:#48657e;
+  --color-border:#dce4eb;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.27;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 22 — VINTAGE ROSE
+   Concepto/mood:
+   Nostálgico, romántico, cálido y personal.
+   1. Motivo visual conceptual: Flores antiguas, papel envejecido, botánica y detalles retro.
+   2. Familia de colores: Dusty rose, mauve y muted burgundy.
+   3. Intensidad: Suave.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, BridalShower, BabyShower, FifteenthBirthday, Baptism.
+   6. Color protagonista: Dusty rose.
+   7. Colores secundarios: Mauve, burgundy suave y sage.
+   8. Neutros: Antique ivory y cream.
+============================================================ */
+.theme-vintage-rose {
+  --color-bg-main:#fffdfa;
+  --color-bg-soft:#f7efeb;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e9d2d0;
+  --color-bg-hero-to:#fffaf7;
+  --color-primary:#a35e6d;
+  --color-text-main:#352c2e;
+  --color-text-soft:#65585a;
+  --color-text-muted:#95888a;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#8f4d5d;
+  --color-button-hover:#783d4c;
+  --color-border:#e5d8d4;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.27;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 23 — CHAMPAGNE GLOW
+   Concepto/mood:
+   Celebración refinada, luminosa y cálida.
+   1. Motivo visual conceptual: Champagne, brillo sutil, velas y cristales.
+   2. Familia de colores: Champagne, blush y warm gold.
+   3. Intensidad: Elegante.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, BridalShower, BabyShower, Graduation, Baptism, Communion, Party.
+   6. Color protagonista: Champagne.
+   7. Colores secundarios: Blush, muted gold y beige.
+   8. Neutros: Ivory y warm white.
+============================================================ */
+.theme-champagne-glow {
+  --color-bg-main:#fffefb;
+  --color-bg-soft:#faf5e9;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f1e4c8;
+  --color-bg-hero-to:#fffdf7;
+  --color-primary:#b18b4a;
+  --color-text-main:#332f29;
+  --color-text-soft:#625b4e;
+  --color-text-muted:#958c7c;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#987638;
+  --color-button-hover:#7e602b;
+  --color-border:#e9dfca;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 24 — BURGUNDY WINE
+   Concepto/mood:
+   Profundo, romántico, adulto y sofisticado.
+   1. Motivo visual conceptual: Vino, flores oscuras, velas y terciopelo.
+   2. Familia de colores: Burgundy, wine y oxblood.
+   3. Intensidad: Elegante.
+   4. Público: Adultos.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, Party, Graduation, FifteenthBirthday, BarMitzvah, BatMitzvah.
+   6. Color protagonista: Burgundy.
+   7. Colores secundarios: Wine, dusty rose y muted green.
+   8. Neutros: Ivory y champagne.
+============================================================ */
+.theme-burgundy-wine {
+  --color-bg-main:#fffdfd;
+  --color-bg-soft:#f7eeee;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e7cecf;
+  --color-bg-hero-to:#fffafa;
+  --color-primary:#743640;
+  --color-text-main:#30282a;
+  --color-text-soft:#615458;
+  --color-text-muted:#94878b;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#663039;
+  --color-button-hover:#52242c;
+  --color-border:#e4d7d8;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 25 — BLACK & SOFT GOLD
+   Concepto/mood:
+   Lujo, gala y celebración nocturna.
+   1. Motivo visual conceptual: Black-tie, dorado, iluminación puntual y geometría elegante.
+   2. Familia de colores: Negro, charcoal y gold.
+   3. Intensidad: Elegante.
+   4. Público: Adultos.
+   5. Tipos de eventos compatibles: Birthday, WeddingAnniversary, Party, Graduation, Corporate, Wedding, BarMitzvah, BatMitzvah.
+   6. Color protagonista: Black.
+   7. Colores secundarios: Charcoal y antique gold.
+   8. Neutros: Ivory y warm white.
+============================================================ */
+.theme-black-soft-gold {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f4f3f0;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#deddd8;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#171717;
+  --color-text-main:#202020;
+  --color-text-soft:#555555;
+  --color-text-muted:#8d8d8d;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#171717;
+  --color-button-hover:#000000;
+  --color-border:#dedbd3;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 26 — IVORY & GOLD
+   Concepto/mood:
+   Clásico, limpio, ceremonial y atemporal.
+   1. Motivo visual conceptual: Papel fino, bordes dorados, flores blancas y arquitectura clásica.
+   2. Familia de colores: Ivory, cream y champagne gold.
+   3. Intensidad: Elegante.
+   4. Público: Universal.
+   5. Tipos de eventos compatibles: Wedding, Baptism, Communion, WeddingAnniversary, Birthday, Graduation, BarMitzvah, BatMitzvah, Corporate.
+   6. Color protagonista: Ivory.
+   7. Colores secundarios: Champagne y soft gold.
+   8. Neutros: Blanco cálido y cream.
+============================================================ */
+.theme-ivory-gold {
+  --color-bg-main:#fffefb;
+  --color-bg-soft:#faf7ef;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f0e7d2;
+  --color-bg-hero-to:#fffefb;
+  --color-primary:#aa8747;
+  --color-text-main:#322f29;
+  --color-text-soft:#625c50;
+  --color-text-muted:#948d7f;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#927438;
+  --color-button-hover:#795f2d;
+  --color-border:#e9e1d0;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.23;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+/* ============================================================
+   🎨 PALETA 27 — PEARL LAVENDER
+   Concepto/mood:
+   Delicado, ceremonial, femenino y luminoso.
+   1. Motivo visual conceptual: Perlas, luz iridiscente, flores lavanda y cristal.
+   2. Familia de colores: Lavender, pearl y lilac.
+   3. Intensidad: Suave.
+   4. Público: Niños, adolescentes y adultos.
+   5. Tipos de eventos compatibles: FifteenthBirthday, Birthday, Baptism, Communion, Wedding, BridalShower, BabyShower, GenderReveal.
+   6. Color protagonista: Lavender.
+   7. Colores secundarios: Lilac, pearl pink y soft silver.
+   8. Neutros: Pearl white e ivory.
+============================================================ */
+.theme-pearl-lavender {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f8f6fb;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e8e0f1;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#8d7da5;
+  --color-text-main:#302c34;
+  --color-text-soft:#625d67;
+  --color-text-muted:#97909d;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#79698f;
+  --color-button-hover:#66577b;
+  --color-border:#e4dfeb;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.25;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 28 — MEDITERRANEAN BLUE
+   Concepto/mood:
+   Fresco, luminoso, elegante y vacacional.
+   1. Motivo visual conceptual: Mar, cerámica mediterránea, olivos y arquitectura blanca.
+   2. Familia de colores: Aegean blue, cobalt y turquoise.
+   3. Intensidad: Media.
+   4. Público: Universal.
+   5. Tipos de eventos compatibles: Birthday, Party, Wedding, WeddingAnniversary, BabyShower, Graduation, Corporate.
+   6. Color protagonista: Mediterranean blue.
+   7. Colores secundarios: Turquoise, olive y sky blue.
+   8. Neutros: White, ivory y sand.
+============================================================ */
+.theme-mediterranean-blue {
+  --color-bg-main:#fcfdfc;
+  --color-bg-soft:#edf5f6;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d1e6eb;
+  --color-bg-hero-to:#fcfdfc;
+  --color-primary:#28758b;
+  --color-text-main:#273338;
+  --color-text-soft:#526268;
+  --color-text-muted:#8d9b9f;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#21677b;
+  --color-button-hover:#195565;
+  --color-border:#d7e5e8;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.3;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.02;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 29 — CELESTIAL NIGHT
+   Concepto/mood:
+   Mágico, misterioso y sofisticado.
+   1. Motivo visual conceptual: Galaxia, constelaciones, estrellas y luna.
+   2. Familia de colores: Midnight blue, violet e indigo.
+   3. Intensidad: Elegante.
+   4. Público: Adolescentes y adultos.
+   5. Tipos de eventos compatibles: FifteenthBirthday, Birthday, Party, Wedding, WeddingAnniversary, Graduation, BarMitzvah, BatMitzvah.
+   6. Color protagonista: Midnight blue.
+   7. Colores secundarios: Indigo, violet y silver.
+   8. Neutros: White e icy white.
+============================================================ */
+.theme-celestial-night {
+  --color-bg-main:#fbfcff;
+  --color-bg-soft:#f0f1f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#d9dced;
+  --color-bg-hero-to:#fbfcff;
+  --color-primary:#3c467d;
+  --color-text-main:#282c3c;
+  --color-text-soft:#565b6e;
+  --color-text-muted:#8e93a5;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#333c70;
+  --color-button-hover:#282f5a;
+  --color-border:#dcdeea;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.34;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.03;
+
+background:var(--color-desktopbg-page);
+}
+
+/* ============================================================
+   🎨 PALETA 30 — MODERN EDITORIAL
+   Concepto/mood:
+   Contemporáneo, minimalista, premium y seguro.
+   1. Motivo visual conceptual: Tipografía protagonista, geometría limpia y espacio negativo.
+   2. Familia de colores: Charcoal, deep blue, muted beige y off-white.
+   3. Intensidad: Elegante.
+   4. Público: Adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Wedding, WeddingAnniversary, Graduation, Corporate, Party, Baptism, Communion.
+   6. Color protagonista: Charcoal / deep blue.
+   7. Colores secundarios: Muted blue, taupe y subtle gold.
+   8. Neutros: Warm white, ivory y cream.
+============================================================ */
+.theme-modern-editorial {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f3f4f3;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#e4e6e4;
+  --color-bg-hero-to:#ffffff;
+  --color-primary:#26333f;
+  --color-text-main:#20262b;
+  --color-text-soft:#566068;
+  --color-text-muted:#8b949a;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#26333f;
+  --color-button-hover:#17222b;
+  --color-border:#dfe2e1;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.22;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* ============================================================
+   🎨 PALETA 31 — SUMMER SPLASH
+   Concepto/mood:
+   Verano luminoso, fresco, alegre y espontáneo.
+   1. Motivo visual conceptual: Mar, frutas tropicales, sol, agua y fiesta de verano.
+   2. Familia de colores: Aqua, coral, sunny yellow y turquoise.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, Graduation, BabyShower, GenderReveal.
+   6. Color protagonista: Coral.
+   7. Colores secundarios: Aqua, turquoise y sunny yellow.
+   8. Neutros: Blanco cálido y cream.
+============================================================ */
+.theme-summer-splash {
+  --color-bg-main:#fffdf7;
+  --color-bg-soft:#fff3d9;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#65d5d0;
+  --color-bg-hero-to:#ff9b6a;
+  --color-primary:#ef6250;
+  --color-text-main:#30302c;
+  --color-text-soft:#625f55;
+  --color-text-muted:#969083;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#159fa7;
+  --color-button-hover:#0d8088;
+  --color-border:#ead7ad;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.4;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 32 — RETRO PICNIC
+   Concepto/mood:
+   Alegre, nostálgico, informal y muy social.
+   1. Motivo visual conceptual: Picnic, manteles, frutas, flores y verano retro.
+   2. Familia de colores: Tomato red, butter yellow, turquoise y cream.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, WeddingAnniversary, Graduation.
+   6. Color protagonista: Tomato red.
+   7. Colores secundarios: Butter yellow, turquoise y soft green.
+   8. Neutros: Cream y warm white.
+============================================================ */
+.theme-retro-picnic {
+  --color-bg-main:#fffdf4;
+  --color-bg-soft:#fff1c9;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f4c84a;
+  --color-bg-hero-to:#55c4c0;
+  --color-primary:#e45142;
+  --color-text-main:#332f28;
+  --color-text-soft:#625b4d;
+  --color-text-muted:#968c79;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#198f92;
+  --color-button-hover:#147476;
+  --color-border:#e4d49e;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.38;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 33 — NEON SOFT
+   Concepto/mood:
+   Juvenil, moderno, energético y tecnológico sin resultar estridente.
+   1. Motivo visual conceptual: Luces de neón difusas, stickers, música y cultura pop.
+   2. Familia de colores: Fuchsia, violet, cyan y electric blue.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Adolescentes y adultos jóvenes.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Party, Graduation.
+   6. Color protagonista: Fuchsia.
+   7. Colores secundarios: Violet, cyan y electric blue.
+   8. Neutros: White, icy lavender y very light gray.
+============================================================ */
+.theme-neon-soft {
+  --color-bg-main:#fcfbff;
+  --color-bg-soft:#f4effb;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#ed79c2;
+  --color-bg-hero-to:#69c9e8;
+  --color-primary:#d94b9d;
+  --color-text-main:#302b35;
+  --color-text-soft:#625a68;
+  --color-text-muted:#958c9c;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#5969c8;
+  --color-button-hover:#4655ad;
+  --color-border:#ddd4e8;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.38;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 34 — TROPICAL GARDEN
+   Concepto/mood:
+   Natural, alegre, fresco y festivo.
+   1. Motivo visual conceptual: Hojas tropicales, flores, frutas y jardín.
+   2. Familia de colores: Leaf green, coral, mango yellow y turquoise.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Party, Wedding, BabyShower, GenderReveal, WeddingAnniversary.
+   6. Color protagonista: Tropical green.
+   7. Colores secundarios: Coral, mango yellow y turquoise.
+   8. Neutros: White, cream y sand.
+============================================================ */
+.theme-tropical-garden {
+  --color-bg-main:#fbfef9;
+  --color-bg-soft:#edf6df;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#73c78b;
+  --color-bg-hero-to:#f5b84b;
+  --color-primary:#e55d4e;
+  --color-text-main:#2e332b;
+  --color-text-soft:#596052;
+  --color-text-muted:#8e9585;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#299b8d;
+  --color-button-hover:#207d72;
+  --color-border:#d0dfc2;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.38;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 35 — SUNSET PARTY
+   Concepto/mood:
+   Cálido, divertido, expresivo y social.
+   1. Motivo visual conceptual: Atardecer, música, luces y reunión entre amigos.
+   2. Familia de colores: Orange, coral, pink y violet.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Party, Graduation, WeddingAnniversary.
+   6. Color protagonista: Coral orange.
+   7. Colores secundarios: Pink, orange y violet.
+   8. Neutros: White, cream y very light peach.
+============================================================ */
+.theme-sunset-party {
+  --color-bg-main:#fffaf7;
+  --color-bg-soft:#fff0e7;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#ff9a62;
+  --color-bg-hero-to:#d77bc7;
+  --color-primary:#e95b67;
+  --color-text-main:#332b2d;
+  --color-text-soft:#66585a;
+  --color-text-muted:#968486;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#8d55b6;
+  --color-button-hover:#724199;
+  --color-border:#ead2ca;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.4;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 36 — CANDY FESTIVAL
+   Concepto/mood:
+   Dulce, alegre, juvenil y lleno de movimiento.
+   1. Motivo visual conceptual: Golosinas, confeti, globos y festival.
+   2. Familia de colores: Pink, orange, violet y aqua.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños y adolescentes.
+   5. Tipos de eventos compatibles: KidsBirthday, Birthday, FifteenthBirthday, Party, GenderReveal.
+   6. Color protagonista: Pink.
+   7. Colores secundarios: Orange, violet y aqua.
+   8. Neutros: White y very light lavender.
+============================================================ */
+.theme-candy-festival {
+  --color-bg-main:#fffdfd;
+  --color-bg-soft:#fff0f5;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#f47eaf;
+  --color-bg-hero-to:#7bc9dd;
+  --color-primary:#df5a8d;
+  --color-text-main:#332c32;
+  --color-text-soft:#655b63;
+  --color-text-muted:#978c95;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#e28a36;
+  --color-button-hover:#c66e20;
+  --color-border:#e8d1db;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.4;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 37 — OCEAN POP
+   Concepto/mood:
+   Fresco, moderno, veraniego y optimista.
+   1. Motivo visual conceptual: Mar, olas, cielo, coral y pequeños acentos solares.
+   2. Familia de colores: Ocean blue, aqua, coral y sunny yellow.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, Party, Wedding, Graduation, BabyShower, GenderReveal.
+   6. Color protagonista: Ocean blue.
+   7. Colores secundarios: Aqua, coral y sunny yellow.
+   8. Neutros: White y very light blue.
+============================================================ */
+.theme-ocean-pop {
+  --color-bg-main:#fbfeff;
+  --color-bg-soft:#e7f6f8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#51b9d1;
+  --color-bg-hero-to:#ff9a72;
+  --color-primary:#287eae;
+  --color-text-main:#293238;
+  --color-text-soft:#56636a;
+  --color-text-muted:#8d9ba1;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#e56b52;
+  --color-button-hover:#c9503b;
+  --color-border:#cbe1e5;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.39;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 38 — LIME & BERRY
+   Concepto/mood:
+   Audaz, juvenil, fresco y contemporáneo.
+   1. Motivo visual conceptual: Frutas, hojas, stickers y formas gráficas.
+   2. Familia de colores: Lime, berry, violet y peach.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Adolescentes y adultos jóvenes.
+   5. Tipos de eventos compatibles: Birthday, FifteenthBirthday, Party, Graduation.
+   6. Color protagonista: Berry.
+   7. Colores secundarios: Lime, violet y peach.
+   8. Neutros: White, cream y very light green.
+============================================================ */
+.theme-lime-berry {
+  --color-bg-main:#fcfff9;
+  --color-bg-soft:#eff6df;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#b8d95c;
+  --color-bg-hero-to:#c76aa2;
+  --color-primary:#a83f72;
+  --color-text-main:#302d2c;
+  --color-text-soft:#615b56;
+  --color-text-muted:#919087;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#8062b8;
+  --color-button-hover:#684a9e;
+  --color-border:#d6dfc1;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.38;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 39 — COLOR FIESTA
+   Concepto/mood:
+   Celebración alegre, dinámica y universal.
+   1. Motivo visual conceptual: Confeti, globos, serpentinas y fiesta.
+   2. Familia de colores: Blue, yellow, coral y turquoise.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, Graduation, BabyShower, GenderReveal, FifteenthBirthday.
+   6. Color protagonista: Cobalt blue.
+   7. Colores secundarios: Yellow, coral y turquoise.
+   8. Neutros: White y cream.
+============================================================ */
+.theme-color-fiesta {
+  --color-bg-main:#fffef9;
+  --color-bg-soft:#fff5d8;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#4f8fd5;
+  --color-bg-hero-to:#f5a052;
+  --color-primary:#e45c50;
+  --color-text-main:#2d3032;
+  --color-text-name:#F2F2F2;
+  --color-text-soft:#5b5e60;
+  --color-text-muted:#8e9292;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#2f9e9c;
+  --color-button-hover:#247f7e;
+  --color-border:#e8d9ae;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.4;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+/* ============================================================
+   🎨 PALETA 40 — RAINBOW CELEBRATION
+   Concepto/mood:
+   Alegre, inclusivo, optimista y claramente celebratorio.
+   1. Motivo visual conceptual: Arcoíris, confeti, globos y celebración multicolor.
+   2. Familia de colores: Coral, yellow, turquoise, blue y violet.
+   3. Intensidad: Vibrante moderada.
+   4. Público: Niños, adolescentes, adultos y universal.
+   5. Tipos de eventos compatibles: Birthday, KidsBirthday, Party, Graduation, BabyShower, GenderReveal, FifteenthBirthday.
+   6. Color protagonista: Coral.
+   7. Colores secundarios: Sunny yellow, turquoise, blue y violet.
+   8. Neutros: White, cream y very light gray.
+============================================================ */
+.theme-rainbow-celebration {
+  --color-bg-main:#fffefb;
+  --color-bg-soft:#fff5e5;
+  --color-bg-card:#ffffff;
+  --color-bg-hero-from:#ff8d72;
+  --color-bg-hero-to:#67c9d1;
+  --color-primary:#e65c64;
+  --color-text-main:#302f32;
+  --color-text-soft:#5f5d62;
+  --color-text-muted:#919096;
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+  --color-button:#6878c5;
+  --color-button-hover:#5362aa;
+  --color-border:#e8d9c2;
+  --color-error:#dc2626;
+  --color-success:#15803d;
+  --color-bg-hero-InvitedTo:#ffffff;
+  --hero-animation-opacity:.4;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1.01;
+
+background:var(--color-desktopbg-page);
+}
+
+
+
+
+.theme-soft-blossom {
+
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff7fa;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#f4c6d6;
+  --color-bg-hero-to:#fdf8fa;
+
+  --color-primary:#c97898;
+
+  --color-text-main:#30292d;
+  --color-text-soft:#62585d;
+  --color-text-muted:#978d92;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#b96385;
+  --color-button-hover:#a65072;
+
+  --color-border:#ead8df;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+.theme-coral-aqua-party {
+
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff8f4;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#e8898d;
+  --color-bg-hero-to:#e8898d;
+
+  --color-primary:#d76568;
+
+  --color-text-main:#29282b;
+  --color-text-soft:#5d595b;
+  --color-text-muted:#938d8f;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#d76568;
+  --color-button-hover:#bd5053;
+
+  --color-border:#eadbd7;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+.theme-sage {
+
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f6f8f5;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#718878;
+  --color-bg-hero-to:#718878;
+
+  --color-primary:#617968;
+
+  --color-text-main:#292c2a;
+  --color-text-soft:#555c57;
+  --color-text-muted:#858d88;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#617968;
+  --color-button-hover:#506656;
+
+  --color-border:#dce2dc;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   1. PASTEL SUNRISE
+   Concepto: cálido, alegre, delicado y acogedor.
+   Familia: rosa melón, durazno, amarillo suave y lavanda.
+   Intensidad: suave
+   Público: universal
+   ========================================================= */
+
+.theme-pastel-sunrise {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff8f3;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#f6c6c3;
+  --color-bg-hero-to:#f6c6c3;
+
+  --color-primary:#d98282;
+
+  --color-text-main:#302b2c;
+  --color-text-soft:#62595a;
+  --color-text-muted:#978d8e;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#d98282;
+  --color-button-hover:#c66d6d;
+
+  --color-border:#ecdcd8;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   2. PASTEL OCEAN
+   Concepto: fresco, luminoso, tranquilo y liviano.
+   Familia: aqua, azul cielo, lavanda y blanco cálido.
+   Intensidad: suave
+   Público: universal
+   ========================================================= */
+
+.theme-pastel-ocean {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f4fbfc;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#acdfe2;
+  --color-bg-hero-to:#acdfe2;
+
+  --color-primary:#5caeb5;
+
+  --color-text-main:#293033;
+  --color-text-soft:#586367;
+  --color-text-muted:#8c989b;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#5caeb5;
+  --color-button-hover:#4899a0;
+
+  --color-border:#d7e8e9;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   3. PASTEL MEADOW
+   Concepto: natural, dulce, cálido y acogedor.
+   Familia: verde salvia, amarillo manteca, durazno y crema.
+   Intensidad: suave
+   Público: universal
+   ========================================================= */
+
+.theme-pastel-meadow {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f8faf4;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#c8dcb9;
+  --color-bg-hero-to:#c8dcb9;
+
+  --color-primary:#78986f;
+
+  --color-text-main:#2d302b;
+  --color-text-soft:#5b6257;
+  --color-text-muted:#92988f;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#78986f;
+  --color-button-hover:#63825b;
+
+  --color-border:#dfe6d8;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   4. PASTEL LAVENDER
+   Concepto: mágico, juvenil, delicado y especial.
+   Familia: lavanda, rosa y azul cielo.
+   Intensidad: suave
+   Público: universal
+   ========================================================= */
+
+.theme-pastel-lavender {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#faf8fd;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#d4c5e8;
+  --color-bg-hero-to:#d4c5e8;
+
+  --color-primary:#9a7dbb;
+
+  --color-text-main:#302d34;
+  --color-text-soft:#615c65;
+  --color-text-muted:#958f99;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#9a7dbb;
+  --color-button-hover:#8365a5;
+
+  --color-border:#e4ddec;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   5. PASTEL CANDY
+   Concepto: dulce, divertido y festivo sin ser infantil.
+   Familia: rosa, aqua, amarillo y lavanda.
+   Intensidad: suave
+   Público: universal
+   ========================================================= */
+
+.theme-pastel-candy2 {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff9fc;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#efc5d8;
+  --color-bg-hero-to:#efc5d8;
+
+  --color-primary:#c47c9c;
+
+  --color-text-main:#302b2e;
+  --color-text-soft:#61585d;
+  --color-text-muted:#968c91;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#c47c9c;
+  --color-button-hover:#ad6686;
+
+  --color-border:#eadde3;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   6. CORAL FESTIVO
+
+   Concepto: alegre, cálido, energético y celebratorio.
+   Motivo visual conceptual: una celebración luminosa y
+   espontánea, con una sensación cálida y divertida.
+   Familia de colores: coral y neutros cálidos.
+   Intensidad: vibrante
+   Público: universal
+   ========================================================= */
+
+.theme-coral-festive {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff8f4;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#df7476;
+  --color-bg-hero-to:#df7476;
+
+  --color-primary:#d85f64;
+
+  --color-text-main:#29292b;
+  --color-text-soft:#5b5859;
+  --color-text-muted:#918d8e;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#d85f64;
+  --color-button-hover:#bd4d52;
+
+  --color-border:#eadbd7;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   7. FRAMBUESA CELEBRACIÓN
+
+   Concepto: juvenil, alegre, moderno y expresivo.
+   Motivo visual conceptual: una celebración llena de
+   energía y personalidad, con una estética alegre.
+   Familia de colores: frambuesa y neutros rosados.
+   Intensidad: vibrante
+   Público: universal
+   ========================================================= */
+
+.theme-berry-celebration {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fff7fa;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#c95378;
+  --color-bg-hero-to:#c95378;
+
+  --color-primary:#c95378;
+
+  --color-text-main:#2c292b;
+  --color-text-soft:#5e585b;
+  --color-text-muted:#91898d;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#c95378;
+  --color-button-hover:#aa3f62;
+
+  --color-border:#ead8df;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   8. AZUL VERANO
+
+   Concepto: fresco, optimista, luminoso y contemporáneo.
+   Motivo visual conceptual: una celebración al aire libre,
+   asociada con verano, cielo y libertad.
+   Familia de colores: azul y neutros fríos.
+   Intensidad: vibrante
+   Público: universal
+   ========================================================= */
+
+.theme-summer-blue {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f5f9fc;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#527fa8;
+  --color-bg-hero-to:#527fa8;
+
+  --color-primary:#527fa8;
+
+  --color-text-main:#292d31;
+  --color-text-soft:#596067;
+  --color-text-muted:#8c949a;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#527fa8;
+  --color-button-hover:#416b90;
+
+  --color-border:#d9e2e8;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   9. CIRUELA ELEGANTE
+
+   Concepto: sofisticado, juvenil, festivo y refinado.
+   Motivo visual conceptual: una celebración nocturna,
+   elegante y con personalidad.
+   Familia de colores: ciruela y neutros suaves.
+   Intensidad: vibrante
+   Público: adolescentes / adultos
+   ========================================================= */
+
+.theme-elegant-plum {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#fbf7f8;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#825879;
+  --color-bg-hero-to:#825879;
+
+  --color-primary:#825879;
+
+  --color-text-main:#2e2a2e;
+  --color-text-soft:#5e575e;
+  --color-text-muted:#918991;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#825879;
+  --color-button-hover:#6b4763;
+
+  --color-border:#e3d9e1;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+
+/* =========================================================
+   10. VERDE TROPICAL
+
+   Concepto: fresco, natural, alegre y relajado.
+   Motivo visual conceptual: una celebración al aire libre,
+   tropical y luminosa.
+   Familia de colores: verde y neutros naturales.
+   Intensidad: vibrante
+   Público: universal
+   ========================================================= */
+
+.theme-tropical-green {
+  --color-bg-main:#ffffff;
+  --color-bg-soft:#f6faf6;
+  --color-bg-card:#ffffff;
+
+  --color-bg-hero-from:#659b7b;
+  --color-bg-hero-to:#659b7b;
+
+  --color-primary:#659b7b;
+
+  --color-text-main:#292d2a;
+  --color-text-soft:#59615b;
+  --color-text-muted:#8d968f;
+
+  --color-text-on-primary:#ffffff;
+  --color-text-gallery:#ffffff;
+
+  --color-button:#659b7b;
+  --color-button-hover:#518366;
+
+  --color-border:#d9e4db;
+
+  --color-error:#dc2626;
+  --color-success:#15803d;
+
+  --color-bg-hero-InvitedTo:#ffffff;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+/* =========================================================
+   BLACK & GOLD
+
+   Concepto: elegante, sofisticado, nocturno y exclusivo.
+   Motivo visual conceptual: celebración nocturna,
+   glamorosa y especial, con detalles dorados.
+   Familia de colores: negro, carbón y oro cálido.
+   Intensidad: elegante
+   Público: adolescentes / adultos / universal
+   Hero: color sólido, sin gradiente.
+   ========================================================= */
+
+.theme-black-gold {
+
+  --color-bg-main:#000000;
+  --color-bg-soft:#080808;
+  --color-bg-card:#111111;
+
+  --color-bg-hero-from:#000000;
+  --color-bg-hero-to:#000000;
+
+  --color-primary:#d6ad32;
+
+  --color-text-main:#d6ad32;
+  --color-text-soft:#bd9b3d;
+  --color-text-muted:#927c35;
+
+  --color-text-on-primary:#000000;
+  --color-text-gallery:#d6ad32;
+
+  --color-button:#d6ad32;
+  --color-button-hover:#e0b83e;
+
+  --color-border:#66531b;
+
+  --color-error:#ef6b6b;
+  --color-success:#8fbd72;
+
+  --color-bg-hero-InvitedTo:#000000;
+
+  --hero-animation-opacity:0.35;
+  --hero-animation-blur:0px;
+  --hero-animation-scale:1;
+
+background:var(--color-desktopbg-page);
+  
+}
+
+/* COLOR DESKTOP BG */
+
+/* FIN-PALETAS */
 
 /* =========================
    🧱 BASE UI
@@ -925,7 +2680,7 @@ body {
    🌈 SECTIONS
 ========================= */
 .section {
-  @apply py-16 px-6 text-center;
+  @apply py-10 px-6 text-center;
 }
 
 .section-soft {
@@ -948,47 +2703,43 @@ body {
   );
 }
 
+.section-hero-card {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.6); 
+  background-color: color-mix(in srgb, var(--color-bg-hero-InvitedTo) 60%, transparent);
+}
+
+/*.section-hero-card-bg {
+  // Fallback para navegadores antiguos (Chrome < 111, Safari iOS < 16.2) 
+  background-color: rgba(255, 255, 255, 0.6); 
+
+  // Regla moderna 
+  background-color: color-mix(in srgb, var(--color-bg-hero-InvitedTo) 60%, transparent);
+}*/
+
 /* =========================
    🔘 TITLES
 ========================= */
 
 .title-section {
-  @apply text-[35px] font-light;
+  @apply text-[34px] font-light;
   color: var(--color-text-main);
 }
 
-.title-mb-interline {
+.title-mb-md {
   @apply mb-2;
 }
-
-.title-mb-md {
-  @apply mb-8;
-}
 /* text-4xl font-bold mb-4 */
-.title-mb-sm {
-  @apply mb-6;
-}
-
-.title-mb-lg {
-  @apply mb-10;
-}
 
 .title2-section {
   @apply text-[30px] font-light;
   color: var(--color-text-main);
 }
 
-.title2-mb-md {
-  @apply mb-8;
-}
 /* text-4xl font-bold mb-4 */
-.title2-mb-sm {
-  @apply mb-6;
-}
-
-.title2-mb-lg {
-  @apply mb-10;
-}
 
 .subtitle-section {
   @apply text-[18px];
@@ -999,17 +2750,7 @@ body {
   @apply mb-2;
 }
 
-.subtitle-mb-md {
-  @apply mb-8;
-}
 /* text-4xl font-bold mb-4 */
-.subtitle-mb-sm {
-  @apply mb-6;
-}
-
-.subtitle-mb-lg {
-  @apply mb-10;
-}
 
 /* =========================
    🔘 BOTONES
@@ -1017,7 +2758,7 @@ body {
 .main-button {
   @apply px-12 py-4 rounded-4xl shadow-md transition font-medium;
   background: var(--color-button);
-  color: white;
+  color:var(--color-text-on-primary);
 }
 
 .main-button:hover {
@@ -1035,28 +2776,21 @@ body {
   color: var(--color-text-soft);
 }
 
-.text-muted {
-  color: var(--color-muted);
-}
-
 /* =========================
    🧱 CARDS
 ========================= */
-.card {
-  @apply bg-white p-4 rounded-lg shadow-md transition;
+/*.card {
+  @apply p-4 rounded-lg shadow-md transition;
+  background:var(--color-bg-card);
 }
 
 .card:hover {
   @apply shadow-lg;
-}
+}*/
 
 /* =========================
    💖 FONDO DECORATIVO
 ========================= */
-.bg-heart {
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='10' y='40' font-size='18' fill='%23f9a8d4' opacity='0.25'%3E%E2%9D%A4%3C/text%3E%3C/svg%3E");
-}
 
 /* =========================
    🎉 HERO ANIMATION
@@ -1084,10 +2818,6 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out;
-}
-
-.animate-fade-up {
-  animation: fadeIn 1s ease-out;
 }
 
 /* =========================
@@ -1123,16 +2853,89 @@ body {
   animation: fadeIn 0.6s ease-out both;
 }
 
+.hero-invitation-margin {
+  margin-top: 20px; /* Valor en Mobile */
+}
+
+@media (min-width: 768px) {
+  .hero-invitation-margin {
+    margin-top: 80px; /* Valor en Desktop */
+  }
+}
 
 /* EDIT MARKER */
 .group-div {
   position: relative;
 }
 
-.editmarker-bg {
-  background-color:var(--color-gray-50);
+@layer utilities {
+  .remark-section {
+    @apply ring-2 ring-inset ring-orange-400;
+  }
+  .normal-section {
+    opacity: 0.4 !important;
+    animation: none !important;
+    transition: opacity 300ms;
+  }
+
+  .marker-ui {
+    font-family: system-ui !important;
+  }
+
 }
 
-.editmarker-input-bg {
-  background-color: white;
+.hero-animation-container {
+  /* Transparente arriba (0%), sólido del 15% al 85%, transparente abajo (100%) */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
+
+/* FONT SCALE */
+.font-user.text-xs:not(.marker-ui *),.font-user .text-xs:not(.marker-ui *) {
+  font-size:calc(14px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-sm:not(.marker-ui *),.font-user .text-sm:not(.marker-ui *) {
+  font-size:calc(18px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-lg:not(.marker-ui *),.font-user .text-lg:not(.marker-ui *) {
+  font-size:calc(24px * var(--user-font-scale,1)) !important;
+  line-height:calc(32px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-xl:not(.marker-ui *),.font-user .text-xl:not(.marker-ui *) {
+  font-size:calc(30px * var(--user-font-scale,1)) !important;
+  line-height:calc(38px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-2xl:not(.marker-ui *),.font-user .text-2xl:not(.marker-ui *) {
+  font-size:calc(36px * var(--user-font-scale,1)) !important;
+  line-height:calc(44px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-4xl:not(.marker-ui *),.font-user .text-4xl:not(.marker-ui *) {
+  font-size:calc(56px * var(--user-font-scale,1)) !important;
+  line-height:calc(62px * var(--user-font-scale,1)) !important;
+}
+.font-user.text-small:not(.marker-ui *),.font-user .text-small:not(.marker-ui *) {
+  font-size:calc(22px * var(--user-font-scale,1)) !important;
+  line-height:calc(26px * var(--user-font-scale,1)) !important;
+}
+.font-user.title-section:not(.marker-ui *),.font-user .title-section:not(.marker-ui *) {
+  font-size:calc(48px * var(--user-font-scale,1)) !important;
+}
+.font-user.title2-section:not(.marker-ui *),.font-user .title2-section:not(.marker-ui *) {
+  font-size:calc(42px * var(--user-font-scale,1)) !important;
+}
+.font-user.subtitle-section:not(.marker-ui *),.font-user .subtitle-section:not(.marker-ui *) {
+  font-size:calc(24px * var(--user-font-scale,1)) !important;
+  line-height:calc(32px * var(--user-font-scale,1)) !important;
 }

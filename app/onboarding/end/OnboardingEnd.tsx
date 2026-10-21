@@ -159,7 +159,7 @@ export default function OnboardingEnd({
                 </div>
 
                 {message&&(
-                  <div className="mt-3 text-sm text-green-600">
+                  <div className="mt-3 text-sm text-[var(--color-success)]">
                     {message}
                   </div>
                 )}

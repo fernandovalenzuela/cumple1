@@ -1,3 +1,30 @@
+
+Ejecucion:
+
+pnpm dev
+
+pnpm build
+
+
+TUNEL
+
+cloudflared tunnel --url http://localhost:3000 --protocol http2
+
+
+url: buscar "Your quick Tunnel has been created! Visit it at (it may take some time to be reachable)"
+
+url/onboarding
+
+
+
+
+------------------
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -34,3 +61,36 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+----------------------------------------------------
+Ejecucion debug, acceso local celular:
+
+Powershell 1:
+-------------
+c:\fuentes\nextjs\cumple1\cumple1\
+pnpm dev
+
+
+Powershell 2:
+------------
+cloudflared tunnel --url http://localhost:3000 --protocol http2
+
+Se debe buscar la url dentro de la salida en el terminal. Aparece aqui:
+
++--------------------------------------------------------------------------------------------+
+2026-08-18T15:09:56Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2026-08-18T15:09:56Z INF |  https://xxxxxxxxx.com                                 |
+2026-08-18T15:09:56Z INF +--------------------------------------------------------------------------------------------+
+
+
+Poner en el celular:
+https://xxxxxxxxx.com/onboarding/editor
+
+
+
+---------------------------------------------------
+
+OLD
+pnpm dev --hostname 0.0.0.0
+

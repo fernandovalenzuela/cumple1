@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ELEMENTO 1: Vestido de Princesa Rosa Grande (Izquierda Superior) -->
+    <g transform="translate(60, 40)">
+      <!-- Corsé -->
+      <path d="M 35 30 Q 50 20 65 30 L 60 65 Q 50 68 40 65 Z" fill="#FFB7B2" stroke="#E57373" stroke-width="2" />
+      <!-- Cuello / Mangas abombadas -->
+      <circle cx="30" cy="35" r="10" fill="#FFDAC1" stroke="#E57373" stroke-width="1.5" />
+      <circle cx="70" cy="35" r="10" fill="#FFDAC1" stroke="#E57373" stroke-width="1.5" />
+      <!-- Falda -->
+      <path d="M 40 65 Q 10 100 0 140 Q 50 155 100 140 Q 90 100 60 65 Z" fill="#FF9AA2" stroke="#E57373" stroke-width="2.5" />
+      <path d="M 40 65 Q 50 120 50 148" stroke="#E57373" stroke-width="1.5" stroke-dasharray="3,3" />
+      <!-- Moño -->
+      <path d="M 43 65 L 57 65 L 50 70 Z" fill="#E57373" />
+    </g>
+
+    <!-- ELEMENTO 2: Corona Real Dorada (Centro Superior) -->
+    <g transform="translate(330, 40)">
+      <path d="M 10 60 L 0 15 L 30 35 L 50 5 L 70 35 L 100 15 L 90 60 Z" fill="#FFD166" stroke="#F4A261" stroke-width="2.5" />
+      <!-- Joyas de la corona -->
+      <circle cx="0" cy="15" r="4" fill="#E63946" />
+      <circle cx="50" cy="5" r="5" fill="#70D6FF" />
+      <circle cx="100" cy="15" r="4" fill="#E63946" />
+      <circle cx="30" cy="50" r="4" fill="#B5EAD7" />
+      <circle cx="50" cy="48" r="5" fill="#FF9AA2" />
+      <circle cx="70" cy="50" r="4" fill="#B5EAD7" />
+      <!-- Base de la corona -->
+      <rect x="8" y="60" width="84" height="10" rx="3" fill="#F4A261" />
+    </g>
+
+    <!-- ELEMENTO 3: Varita Mágica de Estrella (Derecha Superior) -->
+    <g transform="translate(600, 30)">
+      <!-- Mango -->
+      <line x1="20" y1="120" x2="65" y2="55" stroke="#C77DFF" stroke-width="3.5" />
+      <!-- Estrella principal -->
+      <path d="M 65 30 L 71 45 L 87 45 L 74 54 L 79 70 L 65 60 L 51 70 L 56 54 L 43 45 L 59 45 Z" fill="#FFD166" stroke="#E5989B" stroke-width="2" />
+      <!-- Cintas colgantes -->
+      <path d="M 60 62 Q 50 80 55 100" stroke="#FF9AA2" stroke-width="1.5" />
+      <path d="M 68 62 Q 75 80 70 105" stroke="#70D6FF" stroke-width="1.5" />
+    </g>
+
+    <!-- ELEMENTO 4: Espejo de Mano Mágico (Izquierda Inferior) -->
+    <g transform="translate(70, 310)">
+      <!-- Mango -->
+      <rect x="33" y="80" width="14" height="50" rx="7" fill="#E5989B" stroke="#B5838D" stroke-width="2" />
+      <!-- Marco del espejo -->
+      <circle cx="40" cy="45" r="35" fill="#FFC6FF" stroke="#B5838D" stroke-width="2.5" />
+      <!-- Cristal reflejante -->
+      <circle cx="40" cy="45" r="25" fill="#E8F1F2" stroke="#B5838D" stroke-width="1.5" />
+      <path d="M 30 30 Q 40 25 45 28" stroke="#FFFFFF" stroke-width="3" />
+      <path d="M 40 75 L 40 85" stroke="#B5838D" stroke-width="2" />
+    </g>
+
+    <!-- ELEMENTO 5: Vestido Morado de Princesa Pequeño (Centro Inferior) -->
+    <g transform="translate(340, 320)">
+      <path d="M 28 20 Q 40 12 52 20 L 48 45 Q 40 48 32 45 Z" fill="#C77DFF" stroke="#7B2CBF" stroke-width="1.8" />
+      <path d="M 32 45 Q 10 75 0 105 Q 40 115 80 105 Q 70 75 48 45 Z" fill="#E0AAFF" stroke="#7B2CBF" stroke-width="2" />
+      <circle cx="40" cy="45" r="4" fill="#FFD166" />
+    </g>
+
+    <!-- ELEMENTO 6: Corona Pequeña de Princesa (Derecha Inferior) -->
+    <g transform="translate(590, 340)">
+      <path d="M 10 45 L 0 10 L 22 25 L 35 0 L 48 25 L 70 10 L 60 45 Z" fill="#FFC6FF" stroke="#9C89B8" stroke-width="2" />
+      <circle cx="35" cy="35" r="4" fill="#FF9AA2" />
+      <rect x="8" y="45" width="54" height="7" rx="2" fill="#9C89B8" />
+    </g>
+
+    <!-- POLVO DE ESTRELLAS Y DESTELLOS MAGICO (Por todo el SVG) -->
+    <!-- Destello Grande 1 (Dorado) -->
+    <path d="M 230 80 Q 230 100 250 100 Q 230 100 230 120 Q 230 100 210 100 Q 230 100 230 80 Z" fill="#FFD166" />
+    <!-- Destello Grande 2 (Rosa) -->
+    <path d="M 500 180 Q 500 200 520 200 Q 500 200 500 220 Q 500 200 480 200 Q 500 200 500 180 Z" fill="#FF9AA2" />
+    <!-- Destello Grande 3 (Celeste) -->
+    <path d="M 240 380 Q 240 395 255 395 Q 240 395 240 410 Q 240 395 225 395 Q 240 395 240 380 Z" fill="#70D6FF" />
+    <!-- Destello Grande 4 (Morado) -->
+    <path d="M 500 390 Q 500 405 515 405 Q 500 405 500 420 Q 500 405 485 405 Q 500 405 500 390 Z" fill="#C77DFF" />
+
+    <!-- Estrellitas de 5 puntas y Chispas pequeñas -->
+    <!-- Arriba -->
+    <path d="M 190 40 L 193 48 L 201 48 L 195 53 L 197 61 L 190 56 L 183 61 L 185 53 L 179 48 L 187 48 Z" fill="#B5EAD7" />
+    <circle cx="280" cy="50" r="3" fill="#FFD166" />
+    <circle cx="290" cy="65" r="1.5" fill="#FF9AA2" />
+    <circle cx="480" cy="70" r="3.5" fill="#70D6FF" />
+    <circle cx="530" cy="50" r="2" fill="#E0AAFF" />
+
+    <!-- Centro -->
+    <path d="M 380 200 L 382 206 L 388 206 L 383 210 L 385 216 L 380 212 L 375 216 L 377 210 L 372 206 L 378 206 Z" fill="#FFD166" />
+    <circle cx="180" cy="220" r="3" fill="#FF9AA2" />
+    <circle cx="200" cy="240" r="2" fill="#70D6FF" />
+    <circle cx="310" cy="260" r="4" fill="#B5EAD7" />
+    <circle cx="630" cy="220" r="3" fill="#FFC6FF" />
+    <circle cx="670" cy="180" r="2" fill="#FFD166" />
+
+    <!-- Abajo -->
+    <path d="M 680 460 L 682 466 L 688 466 L 683 470 L 685 476 L 680 472 L 675 476 L 677 470 L 672 466 L 678 466 Z" fill="#FF9AA2" />
+    <circle cx="180" cy="480" r="3" fill="#E0AAFF" />
+    <circle cx="310" cy="460" r="2" fill="#FFD166" />
+    <circle cx="430" cy="490" r="3.5" fill="#70D6FF" />
+    <circle cx="580" cy="470" r="2" fill="#B5EAD7" />
+
+    <!-- Corazoncitos Flotantes -->
+    <path d="M 120 220 C 120 215, 112 210, 107 216 C 102 210, 94 215, 94 220 C 94 228, 107 235, 107 235 C 107 235, 120 228, 120 220 Z" fill="#FF9AA2" />
+    <path d="M 450 120 C 450 116, 444 112, 440 116 C 436 112, 430 116, 430 120 C 430 126, 440 132, 440 132 C 440 132, 450 126, 450 120 Z" fill="#FFC6FF" />
+    <path d="M 290 320 C 290 316, 284 312, 280 316 C 276 312, 270 316, 270 320 C 270 326, 280 332, 280 332 C 280 332, 290 326, 290 320 Z" fill="#70D6FF" />
+
+  </g>
+</svg>

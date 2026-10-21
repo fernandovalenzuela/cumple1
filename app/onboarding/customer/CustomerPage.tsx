@@ -71,7 +71,7 @@ export default function CustomerPage({
     }
     try {
       setLoading(true);
-console.log("## 5");
+//console.log("## 5");
       const result = await createCustomer(form);
       if (result.state === State.nok) {
         console.log("## 6 error ",result.message);
@@ -83,7 +83,7 @@ console.log("## 5");
     } finally {
       setLoading(false);
     }
-  console.log("## 6");
+  //console.log("## 6");
     router.push("/onboarding/event");
   }
 

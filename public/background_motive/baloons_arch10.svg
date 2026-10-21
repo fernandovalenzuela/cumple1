@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 2560" width="100%" height="100%" preserveAspectRatio="xMidYMin slice">
+  <defs>
+    <!-- Paleta de Colores Pasteles MATE -->
+    <linearGradient id="pastel-blue" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#BAE6FD" />
+    </linearGradient>
+
+    <linearGradient id="pastel-yellow" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#FEF08A" />
+    </linearGradient>
+
+    <linearGradient id="pastel-green" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#BBF7D0" />
+    </linearGradient>
+
+    <linearGradient id="pastel-lilac" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#E9D5FF" />
+    </linearGradient>
+
+    <linearGradient id="pastel-peach" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#FFEDD5" />
+    </linearGradient>
+
+    <!-- Colores Mate para la Corona Real -->
+    <linearGradient id="crown-gold" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#FACC15" />
+    </linearGradient>
+
+    <linearGradient id="crown-velvet" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#F43F5E" />
+    </linearGradient>
+
+    <linearGradient id="crown-jewel" x1="0%" y1="0%" x2="0%" y2="0%">
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <!-- Sombra suave mate para dar leve profundidad -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+
+    <!-- MOLDES DE GLOBOS MATE -->
+    
+    <!-- 1. Globo Esférico Mate -->
+    <g id="balloon-round">
+      <path d="M 0,-50 C 35,-50 45,-15 35,30 C 25,58 8,62 0,62 C -8,62 -25,58 -35,30 C -45,-15 -35,-50 0,-50 Z" />
+      <path d="M -4,62 L 4,62 L 6,69 L -6,69 Z" opacity="0.6" />
+    </g>
+
+    <!-- 2. Globo Estrella Mate -->
+    <g id="balloon-star">
+      <path d="M 0,-55 L 15,-18 L 52,-15 L 24,11 L 33,48 L 0,28 L -33,48 L -24,11 L -52,-15 L -15,-18 Z" />
+      <polygon points="-4,28 4,28 5,34 -5,34" opacity="0.6" />
+    </g>
+
+    <!-- MOLDE DE LA CORONA DEL REY -->
+    <g id="king-crown">
+      <!-- Terciopelo Real (Fondo de la corona) -->
+      <path d="M -42,10 C -45,-25 -22,-45 0,-45 C 22,-45 45,-25 42,10 Z" fill="url(#crown-velvet)" />
+      
+      <!-- Base de la Corona -->
+      <rect x="-48" y="10" width="96" height="18" rx="4" fill="url(#crown-gold)" />
+      <rect x="-44" y="22" width="88" height="4" rx="1" fill="#EAB308" />
+      
+      <!-- Puntas y Dibujo de la Corona -->
+      <path d="M -48,10 L -52,-25 L -28,-5 L 0,-38 L 28,-5 L 52,-25 L 48,10 Z" fill="url(#crown-gold)" />
+
+      <!-- Cruz Real Superior -->
+      <path d="M -3,-52 H 3 V -40 H -3 Z M -8,-48 H 8 V -44 H -8 Z" fill="url(#crown-gold)" />
+
+      <!-- Gemas Decorativas (Mate) -->
+      <circle cx="-32" cy="19" r="3.5" fill="url(#crown-jewel)" />
+      <circle cx="0" cy="19" r="4.5" fill="url(#crown-jewel)" />
+      <circle cx="32" cy="19" r="3.5" fill="url(#crown-jewel)" />
+      
+      <circle cx="-52" cy="-25" r="4" fill="#FFFFFF" />
+      <circle cx="0" cy="-38" r="4.5" fill="#FFFFFF" />
+      <circle cx="52" cy="-25" r="4" fill="#FFFFFF" />
+    </g>
+  </defs>
+
+  <g filter="url(#shadow)">
+    
+    <!-- 1. COLUMNA IZQUIERDA (Alineada ordenadamente de arriba a abajo) -->
+    <g transform="translate(85, 0)">
+      <use href="#balloon-round" fill="url(#pastel-blue)" transform="translate(0, 380) scale(1.15) rotate(10)" />
+      <use href="#balloon-star" fill="url(#pastel-yellow)" transform="translate(12, 530) scale(1.05) rotate(-12)" />
+      <use href="#balloon-round" fill="url(#pastel-lilac)" transform="translate(-8, 680) scale(1.1) rotate(18)" />
+      <use href="#balloon-round" fill="url(#pastel-green)" transform="translate(10, 830) scale(1.15) rotate(-8)" />
+      <use href="#balloon-star" fill="url(#pastel-peach)" transform="translate(-5, 980) scale(1.0) rotate(15)" />
+      <use href="#balloon-round" fill="url(#pastel-blue)" transform="translate(15, 1130) scale(1.1) rotate(-15)" />
+      <use href="#balloon-round" fill="url(#pastel-yellow)" transform="translate(-10, 1280) scale(1.15) rotate(12)" />
+      <use href="#balloon-star" fill="url(#pastel-lilac)" transform="translate(8, 1430) scale(1.05) rotate(-10)" />
+      <use href="#balloon-round" fill="url(#pastel-green)" transform="translate(-5, 1580) scale(1.1) rotate(20)" />
+      <use href="#balloon-round" fill="url(#pastel-peach)" transform="translate(12, 1730) scale(1.15) rotate(-6)" />
+      <use href="#balloon-star" fill="url(#pastel-blue)" transform="translate(-8, 1880) scale(1.0) rotate(14)" />
+      <use href="#balloon-round" fill="url(#pastel-yellow)" transform="translate(10, 2030) scale(1.1) rotate(-18)" />
+      <use href="#balloon-round" fill="url(#pastel-lilac)" transform="translate(-6, 2180) scale(1.15) rotate(8)" />
+    </g>
+
+    <!-- 2. COLUMNA DERECHA (Espaciada en la misma posición simétrica) -->
+    <g transform="translate(995, 0)">
+      <use href="#balloon-round" fill="url(#pastel-green)" transform="translate(0, 380) scale(1.15) rotate(-10)" />
+      <use href="#balloon-star" fill="url(#pastel-peach)" transform="translate(-12, 530) scale(1.05) rotate(12)" />
+      <use href="#balloon-round" fill="url(#pastel-blue)" transform="translate(8, 680) scale(1.1) rotate(-18)" />
+      <use href="#balloon-round" fill="url(#pastel-yellow)" transform="translate(-10, 830) scale(1.15) rotate(8)" />
+      <use href="#balloon-star" fill="url(#pastel-lilac)" transform="translate(5, 980) scale(1.0) rotate(-15)" />
+      <use href="#balloon-round" fill="url(#pastel-green)" transform="translate(-15, 1130) scale(1.1) rotate(15)" />
+      <use href="#balloon-round" fill="url(#pastel-peach)" transform="translate(10, 1280) scale(1.15) rotate(-12)" />
+      <use href="#balloon-star" fill="url(#pastel-blue)" transform="translate(-8, 1430) scale(1.05) rotate(10)" />
+      <use href="#balloon-round" fill="url(#pastel-yellow)" transform="translate(5, 1580) scale(1.1) rotate(-20)" />
+      <use href="#balloon-round" fill="url(#pastel-lilac)" transform="translate(-12, 1730) scale(1.15) rotate(6)" />
+      <use href="#balloon-star" fill="url(#pastel-green)" transform="translate(8, 1880) scale(1.0) rotate(-14)" />
+      <use href="#balloon-round" fill="url(#pastel-peach)" transform="translate(-10, 2030) scale(1.1) rotate(18)" />
+      <use href="#balloon-round" fill="url(#pastel-blue)" transform="translate(6, 2180) scale(1.15) rotate(-8)" />
+    </g>
+
+    <!-- 3. ARCO SUPERIOR DE GUIRNALDAS -->
+    <!-- Lado Izquierdo del Arco -->
+    <use href="#balloon-round" fill="url(#pastel-peach)" transform="translate(115, 230) scale(1.15) rotate(-15)" />
+    <use href="#balloon-star" fill="url(#pastel-blue)" transform="translate(195, 150) scale(1.05) rotate(10)" />
+    <use href="#balloon-round" fill="url(#pastel-yellow)" transform="translate(290, 95) scale(1.1) rotate(-8)" />
+    <use href="#balloon-round" fill="url(#pastel-lilac)" transform="translate(390, 60) scale(1.15) rotate(18)" />
+
+    <!-- Lado Derecho del Arco -->
+    <use href="#balloon-round" fill="url(#pastel-green)" transform="translate(690, 60) scale(1.15) rotate(-18)" />
+    <use href="#balloon-round" fill="url(#pastel-peach)" transform="translate(790, 95) scale(1.1) rotate(8)" />
+    <use href="#balloon-star" fill="url(#pastel-yellow)" transform="translate(885, 150) scale(1.05) rotate(-10)" />
+    <use href="#balloon-round" fill="url(#pastel-blue)" transform="translate(965, 230) scale(1.15) rotate(15)" />
+
+    <!-- ELEMENTO CENTRAL DEL ARCO: Corona del Rey -->
+    <use href="#king-crown" transform="translate(540, 85) scale(1.4)" />
+
+  </g>
+</svg>

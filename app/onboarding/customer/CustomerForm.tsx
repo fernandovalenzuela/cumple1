@@ -62,6 +62,9 @@ export default function CustomerForm({
         <label className="admin-label">
           Nombre
         </label>
+        <p className="admin-helper">
+            Indicanos el nombre de la persona que realizará la compra.
+        </p>
 
         <input
           className="admin-input"
@@ -126,7 +129,7 @@ export default function CustomerForm({
         />
         <p className="admin-helper">
           Verificá que el email esté correctamente escrito.
-          Lo utilizaremos para comunicarnos con vos y acceder nuevamente a tus eventos.
+          Se utilizará para comunicarte el estado y novedades de tus eventos.
         </p>
         {submitted && errors.email && (
           <p className="admin-error"> {errors.email} </p>
@@ -213,7 +216,7 @@ export default function CustomerForm({
                     )
                 }
             />
-            <span>No soy un robot</span>
+            <span className="ml-2">No soy un robot</span>
         </label>  
       </div>
 
@@ -226,13 +229,13 @@ export default function CustomerForm({
       <label className="admin-checkbox">
         <input
           type="checkbox"
-          checked={form.termsAccepted}
+          checked={form.termsAccepted} 
           disabled={loading}
           onChange={(e)=>
             onChange( "termsAccepted",e.target.checked ) }
         />
 
-        <span>
+        <span className="ml-2">
           Acepto los{" "}
           <a
             href="/terms"

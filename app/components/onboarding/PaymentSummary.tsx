@@ -68,7 +68,7 @@ export default function PaymentSummary({
         </div>
 
         {event.discount>0&&(
-          <div className="flex justify-between text-green-600">
+          <div className="flex justify-between text-[var(--color-success)]">
             <span>
               Descuento ({event.discount}%)
             </span>
@@ -89,6 +89,7 @@ export default function PaymentSummary({
 
         <hr/>
 
+        {total > 0 &&(
         <div className="space-y-3">
 
           <div className="font-medium">
@@ -147,6 +148,7 @@ export default function PaymentSummary({
           }
 
         </div>
+        ) }
 
       </div>
 

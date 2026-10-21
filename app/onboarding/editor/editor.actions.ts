@@ -51,7 +51,7 @@ export async function saveEvent(
   const subtitle_2=event.subtitle_2??null;
   const locationAddress=event.locationAddress??null;
   const customerComment=event.customerComment??null;
-  const backgroundMotive=getBackgroundMotiveNameByUrl(event.backgroundMotive.url??null);
+  const backgroundMotive = typeof event.backgroundMotive === "object" && event.backgroundMotive !== null && event.backgroundMotive.url ? getBackgroundMotiveNameByUrl(event.backgroundMotive.url) : event.backgroundMotive;
   let  rsvpDeadline=event.rsvpDeadline;
   if (!event.rsvpDeadline) {
     rsvpDeadline = getRsvpDeadlineFromEventBirthday(event.eventBirthday);
@@ -75,6 +75,7 @@ export async function saveEvent(
         set
             name=${event.name},
             title_1=${event.title_1},
+            title_2=${event.title_2},
             subtitle_1=${event.subtitle_1},
             subtitle_2=${subtitle_2},
             "eventBirthday"=${event.eventBirthday},

@@ -1,3 +1,5 @@
+import { OccasionType } from "@/lib/constants";
+
 export type EventGalleryItem={
   id:number;
   slot:number;
@@ -26,7 +28,7 @@ export type Event={
   /* HERO / PORTADA */
   name: string;
   title_1: string;
-  title_2?: string | null;
+  title_2: string;
   subtitle_1:string;
   theme?: string | null;
   picture: string;
@@ -88,7 +90,6 @@ export type SaveEventData={
   pendingGalleryFiles:Record<string,File>;
 };
 
-
 export type JsonValue =
     | string
     | number
@@ -96,3 +97,10 @@ export type JsonValue =
     | null
     | JsonValue[]
     | { [key: string]: JsonValue };
+
+export type OcassionTypeInfo={
+  ocassionType:OccasionType;
+  onBoardingEventNameCaption:string;
+  onBoardingEventNameCaptionHelp:string;
+  showYearsToCelebrate:boolean;
+};

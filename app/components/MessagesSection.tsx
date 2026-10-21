@@ -7,13 +7,9 @@ import { MessagesList } from "./MessagesList";
 
 type Props = {
   birthdayEventId: number;
-
   mode: "private" | "open" | "public";
-
   guest?: any;
-
   allowMessages?: boolean;
-
   showMessagesList?: boolean;
 };
 
