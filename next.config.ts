@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["sharp"],
   // 🟢 AGREGADO: Permite que el JavaScript se descargue en la IP de tu celular
   allowedDevOrigins: [
   "localhost:3000",
