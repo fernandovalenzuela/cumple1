@@ -2,9 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
-	  "/*": [
-		"node_modules/@img/**/*",
-		"node_modules/sharp/**/*",
+	  "/**": [
+		"./node_modules/.pnpm/@img+sharp-libvips-*/node_modules/@img/**/*.so*",
 	  ],
 	},
 

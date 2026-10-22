@@ -41,9 +41,14 @@
     "vitest": "^4.1.10"
   },
   "pnpm": {
-	  "supportedArchitectures": {
-		"os": ["win32", "linux"],
-		"cpu": ["x64"]
-	  }
-	}
+    "supportedArchitectures": {
+      "os": [
+        "win32",
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ]
+    }
+  }
 }
