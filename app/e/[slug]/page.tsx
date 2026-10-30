@@ -5,7 +5,7 @@ import { getEventAccessState, isEventDeadline, entireScreenMessage } from "./../
 import { getBackgroundMotiveInfo } from "@/lib/appearance";
 import { EVENT_DEFAULTS } from "@/lib/defaults";
 import { Event } from "@/lib/types";
-
+import { getImageUrl } from "@/lib/images/imageUrl";
 
 /* ==========================================================================
    VARIABLE DE CONTROL: Cambiar a true para usar la base de datos real
@@ -93,7 +93,8 @@ export default async function Page({
         b."maxGuests",
         b."planId",
         b."eventExpiresAt",
-        b."occasionType"
+        b."occasionType",
+        b."updated_at"
       FROM "birthdayEvents" b 
       WHERE b."publicSlug" = ${slug}
     `;
@@ -139,8 +140,8 @@ export default async function Page({
   if (!production) {
     // MOCK DATA: Simula las imágenes de la galería
     galleryData = [
-      { id: 101, picture: EVENT_DEFAULTS.picture, thumbnail: null, description: "Foto de prueba 1" },
-      { id: 102, picture: EVENT_DEFAULTS.picture, thumbnail: null, description: "Foto de prueba 2" }
+      { id: 101, picture: EVENT_DEFAULTS.picture, thumbnail: null, description: "Foto de prueba 1", updated_at: "2026/11/01" },
+      { id: 102, picture: EVENT_DEFAULTS.picture, thumbnail: null, description: "Foto de prueba 2", updated_at: "2026/11/01" }
     ];
   } else {
     galleryData = await sql`
@@ -148,7 +149,8 @@ export default async function Page({
         id,
         picture,
         thumbnail,
-        description
+        description,
+        updated_at
       FROM "birthdayGallery"
       WHERE "birthdayEventId" = ${row.id}
         AND "isActive" = true
@@ -158,16 +160,15 @@ export default async function Page({
   /* ========================================================================== */
 
   const gallery = galleryData.map((img, index) => ({
-    id: img.id,
-    picture: img.picture?.startsWith("/") ? img.picture : `/${img.picture}`,
-    slot:index+1,
-    thumbnail: img.thumbnail
-      ? img.thumbnail.startsWith("/")
-        ? img.thumbnail
-        : `/${img.thumbnail}`
-      : null,
-      description: img.description,
-  }));
+	  id: img.id,
+	  picture: getImageUrl(img.picture, img.updated_at),
+	  slot: index + 1,
+	  thumbnail: img.thumbnail
+		  ? getImageUrl(img.thumbnail, img.updated_at)
+		  : undefined,
+	  description: img.description,
+    updated_at: img.updated_at
+	}));
 
   /* =========================
       EVENT
@@ -188,10 +189,8 @@ export default async function Page({
     /*time: row.eventBirthday.split("T")[1]?.substring(0, 8),*/
     locationName: row.locationName,
     locationAddress: row.locationAddress,
-    picture: row.picture?.startsWith("/") ? row.picture : `/${row.picture}`,
-    locationPicture: row.locationPicture?.startsWith("/")
-      ? row.locationPicture
-      : `/${row.locationPicture}`,
+    picture: getImageUrl(row.picture, row.updated_at),
+    locationPicture: getImageUrl(row.locationPicture, row.updated_at),
     allowMessages: row.allowMessages,
     showMessagesList: row.showMessagesList,
     theme: row.theme || "default",
@@ -209,6 +208,7 @@ export default async function Page({
     planMaxGuests:0,
     planId:row.planId,
     eventExpiresAt:row.eventExpiresAt,
+    updatedAt: row.updated_at,
   };
 
   console.log("OPEN-JUANCHO PRODUCCION MODE:", production);

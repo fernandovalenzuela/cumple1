@@ -7,6 +7,7 @@ import { AccessType } from "@/lib/constants";
 import OnboardingEditor from "@/components/onboarding/OnboardingEditor";
 import { Event } from "@/lib/types";
 import { getDefaultCountry } from "@/lib/countries";
+import { getImageUrl } from "@/lib/images/imageUrl";
 
 export default async function Page(){
 
@@ -50,7 +51,8 @@ export default async function Page(){
       b."maxGuests",
       b."planId",
       b."eventExpiresAt",
-      b."occasionType"
+      b."occasionType",
+      b."updated_at"
     FROM "birthdayEvents" b
     WHERE b.id=${session.eventId}
       AND b."isActive"=true
@@ -67,7 +69,8 @@ export default async function Page(){
       id,
       picture,
       thumbnail,
-      description
+      description,
+      updated_at
     FROM "birthdayGallery"
     WHERE "birthdayEventId"=${row.id}
       AND "isActive"=true
@@ -76,13 +79,11 @@ export default async function Page(){
 
   const gallery=galleryData.map((g, index)=>({
     id:g.id,
-    picture:g.picture?.startsWith("/")?g.picture:`/${g.picture}`,
+    picture: getImageUrl(g.picture, g.updated_at),
     slot:index+1,
-    thumbnail:g.thumbnail
-      ?g.thumbnail.startsWith("/")
-        ?g.thumbnail
-        :`/${g.thumbnail}`
-      :undefined,
+    thumbnail: g.thumbnail
+	  ? getImageUrl(g.thumbnail, g.updated_at)
+	  : undefined,
     description:g.description,
   }));
 
@@ -120,12 +121,8 @@ export default async function Page(){
     eventBirthday:row.eventBirthday,
     locationName:row.locationName,
     locationAddress:row.locationAddress,
-    picture:row.picture?.startsWith("/")
-      ?row.picture
-      :`/${row.picture}`,
-    locationPicture:row.locationPicture?.startsWith("/")
-      ?row.locationPicture
-      :`/${row.locationPicture}`,
+    picture: getImageUrl(row.picture, row.updated_at),
+    locationPicture: getImageUrl(row.locationPicture, row.updated_at),
     allowMessages:row.allowMessages,
     showMessagesList:row.showMessagesList,
     theme:row.theme,

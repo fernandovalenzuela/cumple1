@@ -27,14 +27,14 @@ export default function Tutorial({tutorialStep,onStepChange,onPreview,onFinish,o
   const [tutorialCompleted,setTutorialCompleted]=useState(false);
 
 
-  console.log("### TUTORIAL RENDER", {
-  tutorialStep,
-  welcomeStep,
-  sectionIndex,
-  configurationIntro,
-  tutorialCompleted,
-  timestamp:Date.now(),
-});
+  /*console.log("### TUTORIAL RENDER", {
+    tutorialStep,
+    welcomeStep,
+    sectionIndex,
+    configurationIntro,
+    tutorialCompleted,
+    timestamp:Date.now(),
+  });*/
 
 
   //const current=tutorialStep===null?null:tutorialSteps[tutorialStep];

@@ -252,6 +252,7 @@ export function EventPageView({
             width={320}
             height={320}
             priority
+            unoptimized
             className="
               w-[260px]
               h-[260px]

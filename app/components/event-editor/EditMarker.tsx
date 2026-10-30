@@ -85,6 +85,7 @@ export default function EditMarker({
   const event=useEventStore(state=>state.event);
   const gallery=event?.gallery??[];
   const [galleryEditingId,setGalleryEditingId]=useState<string|null>(null);
+  const galleryEditingIdRef = useRef<string | null>(null);
   const textInputRef=useRef<HTMLInputElement|null>(null);
   const textAreaRef=useRef<HTMLTextAreaElement|null>(null);
   const [showSpecialCharacters,setShowSpecialCharacters]=useState(false);
@@ -194,22 +195,40 @@ export default function EditMarker({
     });
   }
 
-  function handleReplaceGalleryImage(file:File){
-    if(galleryEditingId===null)
-      return;
-    const id=Number(galleryEditingId);
-    const item=gallery.find(x=>x.id===id);
-    if(!item)
+  function handleReplaceGalleryImage(file: File) {
+    const editingId = galleryEditingIdRef.current;
+
+    if (editingId === null)
       return;
 
-    const preview=URL.createObjectURL(file);
-    const key=`gallery${item.slot}`;
-    setPendingGalleryFile(key,file);
+    const id = Number(editingId);
+
+    const item = gallery.find(x => x.id == id);
+
+    console.log("CAMBIAR FOTO");
+    console.log("id:", id);
+    console.log("item:", item);
+    console.log("archivo nuevo:", file.name);
+
+    if (!item)
+      return;
+
+    const preview = URL.createObjectURL(file);
+    console.log("NUEVO PREVIEW:", preview);
+
+    const key = `gallery${item.slot}`;
+
+    setPendingGalleryFile(key, file);
+
     updateEvent({
-      gallery:gallery.map(x=>
-        x.id!==id ?x :{ ...x, picture:preview, status:x.status==="new"
-                ?"new"
-                :"updated",
+      gallery: gallery.map(x =>
+        x.id != id
+          ? x
+          : {
+              ...x,
+              picture: preview,
+              thumbnail: preview,
+              status: x.status === "new" ? "new" : "updated",
             }
       ),
     });
@@ -547,16 +566,16 @@ export default function EditMarker({
             accept="image/jpeg,image/png,image/webp"
             className="hidden"
             onChange={e=>{
-              const file=e.target.files?.[0];
-              if(!file)
-                return;
-              if(galleryEditingId===null)
-                handleAddGalleryImage(file);
-              else
-                handleReplaceGalleryImage(file);
-
-              setGalleryEditingId(null);
-              e.target.value="";
+              const file = e.target.files?.[0];
+                if (!file)
+                  return;
+                if (galleryEditingIdRef.current === null)
+                  handleAddGalleryImage(file);
+                else
+                  handleReplaceGalleryImage(file);
+                galleryEditingIdRef.current = null;
+                setGalleryEditingId(null);
+                e.target.value = "";
             }}
           />
 
@@ -592,7 +611,9 @@ export default function EditMarker({
                       type="button"
                       className="admin-button-secondary flex-1 admin-button-medium admin-button-medium-bg px-4"
                       onClick={()=>{
-                        setGalleryEditingId(String(item.id));
+                        const id = String(item.id);
+                        galleryEditingIdRef.current = id;
+                        setGalleryEditingId(id);
                         fileInputRef.current?.click();
                       }}
                     > Cambiar </button>
@@ -616,6 +637,7 @@ export default function EditMarker({
               type="button"
               className="admin-button-secondary admin-button-medium w-full"
               onClick={()=>{
+                galleryEditingIdRef.current = null;
                 setGalleryEditingId(null);
                 fileInputRef.current?.click();
               }}

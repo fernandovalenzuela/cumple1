@@ -42,6 +42,7 @@ export async function saveEvent(
   }
   //console.log("SERVER editor.actions #3, eventId: ", session?.eventId);
   const event=data.event;
+  
 
   if(!event)
     throw new Error("Evento inválido.");
@@ -176,6 +177,12 @@ export async function saveEvent(
                 }
 
                 case "updated":{
+                    console.log("GALLERY UPDATED");
+                    console.log("item.id:", item.id);
+                    console.log("item.slot:", item.slot);
+                    console.log("imagePath:", getGalleryPaths(eventId,item.id).imagePath);
+                    console.log("pending file:", !!data.pendingGalleryFiles[`gallery${item.slot}`]);
+
                     const paths = getGalleryPaths(eventId,item.id,);
                     const file=data.pendingGalleryFiles[`gallery${item.slot}`];
                     if(file){

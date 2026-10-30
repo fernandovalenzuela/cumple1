@@ -4,6 +4,7 @@ import { Status, AccessType, ImageProcessingStatus, State, RsvpStatus, FoodType 
 import { getEventAccessState, isEventDeadline, entireScreenMessage } from "./../../lib/helper";
 import { getBackgroundMotiveInfo } from "@/lib/appearance";
 import { Event } from "@/lib/types";
+import { getImageUrl } from "@/lib/images/imageUrl";
 
 
 /* =========================
@@ -58,7 +59,8 @@ export default async function Page({ params }: { params: { code?: string } }) {
       b."maxGuests",
       b."planId",
       b."eventExpiresAt",
-      b."occasionType"
+      b."occasionType",
+      b."updated_at"
     FROM "birthdayPrivateGuests" g
     JOIN "birthdayEvents" b 
       ON g."birthdayEventId" = b.id
@@ -98,7 +100,8 @@ export default async function Page({ params }: { params: { code?: string } }) {
       id,
       picture,
       thumbnail,
-      description
+      description,
+      updated_at
     FROM "birthdayGallery"
     WHERE "birthdayEventId" = ${row.id}
       AND "isActive" = true
@@ -106,16 +109,15 @@ export default async function Page({ params }: { params: { code?: string } }) {
   `;
 
   const gallery = galleryData.map((g, index) => ({
-    id: g.id,
-    picture: g.picture?.startsWith("/") ? g.picture : `/${g.picture}`,
-    slot:index+1,
-    thumbnail: g.thumbnail
-      ? g.thumbnail.startsWith("/")
-        ? g.thumbnail
-        : `/${g.thumbnail}`
-      : undefined,
-    description: g.description,
-  }));
+	  id: g.id,
+	  picture: getImageUrl(g.picture, g.updated_at),
+	  slot: index + 1,
+	  thumbnail: g.thumbnail
+		? getImageUrl(g.thumbnail, g.updated_at)
+		: undefined,
+	  description: g.description,
+    updated_at: g.updated_at
+	}));
 
   /* =========================
      EVENT
@@ -136,10 +138,8 @@ export default async function Page({ params }: { params: { code?: string } }) {
     /*time: row.eventBirthday.split("T")[1]?.substring(0, 8),*/
     locationName: row.locationName,
     locationAddress: row.locationAddress,
-    picture: row.picture?.startsWith("/") ? row.picture : `/${row.picture}`,
-    locationPicture: row.locationPicture?.startsWith("/")
-      ? row.locationPicture
-      : `/${row.locationPicture}`,
+    picture: getImageUrl(row.picture, row.updated_at),
+    locationPicture: getImageUrl(row.locationPicture, row.updated_at),
     allowMessages: row.allowMessages,
     showMessagesList: row.showMessagesList,
     theme: row.theme || "default",
@@ -157,6 +157,7 @@ export default async function Page({ params }: { params: { code?: string } }) {
     planMaxGuests:0,
     planId:row.planId,
     eventExpiresAt:row.eventExpiresAt,
+    updatedAt: row.updated_at,
   };
 
   const guest = {

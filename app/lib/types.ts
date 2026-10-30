@@ -70,6 +70,7 @@ export type Event={
   publicSlug?: string | null;
   isActive?: boolean | null;  
   eventExpiresAt: string | null; // hasta cuando puede estar publicado el evento: ( birthdayEvents.paymentDate + birthdayPlans.planDurationDays)
+  updatedAt?: string | null;
   
   /* OTHER */
   internalComment?:string | null;

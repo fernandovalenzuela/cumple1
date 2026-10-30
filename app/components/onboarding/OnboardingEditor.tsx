@@ -153,13 +153,33 @@ return;*/
 
       setSaving(true);
 
+      console.log("NEXT 1 - antes de saveEvent");
+      console.log(
+        "GALERIA EN CURRENT EVENT:",
+        currentEvent.gallery?.map((item) => ({
+          id: item.id,
+          slot: item.slot,
+          status: item.status,
+          picture: item.picture,
+          thumbnail: item.thumbnail,
+        }))
+      );
+      console.log(
+        "PENDING GALLERY FILES:",
+        Object.keys(pendingGalleryFiles),
+      );
+
       await saveEvent({
-        event:currentEvent,
+        event: currentEvent,
         pendingFiles,
         pendingGalleryFiles,
       });
 
+      console.log("NEXT 2 - saveEvent terminó");
+
       markSaved();
+
+      console.log("NEXT 3 - markSaved terminó");
 
       clearPendingFiles();
 
