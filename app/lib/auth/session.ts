@@ -1,128 +1,139 @@
-//"use server";
+"use server";
 
 import { cookies } from "next/headers";
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { AccountType } from "@/lib/constants";
 
-export enum SessionType{
-  Organizer=0,
-  PartnerEvent=1,
+export enum SessionType {
+  // Sesión de una cuenta administrativa:
+  // Organizer, Partner o Webmaster.
+  Account = 0,
+
+  // Sesión de un cliente que edita un único evento.
+  EventEditor = 1,
+
+  // Compatibilidad temporal con el código actual.
+  // Se eliminarán cuando migremos el onboarding.
+  Organizer = Account,
+  PartnerEvent = EventEditor,
 }
 
-export interface SessionData{
-  type:SessionType;
-  accountId?:number;
-  eventId?:number;
+export interface SessionData {
+  type: SessionType;
+
+  // Identidad de la cuenta administrativa.
+  // Presente para Organizer, Partner y Webmaster.
+  accountId?: number;
+
+  // Tipo de cuenta administrativa.
+  // Organizer, Partner o Webmaster.
+  accountType?: AccountType;
+
+  // Evento sobre el que se está trabajando.
+  // En un EventEditor es obligatorio.
+  // En una cuenta administrativa es opcional.
+  eventId?: number;
 }
 
-const COOKIE_NAME="birthday_session";
-const COOKIE_MAX_AGE=60*60*24*30;
+const COOKIE_NAME = "birthday_session";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 días
 
-function getSecret():string{
+function getSecret(): string {
+  const secret = process.env.SESSION_SECRET;
 
-  const secret=process.env.SESSION_SECRET;
-
-  if(!secret)
+  if (!secret) {
     throw new Error("SESSION_SECRET no configurado.");
+  }
 
   return secret;
-
 }
 
-function sign(payload:string):string{
-
-  return createHmac("sha256",getSecret())
+function sign(payload: string): string {
+  return createHmac("sha256", getSecret())
     .update(payload)
     .digest("hex");
-
 }
 
-function serialize(session:SessionData):string{
+function serialize(session: SessionData): string {
+  const payload = Buffer.from(
+    JSON.stringify(session)
+  ).toString("base64url");
 
-  const payload=Buffer
-    .from(JSON.stringify(session))
-    .toString("base64url");
-
-  const signature=sign(payload);
+  const signature = sign(payload);
 
   return `${payload}.${signature}`;
-
 }
 
-function deserialize(value:string):SessionData|null{
+function deserialize(value: string): SessionData | null {
+  const parts = value.split(".");
 
-  const parts=value.split(".");
-
-  if(parts.length!==2)
+  if (parts.length !== 2) {
     return null;
+  }
 
-  const payload=parts[0];
-  const signature=parts[1];
-  const expected=sign(payload);
+  const payload = parts[0];
+  const signature = parts[1];
 
-  const signatureBuffer=Buffer.from(signature,"hex");
-  const expectedBuffer=Buffer.from(expected,"hex");
+  const expected = sign(payload);
 
-  if(signatureBuffer.length!==expectedBuffer.length)
+  const signatureBuffer = Buffer.from(signature, "hex");
+  const expectedBuffer = Buffer.from(expected, "hex");
+
+  if (signatureBuffer.length !== expectedBuffer.length) {
     return null;
+  }
 
-  if(!timingSafeEqual(signatureBuffer,expectedBuffer))
+  if (!timingSafeEqual(signatureBuffer, expectedBuffer)) {
     return null;
+  }
 
-  try{
-
+  try {
     return JSON.parse(
-      Buffer.from(payload,"base64url").toString("utf8")
+      Buffer.from(payload, "base64url").toString("utf8")
     ) as SessionData;
-
-  }
-  catch{
-
+  } catch {
     return null;
-
   }
-
 }
 
-export async function createSession(session:SessionData):Promise<void>{
+export async function createSession(
+  session: SessionData
+): Promise<void> {
+  const cookieStore = await cookies();
 
-  const cookieStore=await cookies();
+  const appUrl = process.env.APP_URL ?? "";
 
-  // esto es para poder hacer debug en celular en red local
-  const appUrl=process.env.APP_URL ?? "";
-  const isLocalNetwork=appUrl.startsWith("http://192.168.");
+  // En desarrollo dentro de la red local usamos HTTP.
+  // En producción/Vercel el cookie debe ser Secure.
+  const isLocalNetwork = appUrl.startsWith("http://192.168.");
 
-  /*console.log("# APP_URL", process.env.APP_URL);
-  console.log("# isLocalNetwork", isLocalNetwork);
-  console.log("# cookie ", cookieStore.get(COOKIE_NAME));*/
-
-  cookieStore.set(COOKIE_NAME,serialize(session),{
-    httpOnly:true,
-    /*secure:process.env.NODE_ENV==="production",*/
-    secure:!isLocalNetwork,
-    sameSite:"lax",
-    path:"/",
-    maxAge:COOKIE_MAX_AGE,
-  });
-
+  cookieStore.set(
+    COOKIE_NAME,
+    serialize(session),
+    {
+      httpOnly: true,
+      secure: !isLocalNetwork,
+      sameSite: "lax",
+      path: "/",
+      maxAge: COOKIE_MAX_AGE,
+    }
+  );
 }
 
-export async function getCurrentSession():Promise<SessionData|null>{
+export async function getCurrentSession(): Promise<SessionData | null> {
+  const cookieStore = await cookies();
 
-  const cookieStore=await cookies();
+  const cookie = cookieStore.get(COOKIE_NAME);
 
-  const cookie=cookieStore.get(COOKIE_NAME);
-
-  if(!cookie)
+  if (!cookie) {
     return null;
+  }
 
   return deserialize(cookie.value);
-
 }
 
-export async function destroySession():Promise<void>{
-
-  const cookieStore=await cookies();
+export async function destroySession(): Promise<void> {
+  const cookieStore = await cookies();
 
   cookieStore.delete(COOKIE_NAME);
-
 }

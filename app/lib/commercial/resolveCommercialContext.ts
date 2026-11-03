@@ -81,7 +81,7 @@ function calculateFinalPrice(
 
 export async function resolveCommercialContext(
   country: string,
-  code?: string | null
+  code?: string | null  /* codigo promocional */
 ): Promise<CommercialContextResult> {
   
   const rows =
@@ -123,7 +123,7 @@ export async function resolveCommercialContext(
     };
   }
   let commercialRow: CommercialRow | undefined;
-  if (
+  if ( /** codigo promocional */
     code !== undefined &&
     code !== null &&
     code.trim() !== ""

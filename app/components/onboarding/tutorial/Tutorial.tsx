@@ -253,13 +253,7 @@ export default function Tutorial({tutorialStep,onStepChange,onPreview,onFinish,o
             Anterior
           </button>
 
-          <button
-            type="button"
-            className="admin-button-secondary admin-button-xsmall !px-3 !py-1.5 !text-xs"
-            onClick={handlePreview}
-          >
-            Vista previa
-          </button>
+ 
 
           <button
             type="button"

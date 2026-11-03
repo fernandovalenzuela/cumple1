@@ -91,12 +91,19 @@ export const tutorialSteps:TutorialStep[]=[
     description:"Configura cómo confirmarán la asistencia tus invitados.",
     markerId:"marker-rsvp",
   },
-    {
+  {
     section:"Galería",
     sectionId:"gallery",
     step:"Título de la galería",
     description:"Configura el título de tu galería de fotos.",
     markerId:"marker-galleryTitle",
+  },
+  {
+    section:"Galería",
+    sectionId:"gallery",
+    step:"Fotos de la galería",
+    description:"Seleccionar fotos de la galería.",
+    markerId:"marker-gallery",
   },
   {
     section:"Mensajes",

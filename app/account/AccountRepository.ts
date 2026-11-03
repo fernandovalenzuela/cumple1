@@ -1,5 +1,5 @@
 import { sql } from "@/lib/db";
-import { AccountInfo } from "./dto/accountDTOs";
+import { AccountInfo,AccountCredentials  } from "./dto/accountDTOs";
 
 export class AccountRepository{
 
@@ -34,6 +34,20 @@ export class AccountRepository{
             WHERE id=${accountId}
         `;
 
+    }
+
+    async findCredentialsByEmail( email: string ): Promise<AccountCredentials | null> {
+        const rows = await sql<AccountCredentials[]>`
+            SELECT
+            id,email,"passwordHash","accountType","isActive"
+            FROM "birthdayAccounts"
+            WHERE lower(email) = ${email.trim().toLowerCase()}
+            LIMIT 1
+        `;
+        if (rows.length === 0) {
+            return null;
+        }
+        return rows[0];
     }
 
 }
